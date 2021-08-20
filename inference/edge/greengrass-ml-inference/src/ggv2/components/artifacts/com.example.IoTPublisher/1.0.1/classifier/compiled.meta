@@ -1,0 +1,33 @@
+{
+    "Requirements": {
+        "TargetDevice": "ML_C5",
+        "TargetDeviceType": "cpu"
+    },
+    "Compilation": {
+        "CreatedTime": 1628746271.076939
+    },
+    "Model": {
+        "Inputs": [
+            {
+                "name": "input_1",
+                "shape": [
+                    1,
+                    1,
+                    28,
+                    28
+                ],
+                "dtype": "float32"
+            }
+        ],
+        "Outputs": [
+            {
+                "dtype": "float32",
+                "shape": [
+                    1,
+                    10
+                ],
+                "name": "output_0"
+            }
+        ]
+    }
+}

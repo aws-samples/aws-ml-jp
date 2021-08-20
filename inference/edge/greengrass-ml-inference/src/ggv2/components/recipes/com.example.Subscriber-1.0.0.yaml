@@ -1,0 +1,22 @@
+---
+RecipeFormatVersion: '2020-01-25'
+ComponentName: com.example.Subscriber
+ComponentVersion: '1.0.0'
+ComponentDescription: A component that subscribes to messages.
+ComponentPublisher: Amazon
+ComponentConfiguration:
+  DefaultConfiguration:
+    accessControl:
+      aws.greengrass.ipc.pubsub:
+        'com.example.Subscriber:pubsub:1':
+          policyDescription: Allows access to publish to all topics.
+          operations:
+            - 'aws.greengrass#SubscribeToTopic'
+          resources:
+            - '*'
+Manifests:
+  - Lifecycle:
+      Install:
+        Timeout: 600
+        Script: python3 -m pip install pip & pip3 install awsiotsdk numpy tensorflow-cpu==2.4.1 Pillow -U
+      Run: python3 {artifacts:path}/subscriber.py {artifacts:path}
