@@ -1,0 +1,36 @@
+# Build an image of Detectron2 that can do distributing training on Amazon Sagemaker
+
+# using Sagemaker PyTorch container as base image
+# from https://github.com/aws/sagemaker-pytorch-container
+
+ARG REGION
+FROM 763104351884.dkr.ecr.$REGION.amazonaws.com/pytorch-training:1.6.0-gpu-py36-cu101-ubuntu16.04
+LABEL author="pirrera@amazon.com"
+
+############# Detectron2 pre-built binaries Pytorch default install ############
+RUN pip install --upgrade torch==1.6.0+cu101 torchvision==0.7.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
+
+############# Detectron2 section ##############
+RUN pip install \
+   --no-cache-dir pycocotools~=2.0.0 \
+   --no-cache-dir https://dl.fbaipublicfiles.com/detectron2/wheels/cu101/torch1.6/detectron2-0.4%2Bcu101-cp36-cp36m-linux_x86_64.whl
+
+ENV FORCE_CUDA="1"
+# Build D2 only for Volta architecture - V100 chips (ml.p3 AWS instances)
+ENV TORCH_CUDA_ARCH_LIST="Volta"
+
+# Set a fixed model cache directory. Detectron2 requirement
+ENV FVCORE_CACHE="/tmp"
+
+############# SageMaker section ##############
+
+COPY container_training/sku-110k /opt/ml/code
+WORKDIR /opt/ml/code
+
+ENV SAGEMAKER_SUBMIT_DIRECTORY /opt/ml/code
+ENV SAGEMAKER_PROGRAM training.py
+
+WORKDIR /
+
+# Starts PyTorch distributed framework
+ENTRYPOINT ["bash", "-m", "start_with_right_hostname.sh"]
