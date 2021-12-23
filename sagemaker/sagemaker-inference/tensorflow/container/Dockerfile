@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:2.3.4
+FROM tensorflow/tensorflow:2.5.2
 
 RUN apt-get -y update && apt-get install -y --no-install-recommends \
          wget \
