@@ -77,7 +77,7 @@ Git リポジトリのクローンを作成する」を選択します。
 「Git リポジトリのURL」の下にあるテキストボックスに下記 URL
 を入力します。
 
-<https://github.com/kazuhitogo/personalize-handson>
+<https://github.com/aws-samples/aws-ml-jp>
 
 ![](media/image11.png)
 
