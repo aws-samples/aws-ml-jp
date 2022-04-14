@@ -127,7 +127,7 @@ progress」となっていることを確認します。
 
 ![](media/image22.png)
 
-「[personalize_handson.ipynb](./personalize_handson.ipynb)」を開きます。
+「[data_preparation.ipynb](./data_preparation.ipynb)」を開いて実行したあと、「[personalize_handson.ipynb](./personalize_handson.ipynb)」を開きます。
 
 ![](media/image23.png)
 
