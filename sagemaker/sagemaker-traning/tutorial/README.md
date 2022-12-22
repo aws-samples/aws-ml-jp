@@ -1,8 +1,9 @@
 # Amazon SageMaker Training Tutorial
 
-
-
 Amazon SageMaker Python SDK を使ってトレーニングジョブの動かし方を学びたい場合は、[1_hello_sagemaker_training.ipynb](./1_hello_sagemaker_training.ipynb)を開いてください。
+
+このコードは動画で解説を行っておりますので、こちらもご参照ください。
+https://www.youtube.com/watch?v=byEawTm4O4E
 
 ---
 
