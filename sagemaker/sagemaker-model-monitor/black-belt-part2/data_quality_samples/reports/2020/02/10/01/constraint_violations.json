@@ -1,0 +1,155 @@
+{
+  "violations" : [ {
+    "feature_name" : "tolls_amount_mean_16slot",
+    "constraint_check_type" : "data_type_check",
+    "description" : "Data type match requirement is not met. Expected data type: String, Expected match: 100.0%. Observed: Only 0.0% of data is String."
+  }, {
+    "feature_name" : "tolls_amount_mean_192slot",
+    "constraint_check_type" : "data_type_check",
+    "description" : "Data type match requirement is not met. Expected data type: String, Expected match: 100.0%. Observed: Only 0.0% of data is String."
+  }, {
+    "feature_name" : "tolls_amount_mean_20slot",
+    "constraint_check_type" : "data_type_check",
+    "description" : "Data type match requirement is not met. Expected data type: String, Expected match: 100.0%. Observed: Only 0.0% of data is String."
+  }, {
+    "feature_name" : "tolls_amount_mean_104slot",
+    "constraint_check_type" : "data_type_check",
+    "description" : "Data type match requirement is not met. Expected data type: String, Expected match: 100.0%. Observed: Only 0.0% of data is String."
+  }, {
+    "feature_name" : "pickup_count",
+    "constraint_check_type" : "data_type_check",
+    "description" : "Data type match requirement is not met. Expected data type: Integral, Expected match: 100.0%. Observed: Only 0.0% of data is Integral."
+  }, {
+    "feature_name" : "tolls_amount_mean_100slot",
+    "constraint_check_type" : "data_type_check",
+    "description" : "Data type match requirement is not met. Expected data type: String, Expected match: 100.0%. Observed: Only 0.0% of data is String."
+  }, {
+    "feature_name" : "tolls_amount_mean_96slot",
+    "constraint_check_type" : "data_type_check",
+    "description" : "Data type match requirement is not met. Expected data type: String, Expected match: 100.0%. Observed: Only 0.0% of data is String."
+  }, {
+    "feature_name" : "tolls_amount_mean_196slot",
+    "constraint_check_type" : "data_type_check",
+    "description" : "Data type match requirement is not met. Expected data type: String, Expected match: 100.0%. Observed: Only 0.0% of data is String."
+  }, {
+    "feature_name" : "tolls_amount_mean_12slot",
+    "constraint_check_type" : "data_type_check",
+    "description" : "Data type match requirement is not met. Expected data type: String, Expected match: 100.0%. Observed: Only 0.0% of data is String."
+  }, {
+    "feature_name" : "tolls_amount_mean_200slot",
+    "constraint_check_type" : "data_type_check",
+    "description" : "Data type match requirement is not met. Expected data type: String, Expected match: 100.0%. Observed: Only 0.0% of data is String."
+  }, {
+    "feature_name" : "history_2018slots",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.11202567734108862 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "history_64slots",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.11585791244361934 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "history_96slots",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.13387417066622728 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "trip_distance_mean_200slot",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.12896718209275018 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "history_72slots",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.1416419806144548 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "trip_distance_mean_196slot",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.1496902532567657 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "tip_amount_mean_196slot",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.13671917785125914 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "trip_distance_mean_192slot",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.1708899963004005 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "history_2008slots",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.11185942326257717 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "history_2016slots",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.11201268253935956 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "history_100slots",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.10695570333465282 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "history_2010slots",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.11290338084537782 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "fare_amount_mean_196slot",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.28565529463528133 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "history_2014slots",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.10764270030811654 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "history_76slots",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.13863867141542507 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "tip_amount_mean_192slot",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.14676846188903994 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "passenger_count_mean_20slot",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.10424337484243684 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "history_2012slots",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.11095319511490187 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "history_84slots",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.13936174625650932 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "history_80slots",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.1401966487853575 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "history_88slots",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.14325405953288195 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "fare_amount_mean_192slot",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.3066908842785425 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "passenger_count_mean_12slot",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.16442138293107267 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "passenger_count_mean_16slot",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.13758799915691447 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "history_92slots",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.14315637928431973 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "fare_amount_mean_200slot",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.2724435093194202 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "history_68slots",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.13956659559581328 exceeds threshold: 0.1"
+  }, {
+    "feature_name" : "tip_amount_mean_200slot",
+    "constraint_check_type" : "baseline_drift_check",
+    "description" : "Baseline drift distance: 0.13678932381583866 exceeds threshold: 0.1"
+  } ]
+}

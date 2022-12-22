@@ -1,0 +1,989 @@
+{
+  "version" : 0.0,
+  "features" : [ {
+    "name" : "pickup_count",
+    "inferred_type" : "Integral",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_12slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_16slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_20slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_24slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_28slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_32slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_36slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_40slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_44slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_48slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_52slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_56slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_60slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_64slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_68slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_72slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_76slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_80slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_84slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_88slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_92slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_96slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_100slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_104slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_108slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_112slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_116slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_120slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_124slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_128slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_132slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_136slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_140slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_144slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_148slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_152slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_156slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_160slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_164slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_168slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_172slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_176slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_180slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_184slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_188slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_192slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_196slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_200slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_204slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_208slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_212slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_216slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_220slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_224slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_228slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_232slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_236slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_240slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_244slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_248slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_252slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_256slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_260slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_264slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_268slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_272slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_276slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_280slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_284slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_664slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_666slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_668slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_670slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_672slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_674slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_1336slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_1338slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_1340slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_1342slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_1344slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_1346slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_2008slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_2010slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_2012slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_2014slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_2016slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "history_2018slots",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "passenger_count_mean_12slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "passenger_count_mean_16slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "passenger_count_mean_20slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "passenger_count_mean_96slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "passenger_count_mean_100slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "passenger_count_mean_104slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "passenger_count_mean_192slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "passenger_count_mean_196slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "passenger_count_mean_200slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "trip_distance_mean_12slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "trip_distance_mean_16slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "trip_distance_mean_20slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "trip_distance_mean_96slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "trip_distance_mean_100slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "trip_distance_mean_104slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "trip_distance_mean_192slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "trip_distance_mean_196slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "trip_distance_mean_200slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "fare_amount_mean_12slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "fare_amount_mean_16slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "fare_amount_mean_20slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "fare_amount_mean_96slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "fare_amount_mean_100slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "fare_amount_mean_104slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "fare_amount_mean_192slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "fare_amount_mean_196slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "fare_amount_mean_200slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "extra_mean_12slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "extra_mean_16slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "extra_mean_20slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "extra_mean_96slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "extra_mean_100slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "extra_mean_104slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "extra_mean_192slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "extra_mean_196slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "extra_mean_200slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "tip_amount_mean_12slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "tip_amount_mean_16slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "tip_amount_mean_20slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "tip_amount_mean_96slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "tip_amount_mean_100slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "tip_amount_mean_104slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "tip_amount_mean_192slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "tip_amount_mean_196slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "tip_amount_mean_200slot",
+    "inferred_type" : "Fractional",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  }, {
+    "name" : "tolls_amount_mean_12slot",
+    "inferred_type" : "String",
+    "completeness" : 1.0
+  }, {
+    "name" : "tolls_amount_mean_16slot",
+    "inferred_type" : "String",
+    "completeness" : 1.0
+  }, {
+    "name" : "tolls_amount_mean_20slot",
+    "inferred_type" : "String",
+    "completeness" : 1.0
+  }, {
+    "name" : "tolls_amount_mean_96slot",
+    "inferred_type" : "String",
+    "completeness" : 1.0
+  }, {
+    "name" : "tolls_amount_mean_100slot",
+    "inferred_type" : "String",
+    "completeness" : 1.0
+  }, {
+    "name" : "tolls_amount_mean_104slot",
+    "inferred_type" : "String",
+    "completeness" : 1.0
+  }, {
+    "name" : "tolls_amount_mean_192slot",
+    "inferred_type" : "String",
+    "completeness" : 1.0
+  }, {
+    "name" : "tolls_amount_mean_196slot",
+    "inferred_type" : "String",
+    "completeness" : 1.0
+  }, {
+    "name" : "tolls_amount_mean_200slot",
+    "inferred_type" : "String",
+    "completeness" : 1.0
+  }, {
+    "name" : "time_slot",
+    "inferred_type" : "Integral",
+    "completeness" : 1.0,
+    "num_constraints" : {
+      "is_non_negative" : true
+    }
+  } ],
+  "monitoring_config" : {
+    "evaluate_constraints" : "Enabled",
+    "emit_metrics" : "Enabled",
+    "datatype_check_threshold" : 1.0,
+    "domain_content_threshold" : 1.0,
+    "distribution_constraints" : {
+      "perform_comparison" : "Enabled",
+      "comparison_threshold" : 0.1,
+      "comparison_method" : "Robust"
+    }
+  }
+}

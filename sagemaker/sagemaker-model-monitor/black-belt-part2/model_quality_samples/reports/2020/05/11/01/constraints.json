@@ -1,0 +1,21 @@
+{
+  "version" : 0.0,
+  "regression_constraints" : {
+    "mae" : {
+      "threshold" : 60.78843625386556,
+      "comparison_operator" : "GreaterThanThreshold"
+    },
+    "mse" : {
+      "threshold" : 4143.17098556442,
+      "comparison_operator" : "GreaterThanThreshold"
+    },
+    "rmse" : {
+      "threshold" : 64.36746837933289,
+      "comparison_operator" : "GreaterThanThreshold"
+    },
+    "r2" : {
+      "threshold" : -18.026518509290256,
+      "comparison_operator" : "LessThanThreshold"
+    }
+  }
+}

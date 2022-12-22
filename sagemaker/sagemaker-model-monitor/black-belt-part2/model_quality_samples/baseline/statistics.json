@@ -1,0 +1,25 @@
+{
+  "version" : 0.0,
+  "dataset" : {
+    "item_count" : 2688,
+    "evaluation_time" : "2022-12-11T07:15:20.74Z"
+  },
+  "regression_metrics" : {
+    "mae" : {
+      "value" : 38.29501488095238,
+      "standard_deviation" : 0.24146914041470052
+    },
+    "mse" : {
+      "value" : 2809.991443452381,
+      "standard_deviation" : 41.9839494650476
+    },
+    "rmse" : {
+      "value" : 53.00935241495015,
+      "standard_deviation" : 0.39589778065391784
+    },
+    "r2" : {
+      "value" : 0.9499197226669486,
+      "standard_deviation" : 0.0010604830245174754
+    }
+  }
+}
