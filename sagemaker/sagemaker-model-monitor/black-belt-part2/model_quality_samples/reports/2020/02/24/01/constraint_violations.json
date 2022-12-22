@@ -1,0 +1,19 @@
+{
+  "violations" : [ {
+    "constraint_check_type" : "GreaterThanThreshold",
+    "description" : "Metric mae with 39.58523440361023 was GreaterThanThreshold '38.29501488095238'",
+    "metric_name" : "mae"
+  }, {
+    "constraint_check_type" : "GreaterThanThreshold",
+    "description" : "Metric mse with 2842.260041387725 was GreaterThanThreshold '2809.991443452381'",
+    "metric_name" : "mse"
+  }, {
+    "constraint_check_type" : "GreaterThanThreshold",
+    "description" : "Metric rmse with 53.312850621475164 was GreaterThanThreshold '53.00935241495015'",
+    "metric_name" : "rmse"
+  }, {
+    "constraint_check_type" : "LessThanThreshold",
+    "description" : "Metric r2 with 0.9425400555772636 was LessThanThreshold '0.9499197226669486'",
+    "metric_name" : "r2"
+  } ]
+}
