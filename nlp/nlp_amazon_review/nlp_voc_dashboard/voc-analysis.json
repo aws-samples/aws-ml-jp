@@ -1,0 +1,1225 @@
+{
+    "AwsAccountId": "",
+    "AnalysisId": "",
+    "Name": "",
+    "Permissions":[],
+    "Definition": {
+        "DataSetIdentifierDeclarations": [
+            {
+                "Identifier": "$IDENTIFIER",
+                "DataSetArn": "$DATASETARN"
+            }
+        ],
+        "Sheets": [
+            {
+                "SheetId": "d2b79b6f-f5b5-491e-a936-641bc8734f6f",
+                "Name": "シート 1",
+                "Visuals": [
+                    {
+                        "TableVisual": {
+                            "VisualId": "78d4922b-77f2-465d-ad70-f79f45e90aa5",
+                            "Title": {
+                                "Visibility": "VISIBLE",
+                                "FormatText": {
+                                    "RichText": "<visual-title>文書</visual-title>"
+                                }
+                            },
+                            "Subtitle": {
+                                "Visibility": "VISIBLE"
+                            },
+                            "ChartConfiguration": {
+                                "FieldWells": {
+                                    "TableAggregatedFieldWells": {
+                                        "GroupBy": [
+                                            {
+                                                "NumericalDimensionField": {
+                                                    "FieldId": "string.id.0.1664001057957",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "$IDENTIFIER",
+                                                        "ColumnName": "id"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "CategoricalDimensionField": {
+                                                    "FieldId": "string.txt.1.1664001061124",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "$IDENTIFIER",
+                                                        "ColumnName": "txt"
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "Values": []
+                                    }
+                                },
+                                "SortConfiguration": {
+                                    "RowSort": [
+                                        {
+                                            "FieldSort": {
+                                                "FieldId": "string.id.0.1664001057957",
+                                                "Direction": "ASC"
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            "Actions": [
+                                {
+                                    "CustomActionId": "ed756b28-6056-4853-9f86-74787c303dab",
+                                    "Name": "アクション 1",
+                                    "Status": "ENABLED",
+                                    "Trigger": "DATA_POINT_CLICK",
+                                    "ActionOperations": [
+                                        {
+                                            "FilterOperation": {
+                                                "SelectedFieldsConfiguration": {
+                                                    "SelectedFieldOptions": "ALL_FIELDS"
+                                                },
+                                                "TargetVisualsConfiguration": {
+                                                    "SameSheetTargetVisualConfiguration": {
+                                                        "TargetVisualOptions": "ALL_VISUALS"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "BarChartVisual": {
+                            "VisualId": "e745aa59-d269-4620-aa55-6176c4a5cc1c",
+                            "Title": {
+                                "Visibility": "VISIBLE",
+                                "FormatText": {
+                                    "RichText": "<visual-title>時系列</visual-title>"
+                                }
+                            },
+                            "Subtitle": {
+                                "Visibility": "VISIBLE"
+                            },
+                            "ChartConfiguration": {
+                                "FieldWells": {
+                                    "BarChartAggregatedFieldWells": {
+                                        "Category": [
+                                            {
+                                                "DateDimensionField": {
+                                                    "FieldId": "string.ts.0.1664001102197",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "$IDENTIFIER",
+                                                        "ColumnName": "ts"
+                                                    },
+                                                    "DateGranularity": "MONTH",
+                                                    "HierarchyId": "string.ts.0.1664001102197",
+                                                    "FormatConfiguration": {
+                                                        "DateTimeFormat": "MMM YYYY"
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "Values": [],
+                                        "Colors": []
+                                    }
+                                },
+                                "SortConfiguration": {
+                                    "CategorySort": [
+                                        {
+                                            "FieldSort": {
+                                                "FieldId": "string.ts.0.1664001102197",
+                                                "Direction": "ASC"
+                                            }
+                                        }
+                                    ],
+                                    "CategoryItemsLimit": {
+                                        "OtherCategories": "INCLUDE"
+                                    },
+                                    "ColorItemsLimit": {
+                                        "OtherCategories": "INCLUDE"
+                                    },
+                                    "SmallMultiplesLimitConfiguration": {
+                                        "OtherCategories": "INCLUDE"
+                                    }
+                                },
+                                "Orientation": "VERTICAL",
+                                "BarsArrangement": "CLUSTERED",
+                                "DataLabels": {
+                                    "Visibility": "HIDDEN",
+                                    "Overlap": "DISABLE_OVERLAP"
+                                },
+                                "Tooltip": {
+                                    "TooltipVisibility": "VISIBLE",
+                                    "SelectedTooltipType": "DETAILED",
+                                    "FieldBasedTooltip": {
+                                        "AggregationVisibility": "HIDDEN",
+                                        "TooltipTitleType": "PRIMARY_VALUE",
+                                        "TooltipFields": [
+                                            {
+                                                "FieldTooltipItem": {
+                                                    "FieldId": "string.ts.0.1664001102197",
+                                                    "Visibility": "VISIBLE"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            },
+                            "Actions": [
+                                {
+                                    "CustomActionId": "8800a639-41ff-4a74-8659-a9cd2c366891",
+                                    "Name": "アクション 1",
+                                    "Status": "ENABLED",
+                                    "Trigger": "DATA_POINT_CLICK",
+                                    "ActionOperations": [
+                                        {
+                                            "FilterOperation": {
+                                                "SelectedFieldsConfiguration": {
+                                                    "SelectedFieldOptions": "ALL_FIELDS"
+                                                },
+                                                "TargetVisualsConfiguration": {
+                                                    "SameSheetTargetVisualConfiguration": {
+                                                        "TargetVisualOptions": "ALL_VISUALS"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ],
+                            "ColumnHierarchies": [
+                                {
+                                    "DateTimeHierarchy": {
+                                        "HierarchyId": "string.ts.0.1664001102197"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "TableVisual": {
+                            "VisualId": "7d4d0de5-7872-429d-864a-be3c73cc1be7",
+                            "Title": {
+                                "Visibility": "VISIBLE",
+                                "FormatText": {
+                                    "RichText": "<visual-title>$COL0</visual-title>"
+                                }
+                            },
+                            "Subtitle": {
+                                "Visibility": "VISIBLE"
+                            },
+                            "ChartConfiguration": {
+                                "FieldWells": {
+                                    "TableAggregatedFieldWells": {
+                                        "GroupBy": [
+                                            {
+                                                "CategoricalDimensionField": {
+                                                    "FieldId": "string.col0.0.1664002095908",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "$IDENTIFIER",
+                                                        "ColumnName": "col0"
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "Values": [
+                                            {
+                                                "NumericalMeasureField": {
+                                                    "FieldId": "string.id.1.1664002121235",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "$IDENTIFIER",
+                                                        "ColumnName": "id"
+                                                    },
+                                                    "AggregationFunction": {
+                                                        "SimpleNumericalAggregation": "DISTINCT_COUNT"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "SortConfiguration": {
+                                    "RowSort": [
+                                        {
+                                            "FieldSort": {
+                                                "FieldId": "string.id.1.1664002121235",
+                                                "Direction": "DESC"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "TableOptions": {
+                                    "Orientation": "VERTICAL",
+                                    "HeaderStyle": {
+                                        "TextWrap": "WRAP",
+                                        "Height": 25
+                                    }
+                                },
+                                "FieldOptions": {
+                                    "SelectedFieldOptions": [
+                                        {
+                                            "FieldId": "string.col0.0.1664002095908",
+                                            "Width": "92px",
+                                            "CustomLabel": "$COL0"
+                                        },
+                                        {
+                                            "FieldId": "string.id.1.1664002121235",
+                                            "Width": "136px",
+                                            "CustomLabel": "カウント"
+                                        }
+                                    ],
+                                    "Order": []
+                                }
+                            },
+                            "Actions": [
+                                {
+                                    "CustomActionId": "0c62e9f6-3c69-4a95-a7fa-a86b571cacf5",
+                                    "Name": "アクション 1",
+                                    "Status": "ENABLED",
+                                    "Trigger": "DATA_POINT_CLICK",
+                                    "ActionOperations": [
+                                        {
+                                            "FilterOperation": {
+                                                "SelectedFieldsConfiguration": {
+                                                    "SelectedFieldOptions": "ALL_FIELDS"
+                                                },
+                                                "TargetVisualsConfiguration": {
+                                                    "SameSheetTargetVisualConfiguration": {
+                                                        "TargetVisualOptions": "ALL_VISUALS"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "TableVisual": {
+                            "VisualId": "0b0400b8-10fe-44fc-b9ae-75479395ee48",
+                            "Title": {
+                                "Visibility": "VISIBLE",
+                                "FormatText": {
+                                    "RichText": "<visual-title>$COL1</visual-title>"
+                                }
+                            },
+                            "Subtitle": {
+                                "Visibility": "VISIBLE"
+                            },
+                            "ChartConfiguration": {
+                                "FieldWells": {
+                                    "TableAggregatedFieldWells": {
+                                        "GroupBy": [
+                                            {
+                                                "CategoricalDimensionField": {
+                                                    "FieldId": "string.col1.0.1664002178653",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "$IDENTIFIER",
+                                                        "ColumnName": "col1"
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "Values": [
+                                            {
+                                                "NumericalMeasureField": {
+                                                    "FieldId": "string.id.1.1664002184247",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "$IDENTIFIER",
+                                                        "ColumnName": "id"
+                                                    },
+                                                    "AggregationFunction": {
+                                                        "SimpleNumericalAggregation": "DISTINCT_COUNT"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "SortConfiguration": {
+                                    "RowSort": [
+                                        {
+                                            "FieldSort": {
+                                                "FieldId": "string.id.1.1664002184247",
+                                                "Direction": "DESC"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "TableOptions": {
+                                    "HeaderStyle": {
+                                        "TextWrap": "WRAP",
+                                        "Height": 27
+                                    }
+                                },
+                                "FieldOptions": {
+                                    "SelectedFieldOptions": [
+                                        {
+                                            "FieldId": "string.col1.0.1664002178653",
+                                            "Width": "92px",
+                                            "CustomLabel": "$COL1"
+                                        },
+                                        {
+                                            "FieldId": "string.id.1.1664002184247",
+                                            "Width": "136px",
+                                            "CustomLabel": "カウント"
+                                        }
+                                    ],
+                                    "Order": []
+                                }
+                            },
+                            "Actions": [
+                                {
+                                    "CustomActionId": "a877fef7-5dc1-4587-9d5b-de4d309e519c",
+                                    "Name": "アクション 1",
+                                    "Status": "ENABLED",
+                                    "Trigger": "DATA_POINT_CLICK",
+                                    "ActionOperations": [
+                                        {
+                                            "FilterOperation": {
+                                                "SelectedFieldsConfiguration": {
+                                                    "SelectedFieldOptions": "ALL_FIELDS"
+                                                },
+                                                "TargetVisualsConfiguration": {
+                                                    "SameSheetTargetVisualConfiguration": {
+                                                        "TargetVisualOptions": "ALL_VISUALS"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "TableVisual": {
+                            "VisualId": "f3079a78-6939-4b1f-977a-4bcf2db346a8",
+                            "Title": {
+                                "Visibility": "VISIBLE",
+                                "FormatText": {
+                                    "RichText": "<visual-title>$COL2</visual-title>"
+                                }
+                            },
+                            "Subtitle": {
+                                "Visibility": "VISIBLE"
+                            },
+                            "ChartConfiguration": {
+                                "FieldWells": {
+                                    "TableAggregatedFieldWells": {
+                                        "GroupBy": [
+                                            {
+                                                "CategoricalDimensionField": {
+                                                    "FieldId": "string.col2.0.1664002225142",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "$IDENTIFIER",
+                                                        "ColumnName": "col2"
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "Values": [
+                                            {
+                                                "NumericalMeasureField": {
+                                                    "FieldId": "string.id.1.1664002228061",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "$IDENTIFIER",
+                                                        "ColumnName": "id"
+                                                    },
+                                                    "AggregationFunction": {
+                                                        "SimpleNumericalAggregation": "DISTINCT_COUNT"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "SortConfiguration": {
+                                    "RowSort": [
+                                        {
+                                            "FieldSort": {
+                                                "FieldId": "string.id.1.1664002228061",
+                                                "Direction": "DESC"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "TableOptions": {
+                                    "HeaderStyle": {
+                                        "TextWrap": "WRAP",
+                                        "Height": 25
+                                    }
+                                },
+                                "FieldOptions": {
+                                    "SelectedFieldOptions": [
+                                        {
+                                            "FieldId": "string.col2.0.1664002225142",
+                                            "Width": "92px",
+                                            "CustomLabel": "$COL2"
+                                        },
+                                        {
+                                            "FieldId": "string.id.1.1664002228061",
+                                            "Width": "136px",
+                                            "CustomLabel": "カウント"
+                                        }
+                                    ],
+                                    "Order": []
+                                }
+                            },
+                            "Actions": [
+                                {
+                                    "CustomActionId": "0b5a69fa-33ab-4a96-a9b3-ed24d85b98ca",
+                                    "Name": "アクション 1",
+                                    "Status": "ENABLED",
+                                    "Trigger": "DATA_POINT_CLICK",
+                                    "ActionOperations": [
+                                        {
+                                            "FilterOperation": {
+                                                "SelectedFieldsConfiguration": {
+                                                    "SelectedFieldOptions": "ALL_FIELDS"
+                                                },
+                                                "TargetVisualsConfiguration": {
+                                                    "SameSheetTargetVisualConfiguration": {
+                                                        "TargetVisualOptions": "ALL_VISUALS"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "TableVisual": {
+                            "VisualId": "987b99e1-aa53-4f9e-9b9d-a697313ae1b8",
+                            "Title": {
+                                "Visibility": "VISIBLE",
+                                "FormatText": {
+                                    "RichText": "<visual-title>$COL3</visual-title>"
+                                }
+                            },
+                            "Subtitle": {
+                                "Visibility": "VISIBLE"
+                            },
+                            "ChartConfiguration": {
+                                "FieldWells": {
+                                    "TableAggregatedFieldWells": {
+                                        "GroupBy": [
+                                            {
+                                                "CategoricalDimensionField": {
+                                                    "FieldId": "string.col3.1.1664002278772",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "$IDENTIFIER",
+                                                        "ColumnName": "col3"
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "Values": [
+                                            {
+                                                "NumericalMeasureField": {
+                                                    "FieldId": "string.id.0.1664002278772",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "$IDENTIFIER",
+                                                        "ColumnName": "id"
+                                                    },
+                                                    "AggregationFunction": {
+                                                        "SimpleNumericalAggregation": "DISTINCT_COUNT"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "SortConfiguration": {
+                                    "RowSort": [
+                                        {
+                                            "FieldSort": {
+                                                "FieldId": "string.id.0.1664002278772",
+                                                "Direction": "DESC"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "TableOptions": {
+                                    "HeaderStyle": {
+                                        "TextWrap": "WRAP",
+                                        "Height": 25
+                                    }
+                                },
+                                "FieldOptions": {
+                                    "SelectedFieldOptions": [
+                                        {
+                                            "FieldId": "string.col3.1.1664002278772",
+                                            "Width": "92px",
+                                            "CustomLabel": "$COL3"
+                                        },
+                                        {
+                                            "FieldId": "string.id.0.1664002278772",
+                                            "Width": "136px",
+                                            "CustomLabel": "カウント"
+                                        }
+                                    ],
+                                    "Order": []
+                                }
+                            },
+                            "Actions": [
+                                {
+                                    "CustomActionId": "d42f8943-ce97-4d1c-91a0-f26fccc85d2f",
+                                    "Name": "アクション 1",
+                                    "Status": "ENABLED",
+                                    "Trigger": "DATA_POINT_CLICK",
+                                    "ActionOperations": [
+                                        {
+                                            "FilterOperation": {
+                                                "SelectedFieldsConfiguration": {
+                                                    "SelectedFieldOptions": "ALL_FIELDS"
+                                                },
+                                                "TargetVisualsConfiguration": {
+                                                    "SameSheetTargetVisualConfiguration": {
+                                                        "TargetVisualOptions": "ALL_VISUALS"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "TableVisual": {
+                            "VisualId": "e74e8736-45f2-4302-9fbf-bb2037e58324",
+                            "Title": {
+                                "Visibility": "VISIBLE",
+                                "FormatText": {
+                                    "RichText": "<visual-title>$COL4</visual-title>"
+                                }
+                            },
+                            "Subtitle": {
+                                "Visibility": "VISIBLE"
+                            },
+                            "ChartConfiguration": {
+                                "FieldWells": {
+                                    "TableAggregatedFieldWells": {
+                                        "GroupBy": [
+                                            {
+                                                "CategoricalDimensionField": {
+                                                    "FieldId": "string.col4.0.1664002414013",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "$IDENTIFIER",
+                                                        "ColumnName": "col4"
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "Values": [
+                                            {
+                                                "NumericalMeasureField": {
+                                                    "FieldId": "string.id.1.1664002421561",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "$IDENTIFIER",
+                                                        "ColumnName": "id"
+                                                    },
+                                                    "AggregationFunction": {
+                                                        "SimpleNumericalAggregation": "DISTINCT_COUNT"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "SortConfiguration": {
+                                    "RowSort": [
+                                        {
+                                            "FieldSort": {
+                                                "FieldId": "string.id.1.1664002421561",
+                                                "Direction": "DESC"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "TableOptions": {
+                                    "HeaderStyle": {
+                                        "TextWrap": "WRAP",
+                                        "Height": 25
+                                    }
+                                },
+                                "FieldOptions": {
+                                    "SelectedFieldOptions": [
+                                        {
+                                            "FieldId": "string.col4.0.1664002414013",
+                                            "Width": "92px",
+                                            "CustomLabel": "$COL4"
+                                        },
+                                        {
+                                            "FieldId": "string.id.1.1664002421561",
+                                            "Width": "136px",
+                                            "CustomLabel": "カウント"
+                                        }
+                                    ],
+                                    "Order": []
+                                }
+                            },
+                            "Actions": [
+                                {
+                                    "CustomActionId": "9a79a368-8333-4806-8a22-d2ba6397d44e",
+                                    "Name": "アクション 1",
+                                    "Status": "ENABLED",
+                                    "Trigger": "DATA_POINT_CLICK",
+                                    "ActionOperations": [
+                                        {
+                                            "FilterOperation": {
+                                                "SelectedFieldsConfiguration": {
+                                                    "SelectedFieldOptions": "ALL_FIELDS"
+                                                },
+                                                "TargetVisualsConfiguration": {
+                                                    "SameSheetTargetVisualConfiguration": {
+                                                        "TargetVisualOptions": "ALL_VISUALS"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "TableVisual": {
+                            "VisualId": "6adea0ca-886b-4395-acd7-a0029f28cc46",
+                            "Title": {
+                                "Visibility": "VISIBLE",
+                                "FormatText": {
+                                    "RichText": "<visual-title>品詞</visual-title>"
+                                }
+                            },
+                            "Subtitle": {
+                                "Visibility": "VISIBLE"
+                            },
+                            "ChartConfiguration": {
+                                "FieldWells": {
+                                    "TableAggregatedFieldWells": {
+                                        "GroupBy": [
+                                            {
+                                                "CategoricalDimensionField": {
+                                                    "FieldId": "string.pos.1.1664002562198",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "$IDENTIFIER",
+                                                        "ColumnName": "pos"
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "Values": [
+                                            {
+                                                "NumericalMeasureField": {
+                                                    "FieldId": "string.id.0.1664002562198",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "$IDENTIFIER",
+                                                        "ColumnName": "id"
+                                                    },
+                                                    "AggregationFunction": {
+                                                        "SimpleNumericalAggregation": "DISTINCT_COUNT"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "SortConfiguration": {
+                                    "RowSort": [
+                                        {
+                                            "FieldSort": {
+                                                "FieldId": "string.id.0.1664002562198",
+                                                "Direction": "DESC"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "TableOptions": {
+                                    "HeaderStyle": {
+                                        "TextWrap": "WRAP",
+                                        "Height": 25
+                                    }
+                                },
+                                "FieldOptions": {
+                                    "SelectedFieldOptions": [
+                                        {
+                                            "FieldId": "string.pos.1.1664002562198",
+                                            "Width": "96px"
+                                        },
+                                        {
+                                            "FieldId": "string.id.0.1664002562198",
+                                            "Width": "129px",
+                                            "CustomLabel": "カウント"
+                                        }
+                                    ],
+                                    "Order": []
+                                }
+                            },
+                            "Actions": [
+                                {
+                                    "CustomActionId": "c661d5e4-2154-4f51-a079-441bbc9d6036",
+                                    "Name": "アクション 1",
+                                    "Status": "ENABLED",
+                                    "Trigger": "DATA_POINT_CLICK",
+                                    "ActionOperations": [
+                                        {
+                                            "FilterOperation": {
+                                                "SelectedFieldsConfiguration": {
+                                                    "SelectedFieldOptions": "ALL_FIELDS"
+                                                },
+                                                "TargetVisualsConfiguration": {
+                                                    "SameSheetTargetVisualConfiguration": {
+                                                        "TargetVisualOptions": "ALL_VISUALS"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "TableVisual": {
+                            "VisualId": "e6c3ae9d-29f6-4ddd-8c86-b68d57d81521",
+                            "Title": {
+                                "Visibility": "VISIBLE",
+                                "FormatText": {
+                                    "RichText": "<visual-title>ワードの出現頻度と関連度</visual-title>"
+                                }
+                            },
+                            "Subtitle": {
+                                "Visibility": "VISIBLE"
+                            },
+                            "ChartConfiguration": {
+                                "FieldWells": {
+                                    "TableAggregatedFieldWells": {
+                                        "GroupBy": [
+                                            {
+                                                "CategoricalDimensionField": {
+                                                    "FieldId": "string.word.0.1664002682548",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "$IDENTIFIER",
+                                                        "ColumnName": "word"
+                                                    },
+                                                    "FormatConfiguration": {}
+                                                }
+                                            }
+                                        ],
+                                        "Values": [
+                                            {
+                                                "NumericalMeasureField": {
+                                                    "FieldId": "402330cb-69b1-4a32-923b-63a439da18eb.1.1664002688908",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "$IDENTIFIER",
+                                                        "ColumnName": "出現頻度(ワード)"
+                                                    },
+                                                    "AggregationFunction": {
+                                                        "SimpleNumericalAggregation": "MIN"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "NumericalMeasureField": {
+                                                    "FieldId": "70048ac2-8f5d-417c-834b-46fbb1db3e35.2.1664002692233",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "$IDENTIFIER",
+                                                        "ColumnName": "関連度(ワード)"
+                                                    },
+                                                    "AggregationFunction": {
+                                                        "SimpleNumericalAggregation": "MIN"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "SortConfiguration": {
+                                    "RowSort": [
+                                        {
+                                            "FieldSort": {
+                                                "FieldId": "402330cb-69b1-4a32-923b-63a439da18eb.1.1664002688908",
+                                                "Direction": "DESC"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "TableOptions": {
+                                    "HeaderStyle": {
+                                        "TextWrap": "WRAP",
+                                        "Height": 25
+                                    }
+                                },
+                                "FieldOptions": {
+                                    "SelectedFieldOptions": [
+                                        {
+                                            "FieldId": "string.word.0.1664002682548",
+                                            "Width": "108px",
+                                            "CustomLabel": "ワード"
+                                        },
+                                        {
+                                            "FieldId": "402330cb-69b1-4a32-923b-63a439da18eb.1.1664002688908",
+                                            "Width": "109px",
+                                            "CustomLabel": "出現頻度"
+                                        },
+                                        {
+                                            "FieldId": "70048ac2-8f5d-417c-834b-46fbb1db3e35.2.1664002692233",
+                                            "Width": "117px",
+                                            "CustomLabel": "関連度"
+                                        }
+                                    ],
+                                    "Order": []
+                                }
+                            },
+                            "ConditionalFormatting": {
+                                "ConditionalFormattingOptions": [
+                                    {
+                                        "Cell": {
+                                            "FieldId": "70048ac2-8f5d-417c-834b-46fbb1db3e35.2.1664002692233",
+                                            "TextFormat": {
+                                                "BackgroundColor": {
+                                                    "Solid": {
+                                                        "Expression": "MIN({関連度(ワード)}) > 5",
+                                                        "Color": "#C6F0D7"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "Actions": [
+                                {
+                                    "CustomActionId": "75737480-e9cf-46c4-853a-f3c9fd6c0af3",
+                                    "Name": "アクション 1",
+                                    "Status": "ENABLED",
+                                    "Trigger": "DATA_POINT_CLICK",
+                                    "ActionOperations": [
+                                        {
+                                            "FilterOperation": {
+                                                "SelectedFieldsConfiguration": {
+                                                    "SelectedFieldOptions": "ALL_FIELDS"
+                                                },
+                                                "TargetVisualsConfiguration": {
+                                                    "SameSheetTargetVisualConfiguration": {
+                                                        "TargetVisualOptions": "ALL_VISUALS"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "TableVisual": {
+                            "VisualId": "afc23c7e-9452-46f6-98b2-4e13ad37c978",
+                            "Title": {
+                                "Visibility": "VISIBLE",
+                                "FormatText": {
+                                    "RichText": "<visual-title>係り受けの出現頻度と関連度</visual-title>"
+                                }
+                            },
+                            "Subtitle": {
+                                "Visibility": "VISIBLE"
+                            },
+                            "ChartConfiguration": {
+                                "FieldWells": {
+                                    "TableAggregatedFieldWells": {
+                                        "GroupBy": [
+                                            {
+                                                "CategoricalDimensionField": {
+                                                    "FieldId": "string.words_pair.0.1664002869409",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "$IDENTIFIER",
+                                                        "ColumnName": "words_pair"
+                                                    }
+                                                }
+                                            }
+                                        ],
+                                        "Values": [
+                                            {
+                                                "NumericalMeasureField": {
+                                                    "FieldId": "17e22d80-f7fa-4cf8-b89e-93c79dc79e0f.1.1664002882989",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "$IDENTIFIER",
+                                                        "ColumnName": "出現頻度(係り受け)"
+                                                    },
+                                                    "AggregationFunction": {
+                                                        "SimpleNumericalAggregation": "MIN"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "NumericalMeasureField": {
+                                                    "FieldId": "7e3df81c-4a23-43fb-ab65-eb51024d912e.2.1664002892392",
+                                                    "Column": {
+                                                        "DataSetIdentifier": "$IDENTIFIER",
+                                                        "ColumnName": "関連度(係り受け)"
+                                                    },
+                                                    "AggregationFunction": {
+                                                        "SimpleNumericalAggregation": "MIN"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "SortConfiguration": {
+                                    "RowSort": [
+                                        {
+                                            "FieldSort": {
+                                                "FieldId": "17e22d80-f7fa-4cf8-b89e-93c79dc79e0f.1.1664002882989",
+                                                "Direction": "DESC"
+                                            }
+                                        }
+                                    ],
+                                    "PaginationConfiguration": {
+                                        "PageSize": 100,
+                                        "PageNumber": 1
+                                    }
+                                },
+                                "TableOptions": {
+                                    "HeaderStyle": {
+                                        "TextWrap": "WRAP",
+                                        "Height": 25
+                                    }
+                                },
+                                "FieldOptions": {
+                                    "SelectedFieldOptions": [
+                                        {
+                                            "FieldId": "string.words_pair.0.1664002869409",
+                                            "Width": "121px",
+                                            "CustomLabel": "係り受け"
+                                        },
+                                        {
+                                            "FieldId": "17e22d80-f7fa-4cf8-b89e-93c79dc79e0f.1.1664002882989",
+                                            "Width": "95px",
+                                            "CustomLabel": "出現頻度"
+                                        },
+                                        {
+                                            "FieldId": "7e3df81c-4a23-43fb-ab65-eb51024d912e.2.1664002892392",
+                                            "CustomLabel": "関連度"
+                                        }
+                                    ],
+                                    "Order": []
+                                }
+                            },
+                            "ConditionalFormatting": {
+                                "ConditionalFormattingOptions": [
+                                    {
+                                        "Cell": {
+                                            "FieldId": "7e3df81c-4a23-43fb-ab65-eb51024d912e.2.1664002892392",
+                                            "TextFormat": {
+                                                "BackgroundColor": {
+                                                    "Solid": {
+                                                        "Expression": "MIN({関連度(係り受け)}) > 5",
+                                                        "Color": "#C6F0D7"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            "Actions": [
+                                {
+                                    "CustomActionId": "569cbbe6-c7e2-464d-b90d-ecce9576c4c8",
+                                    "Name": "アクション 1",
+                                    "Status": "ENABLED",
+                                    "Trigger": "DATA_POINT_CLICK",
+                                    "ActionOperations": [
+                                        {
+                                            "FilterOperation": {
+                                                "SelectedFieldsConfiguration": {
+                                                    "SelectedFieldOptions": "ALL_FIELDS"
+                                                },
+                                                "TargetVisualsConfiguration": {
+                                                    "SameSheetTargetVisualConfiguration": {
+                                                        "TargetVisualOptions": "ALL_VISUALS"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "Layouts": [
+                    {
+                        "Configuration": {
+                            "GridLayout": {
+                                "Elements": [
+                                    {
+                                        "ElementId": "7d4d0de5-7872-429d-864a-be3c73cc1be7",
+                                        "ElementType": "VISUAL",
+                                        "ColumnIndex": 0,
+                                        "ColumnSpan": 9,
+                                        "RowIndex": 0,
+                                        "RowSpan": 6
+                                    },
+                                    {
+                                        "ElementId": "78d4922b-77f2-465d-ad70-f79f45e90aa5",
+                                        "ElementType": "VISUAL",
+                                        "ColumnIndex": 9,
+                                        "ColumnSpan": 24,
+                                        "RowIndex": 0,
+                                        "RowSpan": 8
+                                    },
+                                    {
+                                        "ElementId": "0b0400b8-10fe-44fc-b9ae-75479395ee48",
+                                        "ElementType": "VISUAL",
+                                        "ColumnIndex": 0,
+                                        "ColumnSpan": 9,
+                                        "RowIndex": 6,
+                                        "RowSpan": 6
+                                    },
+                                    {
+                                        "ElementId": "e745aa59-d269-4620-aa55-6176c4a5cc1c",
+                                        "ElementType": "VISUAL",
+                                        "ColumnIndex": 9,
+                                        "ColumnSpan": 24,
+                                        "RowIndex": 8,
+                                        "RowSpan": 8
+                                    },
+                                    {
+                                        "ElementId": "f3079a78-6939-4b1f-977a-4bcf2db346a8",
+                                        "ElementType": "VISUAL",
+                                        "ColumnIndex": 0,
+                                        "ColumnSpan": 9,
+                                        "RowIndex": 12,
+                                        "RowSpan": 6
+                                    },
+                                    {
+                                        "ElementId": "e6c3ae9d-29f6-4ddd-8c86-b68d57d81521",
+                                        "ElementType": "VISUAL",
+                                        "ColumnIndex": 9,
+                                        "ColumnSpan": 12,
+                                        "RowIndex": 16,
+                                        "RowSpan": 20
+                                    },
+                                    {
+                                        "ElementId": "afc23c7e-9452-46f6-98b2-4e13ad37c978",
+                                        "ElementType": "VISUAL",
+                                        "ColumnIndex": 21,
+                                        "ColumnSpan": 12,
+                                        "RowIndex": 16,
+                                        "RowSpan": 20
+                                    },
+                                    {
+                                        "ElementId": "987b99e1-aa53-4f9e-9b9d-a697313ae1b8",
+                                        "ElementType": "VISUAL",
+                                        "ColumnIndex": 0,
+                                        "ColumnSpan": 9,
+                                        "RowIndex": 18,
+                                        "RowSpan": 6
+                                    },
+                                    {
+                                        "ElementId": "e74e8736-45f2-4302-9fbf-bb2037e58324",
+                                        "ElementType": "VISUAL",
+                                        "ColumnIndex": 0,
+                                        "ColumnSpan": 9,
+                                        "RowIndex": 24,
+                                        "RowSpan": 6
+                                    },
+                                    {
+                                        "ElementId": "6adea0ca-886b-4395-acd7-a0029f28cc46",
+                                        "ElementType": "VISUAL",
+                                        "ColumnIndex": 0,
+                                        "ColumnSpan": 9,
+                                        "RowIndex": 30,
+                                        "RowSpan": 6
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "ContentType": "INTERACTIVE"
+            }
+        ],
+        "CalculatedFields": [
+            {
+                "DataSetIdentifier": "$IDENTIFIER",
+                "Name": "出現頻度(ワード)",
+                "Expression": "distinctCountOver(id,[word],PRE_AGG)"
+            },
+            {
+                "DataSetIdentifier": "$IDENTIFIER",
+                "Name": "出現頻度(係り受け)",
+                "Expression": "distinctCountOver(id,[{words_pair}],PRE_AGG)"
+            },
+            {
+                "DataSetIdentifier": "$IDENTIFIER",
+                "Name": "関連度(ワード)",
+                "Expression": "(distinctCountOver(id,[word],PRE_AGG)/distinctCountOver(id,[],PRE_AGG))/(distinctCountOver(id,[word],PRE_FILTER)/distinctCountOver(id,[],PRE_FILTER))"
+            },
+            {
+                "DataSetIdentifier": "$IDENTIFIER",
+                "Name": "関連度(係り受け)",
+                "Expression": "(distinctCountOver(id,[{words_pair}],PRE_AGG)/distinctCountOver(id,[],PRE_AGG))/(distinctCountOver(id,[{words_pair}],PRE_FILTER)/distinctCountOver(id,[],PRE_FILTER))"
+            }
+        ],
+        "ParameterDeclarations": [],
+        "FilterGroups": [
+            {
+                "FilterGroupId": "c1bfa459-932c-43ba-872a-ea3e262d044b",
+                "Filters": [
+                    {
+                        "CategoryFilter": {
+                            "FilterId": "d7be1066-4505-41e5-9e29-63b6459db11e",
+                            "Column": {
+                                "DataSetIdentifier": "$IDENTIFIER",
+                                "ColumnName": "words_pair"
+                            },
+                            "Configuration": {
+                                "CustomFilterConfiguration": {
+                                    "MatchOperator": "DOES_NOT_EQUAL",
+                                    "CategoryValue": "",
+                                    "NullOption": "ALL_VALUES"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "ScopeConfiguration": {
+                    "SelectedSheets": {
+                        "SheetVisualScopingConfigurations": [
+                            {
+                                "SheetId": "d2b79b6f-f5b5-491e-a936-641bc8734f6f",
+                                "Scope": "SELECTED_VISUALS",
+                                "VisualIds": [
+                                    "afc23c7e-9452-46f6-98b2-4e13ad37c978"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "Status": "ENABLED",
+                "CrossDataset": "SINGLE_DATASET"
+            }
+        ],
+        "AnalysisDefaults": {
+            "DefaultNewSheetConfiguration": {
+                "InteractiveLayoutConfiguration": {
+                    "Grid": {
+                        "CanvasSizeOptions": {
+                            "ScreenCanvasSizeOptions": {
+                                "ResizeOption": "RESPONSIVE"
+                            }
+                        }
+                    }
+                },
+                "SheetContentType": "INTERACTIVE"
+            }
+        }
+    }
+}
