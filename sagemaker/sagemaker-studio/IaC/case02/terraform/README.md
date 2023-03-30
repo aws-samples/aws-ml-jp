@@ -32,10 +32,15 @@ gpg -o ./cert/terraform.private.gpg --export-secret-key terraform
 brew install terraform
 ```
 
-### Terraform実行実行準備
+### Terraform実行準備
 ```
 cd examples
 terraform init
+```
+
+### Lambda 関数の zip アーカイブ
+```
+zip rotate.py.zip rotate.py
 ```
 
 ### Terraform実行
