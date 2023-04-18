@@ -1,0 +1,4 @@
+DISPLAY_NAME: Python 3
+IMAGE_NAME: custom-py310-buster-training
+KERNEL_NAME: python3
+REPOSITORY_NAME: sagemaker-studio-custom
