@@ -22,9 +22,9 @@ AWS で機械学習をはじめる方法は **AI Services** 、 **ML Services** 
    * [AWS Deep Learning Containers](https://aws.amazon.com/jp/machine-learning/containers/) は各種フレームワークごとに最適化されたコンテナイメージで学習・推論が高速化されます。
    * [AWS Inferentia](https://aws.amazon.com/jp/machine-learning/inferentia/) は推論、 [AWS Trainium](https://aws.amazon.com/jp/machine-learning/trainium/) は学習にそれぞれ特化したチップで、高スループットかつ高コスト効率な推論、学習を可能にします。
 
-## :hammer_and_wrench: 学習の準備
+## :computer: 学習の準備
 
-学習コンテンツは主に Jupyter Notebook で作成されています。コンテンツを動かすため、次の準備をしておいてください(必要なセットアップはコンテンツに依存します)。
+本リポジトリのコンテンツは主に Jupyter Notebook で作成されています。コンテンツを動かすため、次の準備をしておいてください(必要なセットアップはコンテンツに依存します)。
 
 * [AWS アカウントの作成](https://aws.amazon.com/jp/register-flow/)
 * [SageMaker Studio Domainの作成](https://docs.aws.amazon.com/ja_jp/sagemaker/latest/dg/onboard-quick-start.html)
@@ -32,7 +32,7 @@ AWS で機械学習をはじめる方法は **AI Services** 、 **ML Services** 
 * [IAM ユーザー、ロールの作成](https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/introduction.html)
   * 必要に応じ、コンテンツで動かすサービスにとって適切なユーザー、ロールを作成します。
 
-## 📓 学習コンテンツ
+## :notebook: 学習コンテンツ
 
 ### Amazon SageMaker
 
@@ -51,6 +51,26 @@ AI/ML の BlackBelt シリーズである [AI/ML DarkPart](https://www.youtube.c
 |9    |Monitor|Amazon SageMaker モニタリング Part2 |[![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)](./sagemaker/sagemaker-model-monitor/black-belt-part2)|[![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://youtu.be/_pIU4F9VH-Q)|
 |10    |Monitor|Amazon SageMaker モニタリング Part3 |[![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)](./sagemaker/sagemaker-model-monitor/black-belt-part3)|[![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://youtu.be/phRStwVufQc)|
 
+[Amazon SageMakerの概要](./sagemaker/) では Amazon SageMaker の全体像と動画で解説しているコードも含めたコンテンツの詳細を確認できます。
+
+## :hammer_and_wrench: 実践コンテンツ
+
+AWS で機械学習を実践する時の参考となるサンプルコードなどを紹介します。
+
+* 機械学習タスク別サンプルコード
+   * [画像処理](tasks/vision/)
+   * [自然言語処理](tasks/nlp/)
+   * [音声処理](tasks/audio/)
+* 機械学習のユースケース別サンプルコード
+   * [ライフサイエンス](use-cases/life-science/)
+* 機械学習基盤の構築
+   * [MLOps](sagemaker/mlops/)
+* 機械学習フレームワークの実装を SageMaker へ移行する
+   * [PyTorch](frameworks/pytorch/)
+   * [TensorFlow](frameworks/tensorflow/)
+   * [AutoGluon](frameworks/autogluon/)
+   * [XGBoost](frameworks/xgboost)
+   * [PaddlePaddle](frameworks/paddlepaddle/)
 
 
 ## Contribution
