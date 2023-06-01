@@ -1,0 +1,6 @@
+{
+    "description": "A template for StableLM.",
+    "prompt_input": "<|SYSTEM|>{instruction}<|USER|>{input}<|ASSISTANT|>",
+    "prompt_no_input": "<|SYSTEM|>{instruction}<|ASSISTANT|>",
+    "response_split": "<|ASSISTANT|>"    
+}

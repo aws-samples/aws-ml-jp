@@ -1,0 +1,7 @@
+transformers
+pytorch-lightning==1.9
+deepspeed
+wandb
+ninja
+pynvml==11.4.1
+rwkv
