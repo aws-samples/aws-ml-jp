@@ -54,7 +54,9 @@ def main(
             model = AutoModelForCausalLM.from_pretrained(
                 base_model,
                 quantization_config=nf4_config,
-                device_map="auto"
+                device_map="auto",
+                cache_dir="/tmp/model_cache/",
+                **kwargs
             )
         else:
             model = AutoModelForCausalLM.from_pretrained(
@@ -85,7 +87,7 @@ def main(
             )
     print("Model Loaded")
 
-    if not load_8bit:
+    if not (load_8bit or load_4bit):
         model.half()  # seems to fix bugs for some users.
 
     model.eval()
