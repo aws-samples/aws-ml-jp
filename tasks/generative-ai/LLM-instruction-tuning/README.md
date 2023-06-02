@@ -1,14 +1,14 @@
-# LLM Instruction Tuning on SageMaker
+# SageMaker での LLM Instruction Tuning
 
-This project contains sample Notebooks to fine-tune / deploy Large Language Models (LLMs) on SageMaker.
+このプロジェクトには、SageMaker 上で Large Language Models (LLM) をプロンプトでファインチューニング/デプロイするためのサンプルノートブックが含まれています。
 
-There are three types of notebooks.
+3種類のノートブックがあります。
 
-- `*_Inference.ipynb`: deploy pretrained model
-- `*_Finetune.ipynb`: finetune normally and deploy the model
-- `*_LoRA.ipynb`: finetune using LoRA method and deploy the model
+- `*_Inference.ipynb`: 事前学習済みモデルをデプロイする。
+- `*_Finetune.ipynb`: 通常のファインチューニングを行い、モデルをデプロイする。
+- `*_LoRA.ipynb`: LoRA メソッドを用いたファインチューニングを行い、モデルをデプロイする。
 
-Models are standardized to accept json with following format for ease of use.
+モデルは利用しやすいように以下のような形式の json で学習できるように標準化されています。
 
 ```
 [
@@ -21,32 +21,33 @@ Models are standardized to accept json with following format for ease of use.
 ]
 ```
 
-## List of Notebooks
+## ノートブック一覧
 
-| Noteobok | Description |
+| ノートブック | 説明 |
 | -------- | ----------- |
-| [Alpaca_LoRA.ipynb](AutoModel/Alpaca_LoRA.ipynb) | Finetuning and deploying Alpaca-LoRA with Alpaca Dataset |
-| [Alpaca_Inference.ipynb](AutoModel/Alpaca_Inference.ipynb) | Deploy pre-trained Alpaca-LoRA |
-| [Alpaca_LoRA_ja.ipynb](AutoModel/Alpaca_LoRA_ja.ipynb) | Finetuning and deploying Alpaca-LoRA with translated Alpaca Dataset |
-| [Alpaca_Inference_ja.ipynb](AutoModel/Alpaca_Inference_ja.ipynb) | Finetuning Alpaca-LoRA with Alpaca Dataset |
-| [Cerebras_Finetune.ipynb](AutoModel/Cerebras_Finetune.ipynb) | Finetuning and deploying Cerebras with Dolly Dataset |
-| [Cerebras_Inference.ipynb](AutoModel/Cerebras_Inference.ipynb) | Deploy pre-trained Cerebras |
-| [Cerebras_LoRA.ipynb](AutoModel/Cerebras_LoRA.ipynb) | Finetuning and deploying Cerebras using LoRA with Dolly Dataset |
-| [Cerebras_LoRA_ja.ipynb](AutoModel/Cerebras_LoRA_ja.ipynb) | Finetuning and deploying Cerebras using LoRA with translated Dolly Dataset |
-| [StableLM_Inference.ipynb](AutoModel/StableLM_Inference.ipynb) | Deploy pre-trained StableLM |
-| [StableLM_LoRA.ipynb](AutoModel/StableLM_LoRA.ipynb) | Finetuning and deploying StableLM using LoRA with Dolly Dataset |
-| [Dolly_v2_Inference.ipynb](AutoModel/Dolly_v2_Inference.ipynb) | Deploy pre-trained Dolly v2 |
-| [Dolly_v2_LoRA.ipynb](AutoModel/Dolly_v2_LoRA.ipynb) | Finetuning and deploying Dolly v2 using LoRA with Dolly Dataset |
-| [OpenCALM_Inference_ja.ipynb](AutoModel/OpenCALM_Inference_ja.ipynb) | Deploy OpenCALM |
-| [OpenCALM_LoRA_ja.ipynb](AutoModel/OpenCALM_LoRA_ja.ipynb) | Finetuning and deploying CALM using LoRA with Dolly Dataset |
-| [Rinna_Neox_Inference_ja.ipynb](AutoModel/Rinna_Neox_Inference_ja.ipynb) | Deploy Rinna NeoX |
-| [Rinna_Neox_LoRA_ja.ipynb](AutoModel/Rinna_Neox_LoRA_ja.ipynb) | Finetuning and deploying Rinna NeoX with Dolly Dataset|
-| [MPT_Inference.ipynb](AutoModel/MPT_Inference.ipynb) | Deploy pre-trained MPT |
-| [MPT_LoRA.ipynb](AutoModel/MPT_LoRA.ipynb) | Finetuning and deploying MPT using LoRA with Dolly Dataset |
-| [MPT_LoRA_ja.ipynb](AutoModel/MPT_LoRA_ja.ipynb) | Finetuning and deploying MPT using LoRA with |
-| [RWKV_Inference.ipynb](AutoModel/RWKV_Inference.ipynb) | Deploying Pre-trained RWKV |
-| [RWKV_Finetune.ipynb](RWKV/RWKV_Finetune.ipynb) | Finetuning and deploying RWKV with Dolly Dataset |
-| [RWKV_LoRA.ipynb](RWKV/RWKV_Finetune.ipynb) | Finetuning and deploying RWKV using LoRA with Dolly Dataset |
-| [RWKV_LoRA_ja.ipynb](RWKV/RWKV_Finetune.ipynb) | Finetuning and deploying RWKV using LoRA with translated Dolly Dataset |
-| [RWKV_Inference.ipynb](RWKV/RWKV_Inference.ipynb) | Deploying Pre-trained RWKV |
-| [RWKV_Inference_ja.ipynb](RWKV/RWKV_Inference_ja.ipynb) | Deploying Pre-trained RWKV supporting Japanese |
+| [Alpaca_LoRA.ipynb](AutoModel/Alpaca_LoRA.ipynb) | Alpaca-LoRA を Alpaca Dataset で LoRA チューニングとデプロイ |
+| [Alpaca_Inference.ipynb](AutoModel/Alpaca_Inference.ipynb) | Alpaca-LoRA をデプロイ |
+| [Alpaca_LoRA_ja.ipynb](AutoModel/Alpaca_LoRA_ja.ipynb) | Alpaca-LoRA を日本語 Alpaca Dataset で LoRA チューニングとデプロイ |
+| [Alpaca_Inference_ja.ipynb](AutoModel/Alpaca_Inference_ja.ipynb) | 日本語 Alpaca-LoRA をデプロイ |
+| [Cerebras_Finetune.ipynb](AutoModel/Cerebras_Finetune.ipynb) | Cerebras を Dolly Dataset でファインチューニングとデプロイ |
+| [Cerebras_Inference.ipynb](AutoModel/Cerebras_Inference.ipynb) | Cerebras をデプロイ |
+| [Cerebras_LoRA.ipynb](AutoModel/Cerebras_LoRA.ipynb) | Cerebras を Dolly Dataset で LoRA チューニングとデプロイ |
+| [Cerebras_LoRA_ja.ipynb](AutoModel/Cerebras_LoRA_ja.ipynb) | Cerebras を 日本語 Dolly Dataset で LoRA チューニングとデプロイ |
+| [StableLM_Inference.ipynb](AutoModel/StableLM_Inference.ipynb) | StableLM をデプロイ |
+| [StableLM_LoRA.ipynb](AutoModel/StableLM_LoRA.ipynb) | StableLM を Dolly Dataset で LoRA チューニングとデプロイ |
+| [Dolly_v2_Inference.ipynb](AutoModel/Dolly_v2_Inference.ipynb) | Dolly v2 をデプロイ |
+| [Dolly_v2_LoRA.ipynb](AutoModel/Dolly_v2_LoRA.ipynb) | Dolly v2 を Dolly Dataset で LoRA チューニングとデプロイ |
+| [OpenCALM_Inference_ja.ipynb](AutoModel/OpenCALM_Inference_ja.ipynb) | OpenCALM をデプロイ |
+| [OpenCALM_LoRA_ja.ipynb](AutoModel/OpenCALM_LoRA_ja.ipynb) | OpenCALM を Dolly Dataset で LoRA チューニングとデプロイ |
+| [Rinna_Neox_Inference_ja.ipynb](AutoModel/Rinna_Neox_Inference_ja.ipynb) | Rinna NeoX をデプロイ |
+| [Rinna_Neox_LoRA_ja.ipynb](AutoModel/Rinna_Neox_LoRA_ja.ipynb) | Rinna NeoX を Dolly Dataset で LoRA チューニングとデプロイ |
+| [RWKV_Inference.ipynb](AutoModel/RWKV_Inference.ipynb) | RWKV のデプロイ |
+| [MPT_Inference.ipynb](AutoModel/MPT_Inference.ipynb) | MPT のデプロイ |
+| [MPT_LoRA.ipynb](AutoModel/MPT_LoRA.ipynb) | MPT を Dolly Dataset で LoRA チューニングとデプロイ |
+| [MPT_LoRA_ja.ipynb](AutoModel/MPT_LoRA_ja.ipynb) | MPT を 日本語 Dolly データセットで LoRA チューニングとデプロイ |
+| [RWKV_Finetune.ipynb](RWKV/RWKV_Finetune.ipynb) | RWKV を Dolly Dataset でファインチューニングとデプロイ |
+| [RWKV_LoRA.ipynb](RWKV/RWKV_Finetune.ipynb) | RWKV を Dolly Dataset で LoRA チューニングとデプロイ |
+| [RWKV_LoRA_ja.ipynb](RWKV/RWKV_Finetune.ipynb) | RWKV を 日本語 Dolly データセットで LoRA チューニングとデプロイ |
+| [RWKV_Inference.ipynb](RWKV/RWKV_Inference.ipynb) | RWKV のデプロイ |
+| [RWKV_Inference_ja.ipynb](RWKV/RWKV_Inference_ja.ipynb) | 日本語 RWKV Raven のデプロイ |
+
