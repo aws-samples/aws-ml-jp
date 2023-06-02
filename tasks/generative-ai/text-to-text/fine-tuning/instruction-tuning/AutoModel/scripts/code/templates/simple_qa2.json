@@ -1,0 +1,6 @@
+{
+    "description": "A shorter template to experiment with.",
+    "prompt_input": "Context: {input}\nQuestion: {instruction}\nAnswer: ",
+    "prompt_no_input": "Question: {instruction}\nAnswer: ",
+    "response_split": "Answer: "
+}

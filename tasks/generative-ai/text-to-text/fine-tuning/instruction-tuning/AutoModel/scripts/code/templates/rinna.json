@@ -1,0 +1,6 @@
+{
+    "description": "A shorter template to experiment with.",
+    "prompt_input": "システム: {input}<NL>ユーザー: {instruction}<NL>システム: ",
+    "prompt_no_input": "ユーザー: {instruction}<NL>システム: ",
+    "response_split": "システム: "
+}

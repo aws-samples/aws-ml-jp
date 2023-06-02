@@ -1,0 +1,17 @@
+# TODO: Pin to release supporting 4-bit QLoRA
+git+https://github.com/huggingface/accelerate.git@4d583ad6a1f13d1d7617e6a37f791ec01a68413a
+git+https://github.com/huggingface/peft.git@207d2908650f3f4f3ba0e21d243c1b2aee66e72d
+git+https://github.com/huggingface/transformers.git@de9255de27abfcae4a1f816b904915f0b1e23cd9
+tokenizers==0.13.3
+appdirs
+loralib
+bitsandbytes==0.39.0
+black
+black[jupyter]
+datasets
+fire
+sentencepiece
+evaluate
+pynvml==11.4.1
+protobuf==3.20.0
+einops
