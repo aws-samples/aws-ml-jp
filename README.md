@@ -4,15 +4,15 @@ AWS で機械学習をはじめる方法を学ぶことができるリポジト�
 
 ## :books: リポジトリの構成
 
-* [ai-services](ai-services)
+* `ai-services`
   * AWS の AI サービスの使い方を学ぶためのコンテンツ。
-* [sagemaker](sagemaker)
+* `sagemaker`
   * 機械学習モデルの開発効率化やパイプライン化を検討している方が、 Amazon SageMaker をどう使えば実現できるか学ぶためのコンテンツ。
-* [frameworks](frameworks)
+* `frameworks`
   * すでに TensorFlow や PyTorch で開発している方が、モデルを SageMaker 上で学習、推論させるための移行方法を学ぶためのコンテンツ。
-* [tasks](tasks)
+* `tasks`
   * 画像のセグメンテーションや物体検知、自然言語処理のQAや要約など、個別具体的なタスクを SageMaker でどのように解けるか学ぶためのコンテンツ。
-* [solutions](solutions)
+* `solutions`
   * 製造業での異常検知モニタリングやコールセンターの問合せ分析など、特定の業務プロセスを効率化/差別化したい方が、 SageMaker と他のサービスを組み合わせどのようにソリューションを構築できるか学ぶためのコンテンツ。
 
 ## :hamburger: AWSの機械学習サービス
@@ -20,7 +20,6 @@ AWS で機械学習をはじめる方法を学ぶことができるリポジト�
 AWS の機械学習サービスは **AI Services** 、 **ML Services** 、 **ML Frameworks/Infrastructure** の 3 層構成になっています。リポジトリの構成はサービスの構成を踏襲しています。
 
 ![AWS ML Service Overview](./_static/aws_ml_service_overview.png)
-
 
 * [AI Services](https://aws.amazon.com/jp/machine-learning/ai-services/)
    * アプリケーション開発者の方がWeb API形式で簡単に機械学習機能を扱えるサービスです。代表的なサービスを以下に 2 つ紹介しますが、 20 を超える AI サービスを提供しています。
@@ -82,11 +81,47 @@ SageMaker
 
 AWS で機械学習を実践する時の参考となるサンプルコードなどを紹介します。
 
-* [tasks](tasks)
-   * AWS で画像処理や自然言語処理などの機械学習のタスクを解く方法を解説します。
-* [solutions](solutions)
-  * SageMaker と他のサービスを組み合わせどのようにソリューションを構築できるか解説します。
+### Tasks
 
+AWS で画像処理や自然言語処理などの機械学習のタスクを解く方法を解説します。
+
+#### 👁 画像処理
+
+* 物体検知
+  * [Detectron2 を用いた物体検知](./vision/object_detection/amazon-sagemaker-pytorch-detectron2/README.md)
+* 画像分類
+  * [SageMaker のビルトインアルゴリズム (Image Classification) を用いた肺 CT 画像からの COVID-19 診断](./vision/image_classification/covid19-built-in-image-classification.ipynb)
+
+#### 💬 自然言語処理
+
+* テキスト分類
+   * [SageMaker のビルトインアルゴリズム (BlazingText) を用いた商品レビューセットの感情分析](./nlp/BlazingText/blazingtext.ipynb)
+   * [Gluon NLP で BERT を用いた感情分析](./nlp/text_classification/GluonNLP/gluonnlp_bert.ipynb)
+
+#### 🔈 音声処理
+
+* 自動発話認識
+  * [Wav2Vec / Whisper を用いた自動発話認識](./audio/automatic_speech_recognition/studio-lab-wav2vec-whisper/wav2vec.ipynb)
+
+#### 📄  テーブルデータ
+
+* 分類
+  * [細胞診 (FNA) 結果からの乳がん診断](./tabular/regression/BreastCancerPrediction_R.ipynb)
+
+
+#### 🤖 生成系 AI
+
+* `text-to-text`
+   * [Instruction Tuning](./generative-ai/text-to-text/fine-tuning/instruction-tuning/README.md) : [StableLM](https://huggingface.co/stabilityai/stablelm-base-alpha-3b) や [OpenCALM](https://huggingface.co/cyberagent/open-calm-7b) といった `text-to-text` の基盤モデルをインストラクションチューニングする方法を解説します。対応しているモデルとサンプルコードはフォルダ内の `README.md` を参照してください。
+
+### Solutions
+
+SageMaker と他のサービスを組み合わせ、業務プロセスの効率化や差別化を行うためのソリューションを格納/紹介します。
+
+* [Simple Lex Kendra JP](https://github.com/aws-samples/simple-lex-kendra-jp)
+  * 情報システム部門のヘルプデスクへの問い合わせ件数を削減するため、問い合わせを受け付けるチャットボットを設置するソリューションです。社内文書の検索を行う `Amazon Kendra` と問い合わせを受け付けるチャットボットの `Amazon Lex v2` を組み合わせて実装しています。 `AWS CDK` で構成されているため、シンプルにデプロイ可能です。
+* [Review Analysis Dashboard](./review_analysis_dashboard/)
+  * 自然言語処理でレビューを分析した結果を `Amazon Quicksight` でダッシュボードとして表示するソリューションです。オープンソースの形態素解析ツールである [GiNZA](https://megagonlabs.github.io/ginza/) を用いて時系列のレビュー数に加え頻出単語・係り受け関係を参照できます。[ブログ記事](https://aws.amazon.com/jp/blogs/news/amazon-sagemaker-amazon-quicksight-nlp-dashboard/)では、評価の低い DVD に対し 「まだ」「届く」の発生が多いことから発送遅延が原因ではないかといった分析例を示しています。
 
 ## Contribution
 
