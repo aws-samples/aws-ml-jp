@@ -1,0 +1,9 @@
+name: llmenv
+channels:
+  - defaults
+dependencies:
+  - python=3.10.11
+  - pip
+  - pytest
+  - pip:
+    - -r ../code/requirements.txt
