@@ -38,7 +38,9 @@ Models are standardized to accept json with following format for ease of use.
 | [Dolly_v2_Inference.ipynb](Transformers/Dolly_v2_Inference.ipynb) | Deploy pre-trained Dolly v2 |
 | [Dolly_v2_LoRA.ipynb](Transformers/Dolly_v2_LoRA.ipynb) | Finetuning and deploying Dolly v2 using LoRA with Dolly Dataset |
 | [OpenCALM_Inference_ja.ipynb](Transformers/OpenCALM_Inference_ja.ipynb) | Deploy OpenCALM |
-| [OpenCALM_LoRA_ja.ipynb](Transformers/OpenCALM_LoRA_ja.ipynb) | Finetuning and deploying CALM using LoRA with Dolly Dataset |
+| [OpenCALM_Inference_jaqket.ipynb](Transformers/OpenCALM_Inference_jaqket.ipynb) | Deploy OpenCALM and inference for [JAQKET](https://www.nlp.ecei.tohoku.ac.jp/projects/jaqket/) dataset |
+| [OpenCALM_LoRA_ja.ipynb](Transformers/OpenCALM_LoRA_ja.ipynb) | Finetuning and deploying OpenCALM using LoRA with Dolly Dataset |
+| [OpenCALM_LoRA_jaqket.ipynb](Transformers/OpenCALM_LoRA_jaqket.ipynb) | Finetuning and deploying OpenCALM using LoRA with [JAQKET](https://www.nlp.ecei.tohoku.ac.jp/projects/jaqket/) dataset |
 | [Rinna_Neox_Inference_ja.ipynb](Transformers/Rinna_Neox_Inference_ja.ipynb) | Deploy Rinna NeoX |
 | [Rinna_Neox_LoRA_ja.ipynb](Transformers/Rinna_Neox_LoRA_ja.ipynb) | Finetuning and deploying Rinna NeoX with Dolly Dataset|
 | [MPT_Inference.ipynb](Transformers/MPT_Inference.ipynb) | Deploy pre-trained MPT |
