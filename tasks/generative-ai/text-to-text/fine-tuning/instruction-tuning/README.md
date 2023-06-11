@@ -38,7 +38,9 @@
 | [Dolly_v2_Inference.ipynb](Transformers/Dolly_v2_Inference.ipynb) | Dolly v2 をデプロイ |
 | [Dolly_v2_LoRA.ipynb](Transformers/Dolly_v2_LoRA.ipynb) | Dolly v2 を Dolly Dataset で LoRA チューニングとデプロイ |
 | [OpenCALM_Inference_ja.ipynb](Transformers/OpenCALM_Inference_ja.ipynb) | OpenCALM をデプロイ |
+| [OpenCALM_Inference_jaqket.ipynb](Transformers/OpenCALM_Inference_jaqket.ipynb) | OpenCALM をデプロイし [JAQKET](https://www.nlp.ecei.tohoku.ac.jp/projects/jaqket/) データセットに対し推論 |
 | [OpenCALM_LoRA_ja.ipynb](Transformers/OpenCALM_LoRA_ja.ipynb) | OpenCALM を Dolly Dataset で LoRA チューニングとデプロイ |
+| [OpenCALM_LoRA_jaqket.ipynb](Transformers/OpenCALM_LoRA_jaqket.ipynb) | OpenCALM を [JAQKET](https://www.nlp.ecei.tohoku.ac.jp/projects/jaqket/) で LoRA チューニングとデプロイ |
 | [Rinna_Neox_Inference_ja.ipynb](Transformers/Rinna_Neox_Inference_ja.ipynb) | Rinna NeoX をデプロイ |
 | [Rinna_Neox_LoRA_ja.ipynb](Transformers/Rinna_Neox_LoRA_ja.ipynb) | Rinna NeoX を Dolly Dataset で LoRA チューニングとデプロイ |
 | [RWKV_Inference.ipynb](Transformers/RWKV_Inference.ipynb) | RWKV のデプロイ |
@@ -51,3 +53,9 @@
 | [RWKV_Inference.ipynb](RWKV/RWKV_Inference.ipynb) | RWKV のデプロイ |
 | [RWKV_Inference_ja.ipynb](RWKV/RWKV_Inference_ja.ipynb) | 日本語 RWKV Raven のデプロイ |
 
+比較評価用
+
+| ノートブック | 説明 |
+| -------- | ----------- |
+| [OpenAI_Inference_jaqket.ipynb](OpenAI/OpenAI_Inference_jaqket.ipynb) | OpenAI API で [JAQKET](https://www.nlp.ecei.tohoku.ac.jp/projects/jaqket/) データセットに対し推論 |
+| [OpenAI_Finetune_jaqket.ipynb](OpenAI/OpenAI_Finetune_jaqket.ipynb) | OpenAI API を [JAQKET](https://www.nlp.ecei.tohoku.ac.jp/projects/jaqket/) でファインチューニングし推論 |
