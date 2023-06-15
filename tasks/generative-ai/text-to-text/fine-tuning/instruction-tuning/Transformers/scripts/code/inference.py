@@ -6,6 +6,7 @@ import torch
 import transformers
 from peft import PeftModel
 from transformers import GenerationConfig, AutoModelForCausalLM, AutoTokenizer, StoppingCriteria, StoppingCriteriaList, BitsAndBytesConfig
+import deepspeed
 
 from utils.prompter import Prompter
 
@@ -24,6 +25,8 @@ class StopOnTokens(StoppingCriteria):
 def main(
     load_8bit: bool = False,
     load_4bit: bool = False,  # If 8 bit is also specified, 4 bit has priority
+    use_deepspeed: bool = False,
+    use_optimum: bool = False,
     base_model: str = "",
     peft: bool = True,
     lora_weights: str = "tloen/alpaca-lora-7b",
@@ -35,6 +38,7 @@ def main(
     else:
         device = "cpu"
     print("Device: ", device)
+    print("Device Count: ", torch.cuda.device_count())
 
     base_model = base_model or os.environ.get("BASE_MODEL", "")
     assert (base_model), "Please specify a --base_model"
@@ -67,7 +71,12 @@ def main(
                 cache_dir="/tmp/model_cache/",
                 **kwargs
             )
+
         model.model_parallel = False  # For MPT patch compatibility
+        if torch.cuda.device_count() > 1:
+            model.is_parallelizable = True
+            model.model_parallel = True
+
         if peft:
             print("Loading Lora Weight")
             model = PeftModel.from_pretrained(
@@ -91,7 +100,19 @@ def main(
         model.half()  # seems to fix bugs for some users.
 
     model.eval()
+    
+    if use_deepspeed:
+        ds_engine = deepspeed.init_inference(
+            model,
+            mp_size=torch.cuda.device_count(),
+            dtype=torch.float16,
+            replace_method='auto'
+        )
+        model = ds_engine.module
+    
     if torch.__version__ >= "2" and sys.platform != "win32":
+        if use_optimum:
+            model = model.to_bettertransformer()
         model = torch.compile(model)
 
     return device, prompter, tokenizer, model
