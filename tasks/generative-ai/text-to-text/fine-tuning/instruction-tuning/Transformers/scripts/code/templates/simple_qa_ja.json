@@ -1,6 +1,6 @@
 {
     "description": "JAQKET質問回答用テンプレート",
-    "prompt_input": "質問:\n{instruction}\n\nヒント:\n{input}\n\n回答:\n",
-    "prompt_no_input": "質問:\n{instruction}\n\n回答:\n",
-    "response_split": "回答:"    
+    "prompt_input": "{instruction}{input}\n答えは「",
+    "prompt_no_input": "{instruction}\n答えは「",
+    "response_split": ""
 }
