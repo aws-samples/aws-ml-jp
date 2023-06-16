@@ -50,4 +50,6 @@
 | [RWKV_LoRA_ja.ipynb](RWKV/RWKV_Finetune.ipynb) | RWKV を 日本語 Dolly データセットで LoRA チューニングとデプロイ |
 | [RWKV_Inference.ipynb](RWKV/RWKV_Inference.ipynb) | RWKV のデプロイ |
 | [RWKV_Inference_ja.ipynb](RWKV/RWKV_Inference_ja.ipynb) | 日本語 RWKV Raven のデプロイ |
-
+| [CTranslate2/OpenCALM_Inference_ja.ipynb](CTranslate2/OpenCALM_Inference_ja.ipynb) | OpenCALM を高速推論のために CTranslate2 を使用してデプロイ |
+| [CTranslate2/Rinna_Neox_Inference_ja.ipynb](CTranslate2/Rinna_Neox_Inference_ja.ipynb) | Rinna NeoX を高速推論のために CTranslate2 を使用してデプロイ |
+| [CTranslate2/Rinna_Neox_LoRA_ja.ipynb](CTranslate2/Rinna_Neox_LoRA_ja.ipynb) | Rinna NeoX の LoRA を高速推論のために CTranslate2 を使用してデプロイ |

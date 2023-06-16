@@ -1,0 +1,15 @@
+accelerate==0.20.3
+transformers==4.30.1
+peft==0.3.0
+ctranslate2
+tokenizers==0.13.3
+appdirs
+loralib
+bitsandbytes==0.39.0
+datasets
+fire
+sentencepiece
+evaluate
+pynvml==11.4.1
+protobuf==3.20.2
+einops
