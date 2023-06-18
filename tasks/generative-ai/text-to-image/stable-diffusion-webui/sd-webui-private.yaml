@@ -1,0 +1,66 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: A CloudFormation template to deploy the Stable Diffusion Web UI by Automatic1111
+Parameters:
+  Ec2ImageId:
+    Type: String
+    Default: ami-08d56feea76b6f38b
+    Description: Enter appropriate AMI ID in your region. Tested with "Deep Learning AMI GPU PyTorch 1.13.1 (Ubuntu 20.04) 20230510" in us-east-1.
+  Ec2InstanceType:
+    Type: String
+    Default: g4dn.xlarge
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref Ec2InstanceType
+      ImageId: !Ref Ec2ImageId
+      BlockDeviceMappings:
+        - DeviceName: /dev/sda1
+          Ebs:
+            VolumeSize: 300
+            VolumeType: gp2
+      "Tags" : [
+            {"Key" : "Name", "Value" : "sd-web-ui-cf"},
+        ]
+      UserData:
+        'Fn::Base64': |
+            Content-Type: multipart/mixed; boundary="//"
+            MIME-Version: 1.0
+
+            --//
+            Content-Type: text/cloud-config; charset="us-ascii"
+            MIME-Version: 1.0
+            Content-Transfer-Encoding: 7bit
+            Content-Disposition: attachment; filename="cloud-config.txt"
+
+            #cloud-config
+            cloud_final_modules:
+            - [scripts-user, always]
+
+            --//
+            Content-Type: text/x-shellscript; charset="us-ascii"
+            MIME-Version: 1.0
+            Content-Transfer-Encoding: 7bit
+            Content-Disposition: attachment; filename="userdata.txt"
+            
+            #!/bin/bash
+
+            # Install packages
+            sudo apt update
+            sudo add-apt-repository ppa:deadsnakes/ppa -y
+            sudo apt -y install wget git
+            sudo apt -y install python3 python-is-python3 python3-pip python3-venv
+
+            # Launch Stable Diffusion Web UI
+            cd /home/ubuntu
+            sudo -u ubuntu nohup bash -c 'bash <(wget -qO- https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh) &> sd-webui-log.txt' &
+
+            # Launch File Browser
+            cd /home/ubuntu
+            sudo -u ubuntu curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash
+            sudo -u ubuntu nohup bash -c 'filebrowser -r /home/ubuntu &> ./browser-log.txt' &
+            --//
+Outputs:
+  InstanceID:
+    Description: EC2Instance ID
+    Value: !Ref EC2Instance
