@@ -1,6 +1,9 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: A CloudFormation template to deploy the Stable Diffusion Web UI by Automatic1111
 Parameters:
+  SubnetId:
+    Description: The ID of the subnet where the EC2 instance will be launched.
+    Type: AWS::EC2::Subnet::Id
   Ec2ImageId:
     Type: String
     Default: ami-0e79b2db3e5f19265
@@ -8,12 +11,21 @@ Parameters:
   Ec2InstanceType:
     Type: String
     Default: g4dn.xlarge
+  SDWebUIVersion:
+    Type: String
+    Description: Branch of AUTOMATIC1111/stable-diffusion-webui
+    Default: v1.3.2
+  KohyaSSVersion:
+    Type: String
+    Description: Branch of bmaltais/kohya_ss
+    Default: v21.7.7
 Resources:
   EC2Instance:
     Type: AWS::EC2::Instance
     Properties:
       InstanceType: !Ref Ec2InstanceType
       ImageId: !Ref Ec2ImageId
+      SubnetId: !Ref SubnetId
       BlockDeviceMappings:
         - DeviceName: /dev/sda1
           Ebs:
@@ -23,7 +35,7 @@ Resources:
             {"Key" : "Name", "Value" : "sd-web-ui-cf"},
         ]
       UserData:
-        'Fn::Base64': |
+        'Fn::Base64': !Sub |
             Content-Type: multipart/mixed; boundary="//"
             MIME-Version: 1.0
 
@@ -56,13 +68,16 @@ Resources:
 
             # Launch Kohya
             cd /home/ubuntu
-            sudo -u ubuntu git clone https://github.com/bmaltais/kohya_ss.git
+            sudo -u ubuntu git clone https://github.com/bmaltais/kohya_ss.git -b ${KohyaSSVersion}
             cd kohya_ss
-            ./setup.sh
+            # Needs to specify branch in setup. Feel free to change version here.
+            ./setup.sh -b ${KohyaSSVersion} -v
             sudo -u ubuntu nohup bash -c './gui.sh --listen 127.0.0.1 --server_port 7861 --headless &> ../kohya-log.txt' &
 
             # Launch Stable Diffusion Web UI
             cd /home/ubuntu
+            # setup script uses existing folder if it exists. Feel free to change version here.
+            sudo -u ubuntu git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git -b ${SDWebUIVersion}
             sudo -u ubuntu nohup bash -c 'bash <(wget -qO- https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh) --xformers &> sd-webui-log.txt' &
 
             # Launch File Browser

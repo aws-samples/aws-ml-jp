@@ -1,113 +1,117 @@
 # Stable Diffusion Web UI on AWS
 
-This is a sample cloudformation template to launch latest version of [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) on EC2 instance. Some variant includes [bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss) for training model and [filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) for GUI based file manipulation.
+これは、EC2 インスタンス上で [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) の最新バージョンを起動するためのサンプルの CloudFormation テンプレートです。いくつかのバリエーションでは、モデルのトレーニングに [bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss)、GUI ベースのファイル操作に [filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) が含まれています。
 
-There are four cloudformation templates:
+次の4つの CloudFormation テンプレートがあります:
 
-- [sd-webui.yaml](sd-webui.yaml): publicly accessible (some features are disabled for security reason)
-- [sd-webui-private.yaml](sd-webui-private.yaml): privately accessible through SSM Session Manager Port Forwarding. File can be accessed using [filebrowser/filebrowser](https://github.com/filebrowser/filebrowser).
-- [sd-webui-kohya-private.yaml](sd-webui-kohya-private.yaml): privately accessible through SSM Session Manager Port Forwarding with [bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss) installed as well. File can be accessed using [filebrowser/filebrowser](https://github.com/filebrowser/filebrowser).
-- [sd-webui-kohya-private-s3.yaml](sd-webui-kohya-private-s3.yaml): privately accessible through SSM Session Manager Port Forwarding with [bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss) installed as well. S3 is mounted for keeping file on cloud. File can be accessed using [filebrowser/filebrowser](https://github.com/filebrowser/filebrowser).
+- [sd-webui.yaml](sd-webui.yaml): パブリックにアクセス可能 (一部の機能はセキュリティ上の理由から無効化されています)
+- [sd-webui-private.yaml](sd-webui-private.yaml): SSM セッションマネージャーポートフォワーディングを介してプライベートにアクセス可能。[filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) を使用してファイルにアクセスできます。
+- [sd-webui-kohya-private.yaml](sd-webui-kohya-private.yaml): [bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss) がインストールされた状態で、SSM セッションマネージャーポートフォワーディングを介してプライベートにアクセス可能。[filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) を使用してファイルにアクセスできます。
+- [sd-webui-kohya-private-s3.yaml](sd-webui-kohya-private-s3.yaml): [bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss) がインストールされた状態で、SSM セッションマネージャーポートフォワーディングを介してプライベートにアクセス可能。ファイルをクラウド上に保持するために S3 がマウントされます。[filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) を使用してファイルにアクセスできます。
 
-## Getting Started
+## はじめに
 
-### Deploy as Public Endpoint
+### パブリックエンドポイントとしてデプロイする
 
-1. Launch from template
-   1. From Console, upload `sd-webui.yaml`
-   2. From CLI, run `aws cloudformation create-stack --stack-name sd-webui-stack --template-body file://sd-webui.yaml --region us-east-1`
-2. It takes 10 min ~ to launch application.
-3. Open `<public ip address>:7860`
+1. コンソールからテンプレートを起動するか、次のコマンドを使用します : `aws cloudformation create-stack --stack-name sd-webui-stack --template-body file://sd-webui.yaml --region us-east-1 --parameters ParameterKey=SubnetId,ParameterValue=<SubnetId> ParameterKey=VpcId,ParameterValue=<VpcId>`
+2. アプリケーションの起動には 10 分程度かかります。
+3. `<public ip address>:7860` を開きます。
 
-### Deploy as Private Endpoint
+### プライベートエンドポイントとしてデプロイする
 
-Prerequisite:
-- Install session manager plugin following [document](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html) if not installed yet
+前提条件:
+- インストールされていない場合は、[ドキュメント ](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html) に従ってセッションマネージャープラグインをインストールします。
 
-1. Launch from template
-   1. From Console, upload `sd-webui-private.yaml`
-   2. From CLI, run `aws cloudformation create-stack --stack-name sd-webui-stack --template-body file://sd-webui-private.yaml --region us-east-1`
-2. It takes 10 min ~ to launch application.
-3. Run Port Forwarding with `./port-forwarding.sh <instance_id> <region> 7860 8080`
-4. Open `localhost:7860` for Stable Diffusion Web UI. Open `localhost:8080` for file browser.
+1. コンソールからテンプレートを起動するか、次のコマンドを使用します : `aws cloudformation create-stack --stack-name sd-webui-stack --template-body file://sd-webui-private.yaml --region us-east-1 --parameters ParameterKey=SubnetId,ParameterValue=<SubnetId>`
+2. アプリケーションの起動には 10 分程度かかります。
+3. `./port-forwarding.sh <instance_id> <region> 7860 8080` を使用してポートフォワーディングを実行します。
+4. 安定した拡散 Web UI には `localhost:7860` を開きます。ファイルブラウザには `localhost:8080` を開きます。
 
-For more control over SSM Session Manager, please check out the [document](https://docs.aws.amazon.com/systems-manager/latest/userguide/getting-started-restrict-access-examples.html) to limit access of specific user to specific instance.
+SSM セッションマネージャーの詳細な制御については、[ドキュメント ](https://docs.aws.amazon.com/systems-manager/latest/userguide/getting-started-restrict-access-examples.html) を参照して、特定のユーザーの特定のインスタンスへのアクセスを制限してください。
 
-### Deploy Private Endpoint with Kohya SS
+### Kohya SS を使用したプライベートエンドポイントのデプロイ
 
-1. Launch from template: `aws cloudformation create-stack --stack-name sd-webui-stack --template-body file://sd-webui-kohya-private.yaml --region us-east-1`
-2. Run Port Forwarding with `./port-forwarding.sh <instance_id> <region> 7860 7861 8080`
-3. Open `localhost:7860` for Stable Diffusion Web UI. Open `localhost:7861` for Kohya-ss. Open `localhost:8080` for file browser.
+1. コンソールからテンプレートを起動するか、次のコマンドを使用します : `aws cloudformation create-stack --stack-name sd-webui-stack --template-body file://sd-webui-kohya-private.yaml --region us-east-1 --parameters ParameterKey=SubnetId,ParameterValue=<SubnetId>`
+2. `./port-forwarding.sh <instance_id> <region> 7860 7861 8080` を使用してポートフォワーディングを実行します。
+3. Stable Diffusion Web UI には `localhost:7860` を開きます。Kohya-ss には `localhost:7861` を開きます。ファイルブラウザには `localhost:8080` を開きます。
 
-### Deploy Private Endpoint with Kohya SS and S3 Mounted
+### Kohya SS と S3 マウントを使用したプライベートエンドポイントのデプロイ
 
-1. Launch from template: `aws cloudformation create-stack --stack-name sd-webui-stack --template-body file://sd-webui-kohya-private-s3.yaml --region us-east-1 --parameters ParameterKey=EC2InstanceProfileName,ParameterValue=<InstanceProfile> ParameterKey=S3BucketName,ParameterValue=<Bucket>`
-2. Run Port Forwarding with `./port-forwarding.sh <instance_id> <region> 7860 7861 8080`
-3. Open `localhost:7860` for Stable Diffusion Web UI. Open `localhost:7861` for Kohya-ss. Open `localhost:8080` for file browser.
+1. コンソールからテンプレートを起動するか、次のコマンドを使用します : `aws cloudformation create-stack --stack-name sd-webui-stack --template-body file://sd-webui-kohya-private-s3.yaml --region us-east-1 --parameters ParameterKey=EC2InstanceProfileName,ParameterValue=<InstanceProfile> ParameterKey=S3BucketName,ParameterValue=<Bucket> ParameterKey=SubnetId,ParameterValue=<SubnetId>`
+2. `./port-forwarding.sh <instance_id> <region> 7860 7861 8080` を使用してポートフォワーディングを実行します。
+3. Stable Diffusion Web UI には `localhost:7860` を開きます。Kohya-ss には `localhost:7861` を開きます。ファイルブラウザには `localhost:8080` を開きます。
 
-### Use Filebrowser for file manipulation
+### ファイル操作のための Filebrowser の使用
 
-1. Access port 8080
-2. Enter default user/password: admin/admin
-3. `/home/ubuntu` is mapped to `files` by default. (ex. `/files/s3` = `/home/ubuntu/s3`)
+1. ポート 8080 にアクセスします。
+2. デフォルトのユーザー名とパスワード `admin/admin` を入力します。
+3. `/home/ubuntu` はデフォルトで `files` にマップされています（例 : `/files/s3` = `/home/ubuntu/s3`）。
 
-### Use Kohya to tune model
+### モデルの調整のための Kohya の使用
 
-1. Access port 7861
-2. Upload Images using Filebrowser
-3. Generate CLIP for images from Utilities tab.
-4. Start Training. Check `kohya-log.txt` for training logs.
-5. Download weight / move weight to `~/stable-diffusion-webui/models/Lora` to use it.
-6. For detailed instruction, see [bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss)
+1. ポート 7861 にアクセスします。
+2. Filebrowser を使用して画像をアップロードします。
+3. ユーティリティタブから画像のための CLIP を生成します。
+4. トレーニングを開始します。トレーニングログには `kohya-log.txt` をチェックしてください。
+5. モデルファイルをダウンロードし、`~/stable-diffusion-webui/models/Lora` に移動して使用します。
+6. 詳細な手順については、[bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss) を参照してください。
 
-### Stop Instance
+### インスタンスの停止
 
-You can stop instance when you do not use it. The application will automatically launch when EC2 instance restarts.
+使用しない場合は、インスタンスを停止することができます。EC2 インスタンスが再起動すると、アプリケーションが自動的に起動されます。
 
-You may use following commands to start/stop instance.
+以下のコマンドを使用してインスタンスを起動/停止できます。
 
 - `aws ec2 stop-instances --region <region> --instance-ids <instance-id>`
 - `aws ec2 start-instances --region <region> --instance-ids <instance-id>`
 
-### Add Extensions to Stable Diffusion Web UI
+### Stable Diffusion Web UI への拡張機能の追加
 
-You can either add extension from UI or command line.
+拡張機能を追加するには、UI またはコマンドラインのいずれかを使用できます。
 
-When using command line with SSM Session Manager,
+SSM セッションマネージャーを使用してコマンドラインで操作する場合:
 
-1. Access server: `aws ssm start-session --region <region> --target <instance_id>`
-2. `ssm-user` is the default user when using SSM Session Manager. You can change user with `sudo su ubuntu` for example.
+1. サーバーにアクセスします : `aws ssm start-session --region <region> --target <instance_id>`
+2. `ssm-user` は、SSM セッションマネージャーを使用する場合のデフォルトのユーザーです。例えば、`sudo su ubuntu` でユーザーを変更できます。
+3. 手動で拡張機能をインストールします。
 
-## Troubleshoot
+## トラブルシューティング
 
-- Cannot access server
-  - Check reachability with VPC Reachability Analyzer
-  - Turn off VPN in case the port 7860 is blocked.
-  - See logs
-    - 1. Get in to the instance with SSM Session Manager from console or with command `aws ssm start-session --region <region> --target <instance_id>`
-    - 2. View log of running userdata with `tail /var/log/cloud-init-output.log`
-    - 3. View log of Stable Diffusion Web UI with `tail /home/ubuntu/sd-webui-log.txt`
-    - 4. View log of Kohya SS with `tail /home/ubuntu/kohya-log.txt`
-- Cannot access server with SSM Session Manager
-  - Follow [SSM Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-getting-started.html) guide to enable Session Manager
-  - It will be easier to opt for region level setting from [Fleet Manager](https://us-east-1.console.aws.amazon.com/systems-manager/managed-instances/dhmc-configuration?region=us-east-1)
-- Cannot install extension from UI (Error: AssertionError: extension access disabled because of command line flags)
-  - [You cannot install extension from UI when using public endpoint from security reason](https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/7153).
-- CUDA out of memory for training.
-  - Stopping Stable Diffusion Web UI may save some GPU memory. Fine pid consuming GPU memory with `nvidia-smi` and stop it with `kill -9 <pid>`
-  - Alternatively, you may launch cloudformation template on larger instance.
-- Nothing happens after clicking train / caption on kohya_ss.
-  - There is no UI feedback for kohya_ss. See `kohya-log.txt` for logs. Access it from filebrowser or tail it.
+- サーバーにアクセスできない
+  - VPC リーチャビリティアナライザで到達性をチェックしてください
+  - ポート 7860 がブロックされている場合は、VPN をオフにしてください。
+  - ログを確認してください
+    - 1. コンソールからまたは次のコマンドを使用して、スタックのイベントを確認します : `aws cloudformation describe-stack-events --region <region> --stack-name sd-webui-stack`
+    - 2. EC2 インスタンス上のログを確認します : `sudo cat /var/log/cloud-init-output.log`
+    - 3. `/home/ubuntu/stable-diffusion-webui` にある各ログファイルを確認します。
+  - セキュリティグループとネットワーク ACL を確認してください。
+- コンソールにアクセスできない
+  - ポートフォワーディングが正しく設定されていることを確認してください。
+  - ローカルマシンのファイアウォール設定を確認してください。
+- ファイルブラウザにアクセスできない
+  - ポート 8080 が開かれていることを確認してください。
+  - Filebrowser のログを確認してください : `sudo cat /home/ubuntu/filebrowser/filebrowser.log`
+  - ユーザー名とパスワードが正しいことを確認してください。
+  - `/home/ubuntu/filebrowser/filebrowser.json` で設定を確認します。
+- Kohya SS にアクセスできない
+  - ポート 7861 が開かれていることを確認してください。
+  - Kohya SS のログを確認してください : `sudo cat /home/ubuntu/kohya_ss/kohya_ss.log`
+- Stable Diffusion Web UI から拡張機能をインストールできない（エラー : AssertionError: extension access disabled because of command line flags）
+  - [ セキュリティ上の理由から、パブリックエンドポイントを使用している場合は、UI から拡張機能をインストールできません ](https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/7153)。
+- トレーニング時に CUDA のメモリ不足が発生する
+  - Stable Diffusion Web UI を停止すると、一部の GPU メモリが節約される場合があります。`nvidia-smi` で GPU メモリを消費しているプロセスの PID を確認し、`kill -9 <pid>` で停止させることができます。
+  - または、より大きなインスタンスでクラウドフォーメーションテンプレートを起動することができます。
+- Kohya-ss の「トレーニング」をクリックしても何も起こらない
+  - Kohya-ss には UI のフィードバックがありません。ログは `kohya-log.txt` を確認してください。Filebrowser からアクセスするか、`tail` コマンドでログを表示できます。
 
+## 含まれるソフトウェアのライセンスに関するお知らせ
 
-## Notice of License for included Software
-
-Cloudformation templates in this project  uses following software.
+このプロジェクトの CloudFormation テンプレートは、以下のソフトウェアを使用しています。
 
 - [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui): GNU Affero General Public License v3.0
 - [bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss): Apache License 2.0
 - [filebrowser/filebrowser](https://github.com/filebrowser/filebrowser): Apache License 2.0
 
-Although you may choose the model you like, stable-diffusion-webui downloads following model by default.
+お好みのモデルを選択することもできますが、stable-diffusion-webui はデフォルトで以下のモデルをダウンロードします。
 
 - [runwayml/stable-diffusion-v1-5](https://huggingface.co/runwayml/stable-diffusion-v1-5): [creativeml-openrail-m License](https://huggingface.co/spaces/CompVis/stable-diffusion-license)
