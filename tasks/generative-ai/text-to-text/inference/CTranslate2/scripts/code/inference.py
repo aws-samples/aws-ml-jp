@@ -83,6 +83,32 @@ def inference(
     return text
 
 
+def inference_batch(
+    model_objects,
+    instruction=None, # Not used
+    input=None,
+    max_new_tokens=128,
+    stop_ids=[],
+    **kwargs,
+):
+    tokenizer, generator, prompter = model_objects
+    
+    prompt = input
+    
+    tokens = [tokenizer.tokenize(text, add_special_tokens=False) for text in prompt]
+
+    results = generator.generate_batch(
+        tokens,
+        max_length=max_new_tokens,
+        include_prompt_in_result=False,
+        end_token=stop_ids,
+        **kwargs
+    )
+
+    text = [tokenizer.decode(result.sequences_ids[0]) for result in results]
+    return text
+
+
 def model_fn(
     model_dir
 ):
@@ -108,10 +134,16 @@ def predict_fn(
     print("Predict Fn")
     print(data)
     try:
-        return inference(
-            model_objects=model,
-            **data
-        )
+        if type(data["input"]) == list:
+            return inference_batch(
+                model_objects=model,
+                **data
+            )
+        else:
+            return inference(
+                model_objects=model,
+                **data
+            )
     except Exception as e:
         print("Inference error: ", e)
 

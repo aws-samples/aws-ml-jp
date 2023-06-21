@@ -50,7 +50,3 @@ Models are standardized to accept json with following format for ease of use.
 | [RWKV_LoRA_ja.ipynb](RWKV/RWKV_Finetune.ipynb) | Finetuning and deploying RWKV using LoRA with translated Dolly Dataset |
 | [RWKV_Inference.ipynb](RWKV/RWKV_Inference.ipynb) | Deploying Pre-trained RWKV |
 | [RWKV_Inference_ja.ipynb](RWKV/RWKV_Inference_ja.ipynb) | Deploying Pre-trained RWKV supporting Japanese |
-| [CTranslate2/OpenCALM_Inference_ja.ipynb](CTranslate2/OpenCALM_Inference_ja.ipynb) | Deploying Pre-trained OpenCALM with CTranslate2 for faster inference |
-| [CTranslate2/OpenCALM_LoRA_ja.ipynb](CTranslate2/OpenCALM_LoRA_ja.ipynb) | Deploying OpenCALM LoRA with CTranslate2 for faster inference |
-| [CTranslate2/Rinna_Neox_Inference_ja.ipynb](CTranslate2/Rinna_Neox_Inference_ja.ipynb) | Deploying Rinna NeoX with CTranslate2 for faster inference |
-| [CTranslate2/Rinna_Neox_LoRA_ja.ipynb](CTranslate2/Rinna_Neox_LoRA_ja.ipynb) | Deploy Rinna NeoX LoRA with CTranslate2 for faster inference |
