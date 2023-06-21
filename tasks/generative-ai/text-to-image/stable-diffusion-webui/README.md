@@ -103,6 +103,8 @@ SSM セッションマネージャーを使用してコマンドラインで操�
   - または、より大きなインスタンスでクラウドフォーメーションテンプレートを起動することができます。
 - Kohya-ss の「トレーニング」をクリックしても何も起こらない
   - Kohya-ss には UI のフィードバックがありません。ログは `kohya-log.txt` を確認してください。Filebrowser からアクセスするか、`tail` コマンドでログを表示できます。
+- Insufficient Capacity でインスタンスが立ち上げられない。
+  - [AMI](https://aws.amazon.com/releasenotes/aws-deep-learning-ami-gpu-pytorch-2-0-ubuntu-20-04/) をサポートしている他のインスタンスタイプを利用するか別リージョンで試してみてください。
 
 ## 含まれるソフトウェアのライセンスに関するお知らせ
 

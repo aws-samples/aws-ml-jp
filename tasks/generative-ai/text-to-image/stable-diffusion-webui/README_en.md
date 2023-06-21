@@ -94,6 +94,8 @@ When using command line with SSM Session Manager,
   - Alternatively, you may launch cloudformation template on larger instance.
 - Nothing happens after clicking train / caption on kohya_ss.
   - There is no UI feedback for kohya_ss. See `kohya-log.txt` for logs. Access it from filebrowser or tail it.
+- Insufficient Capacity when launching instance
+  - Try another instance type supporting [AMI](https://aws.amazon.com/releasenotes/aws-deep-learning-ami-gpu-pytorch-2-0-ubuntu-20-04/) or another region.
 
 
 ## Notice of License for included Software
