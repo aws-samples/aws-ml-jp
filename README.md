@@ -24,7 +24,7 @@ AWS の機械学習サービスは **AI Services** 、 **ML Services** 、 **ML 
 * [AI Services](https://aws.amazon.com/jp/machine-learning/ai-services/)
    * アプリケーション開発者の方がWeb API形式で簡単に機械学習機能を扱えるサービスです。代表的なサービスを以下に 2 つ紹介しますが、 20 を超える AI サービスを提供しています。
    * [Amazon Personalize](https://aws.amazon.com/jp/personalize/) は推薦機能が実装できるサービス ([BASE様の事例](https://devblog.thebase.in/entry/2021/12/17/110000))
-   * [Amazon Rekognition](https://aws.amazon.com/jp/rekognition/) は顔やブランドロゴの検出といった画像認識機能を実装できるサービス([千株式会社様の事例](https://sencorp.co.jp/4713/))です。
+   * [Amazon Rekognition](https://aws.amazon.com/jp/rekognition/) は顔やブランドロゴの検出といった画像認識機能を実装できるサービス([千株式会社様の顔検索事例](https://sencorp.co.jp/4713/), [TRUSTDOCK 社の本人確認事例](https://aws.amazon.com/jp/blogs/startup/tech-interview-trustdock-2023/))です。
 * [ML Servies](https://aws.amazon.com/jp/machine-learning/)
    * データサイエンティストの方が機械学習モデルを開発する時、前処理、計算資源の調達、学習結果の管理やモデルのデプロイなど面倒な作業を代行するとともにスケールしやすくするサービスです。
    * [Amazon SageMaker](https://aws.amazon.com/jp/sagemaker/) は機械学習モデル開発を行うための統合開発環境で、 JupyterLab をベースにした環境からデータの前処理、学習、デプロイなどに必要なサービスを簡単に呼び出せます([三菱 UFJ 様の事例](https://pages.awscloud.com/rs/112-TZM-766/images/20210408_AIML_Tokyo_MTEC.pdf)、 [Denso 様の事例](https://aws.amazon.com/jp/solutions/case-studies/denso/)、 [SyntheticGestalt](https://aws.amazon.com/jp/blogs/startup/syntheticgestalt_2022casestudy/)(創薬)、)。
