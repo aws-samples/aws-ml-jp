@@ -143,7 +143,8 @@ def train(
             base_model,
             quantization_config=nf4_config,
             device_map=device_map,
-            trust_remote_code=trust_remote_code
+            trust_remote_code=trust_remote_code,
+            cache_dir="/tmp/model_cache/",
         )
     else:
         model = AutoModelForCausalLM.from_pretrained(
@@ -151,7 +152,8 @@ def train(
             load_in_8bit=load_in_8bit,
             torch_dtype=torch.float16,
             device_map=device_map,
-            trust_remote_code=trust_remote_code
+            trust_remote_code=trust_remote_code,
+            cache_dir="/tmp/model_cache/",
         )
     model.model_parallel = False  # For MPT patch compatibility
 
