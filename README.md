@@ -133,12 +133,22 @@ AWS で画像処理や自然言語処理などの機械学習のタスクを解�
 
 #### 🤖 生成系 AI
 
-* `text-to-image`
-   * **[Stable Diffusion Web UI](./tasks/generative-ai/text-to-image/inference/stable-diffusion-webui/)** : Stable Diffusion の GUI として人気の [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) を EC2 インスタンスに立てて利用できるようにする CloudFormation です。モデルのトレーニングに [bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss)、GUI ベースのファイル操作に [filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) を立ち上げる構成も含まれています。
-   * **[Inpainting](./tasks/generative-ai/text-to-image/inference/Transformers/StableDiffusionInpainting_Inference_with_ClipSeg.ipynb)** : 画像の一部を生成した画像で差し替えるサンプルです。差し替える箇所 ( マスク ) の作成には [CLIPSeg](https://huggingface.co/docs/transformers/model_doc/clipseg) を使用しています。 CLIPSeg 単独で使用したい場合にはこちらの [Notebook](https://github.com/aws-samples/aws-ml-jp/blob/main/tasks/generative-ai/text-to-image/inference/Transformers/ClipSeg_Inference.ipynb) をご参考ください。
-* `text-to-text`
-   * **[Instruction Tuning](./tasks/generative-ai/text-to-text/fine-tuning/instruction-tuning/README.md)** : `text-to-text` の基盤モデルである [StableLM](https://huggingface.co/stabilityai/stablelm-base-alpha-3b) や [OpenCALM](https://huggingface.co/cyberagent/open-calm-7b) をインストラクションチューニングする方法を解説します。対応しているモデルとサンプルコードはフォルダ内の `README.md` を参照してください。
-   * **[LangChain Inference](./tasks/generative-ai/text-to-text/inference/langchain/langchain-sagemaker-intro.ipynb)** : [LangChain](https://github.com/hwchase17/langchain) から SageMaker でホスティングした `text-to-text` の基盤モデルを扱うサンプルです。
+##### `text-to-image`
+
+**[Stable Diffusion Web UI](./tasks/generative-ai/text-to-image/inference/stable-diffusion-webui/)**
+> Stable Diffusion の GUI として人気の [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) を EC2 インスタンスに立てて利用できるようにする CloudFormation です。モデルのトレーニングに [bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss)、GUI ベースのファイル操作に [filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) を立ち上げる構成も含まれています。SageMaker JumpStart を利用した Fine Tuning については [たった数枚の画像で Stable Diffusion をファインチューニングできる効率的な Amazon SageMaker JumpStart の使い方](https://aws.amazon.com/jp/blogs/news/machine-learning-inpaint-images-with-stable-diffusion-using-amazon-sagemaker-jumpstart/) をご参照ください。
+
+**[Inpainting](./tasks/generative-ai/text-to-image/inference/Transformers/StableDiffusionInpainting_Inference_with_ClipSeg.ipynb)**
+
+> 画像の一部を生成した画像で差し替えるサンプルです。差し替える箇所 ( マスク ) の作成には [CLIPSeg](https://huggingface.co/docs/transformers/model_doc/clipseg) を使用しています。詳細　[Stable Diffusion で画像の部分的な差し替えを行う環境を、 Amazon SageMaker JumpStart で簡単に構築する](https://aws.amazon.com/jp/blogs/news/machine-learning-inpaint-images-with-stable-diffusion-using-amazon-sagemaker-jumpstart/) をご参照ください。
+
+#### `text-to-text`
+**[Instruction Tuning](./tasks/generative-ai/text-to-text/fine-tuning/instruction-tuning/README.md)**
+
+> `text-to-text` の基盤モデルである [StableLM](https://huggingface.co/stabilityai/stablelm-base-alpha-3b) や [OpenCALM](https://huggingface.co/cyberagent/open-calm-7b) をインストラクションチューニングする方法を解説します。対応しているモデルとサンプルコードはフォルダ内の `README.md` を参照してください。 OpenCALM のチューニングについては [日本語大規模言語モデル OpenCALM の知識でクイズ王に挑戦する](https://aws.amazon.com/jp/blogs/news/open-calm-and-openai-chatgpt-accuracy-on-jaqket-experiment-in-amazon-sagemaker/) をご参考ください。
+
+**[LangChain Inference](./tasks/generative-ai/text-to-text/inference/langchain/langchain-sagemaker-intro.ipynb)** 
+> [LangChain](https://github.com/hwchase17/langchain) から SageMaker でホスティングした `text-to-text` の基盤モデルを扱うサンプルです。
 
 ### Solutions
 
