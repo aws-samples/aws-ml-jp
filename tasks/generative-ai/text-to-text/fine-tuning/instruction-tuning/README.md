@@ -50,4 +50,3 @@
 | [RWKV_LoRA_ja.ipynb](RWKV/RWKV_Finetune.ipynb) | RWKV を 日本語 Dolly データセットで LoRA チューニングとデプロイ |
 | [RWKV_Inference.ipynb](RWKV/RWKV_Inference.ipynb) | RWKV のデプロイ |
 | [RWKV_Inference_ja.ipynb](RWKV/RWKV_Inference_ja.ipynb) | 日本語 RWKV Raven のデプロイ |
-
