@@ -4,10 +4,12 @@
 
 次の4つの CloudFormation テンプレートがあります:
 
-- [sd-webui.yaml](sd-webui.yaml): パブリックにアクセス可能 (一部の機能はセキュリティ上の理由から無効化されています)
-- [sd-webui-private.yaml](sd-webui-private.yaml): SSM セッションマネージャーポートフォワーディングを介してプライベートにアクセス可能。[filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) を使用してファイルにアクセスできます。
-- [sd-webui-kohya-private.yaml](sd-webui-kohya-private.yaml): [bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss) がインストールされた状態で、SSM セッションマネージャーポートフォワーディングを介してプライベートにアクセス可能。[filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) を使用してファイルにアクセスできます。
-- [sd-webui-kohya-private-s3.yaml](sd-webui-kohya-private-s3.yaml): [bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss) がインストールされた状態で、SSM セッションマネージャーポートフォワーディングを介してプライベートにアクセス可能。ファイルをクラウド上に保持するために S3 がマウントされます。[filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) を使用してファイルにアクセスできます。
+| Launch Stack | Cfn Template | Description |
+| ------------ | ------------ | ----------- |
+| [![](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=sd-webui&templateURL=https://aws-ml-jp.s3.ap-northeast-1.amazonaws.com/tasks/generative-ai/text-to-image/stable-diffusion-webui/sd-webui.yaml) | [sd-webui.yaml](sd-webui.yaml) | パブリックにアクセス可能 (一部の機能はセキュリティ上の理由から無効化されています) |
+| [![](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=sd-webui&templateURL=https://aws-ml-jp.s3.ap-northeast-1.amazonaws.com/tasks/generative-ai/text-to-image/stable-diffusion-webui/sd-webui-private.yaml) | [sd-webui-private.yaml](sd-webui-private.yaml) | SSM セッションマネージャーポートフォワーディングを介してプライベートにアクセス可能。[filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) を使用してファイルにアクセスできます。|
+| [![](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=sd-webui&templateURL=https://aws-ml-jp.s3.ap-northeast-1.amazonaws.com/tasks/generative-ai/text-to-image/stable-diffusion-webui/sd-webui-kohya-private.yaml) | [sd-webui-kohya-private.yaml](sd-webui-kohya-private.yaml) | [bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss) がインストールされた状態で、SSM セッションマネージャーポートフォワーディングを介してプライベートにアクセス可能。[filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) を使用してファイルにアクセスできます。 |
+| [![](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=sd-webui&templateURL=https://aws-ml-jp.s3.ap-northeast-1.amazonaws.com/tasks/generative-ai/text-to-image/stable-diffusion-webui/sd-webui-kohya-private-s3.yaml) | [sd-webui-kohya-private-s3.yaml](sd-webui-kohya-private-s3.yaml) | [bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss) がインストールされた状態で、SSM セッションマネージャーポートフォワーディングを介してプライベートにアクセス可能。ファイルをクラウド上に保持するために S3 がマウントされます。[filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) を使用してファイルにアクセスできます。 |
 
 ## はじめに
 
