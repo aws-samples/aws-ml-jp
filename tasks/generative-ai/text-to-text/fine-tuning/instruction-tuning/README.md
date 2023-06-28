@@ -57,5 +57,7 @@
 
 | ノートブック | 説明 |
 | -------- | ----------- |
-| [OpenAI_Inference_jaqket.ipynb](OpenAI/OpenAI_Inference_jaqket.ipynb) | OpenAI API で [JAQKET](https://www.nlp.ecei.tohoku.ac.jp/projects/jaqket/) データセットに対し推論 |
+| [OpenAI_Inference_Chat_Completions_jaqket.ipynb](OpenAI/OpenAI_Inference_Chat_Completions_jaqket.ipynb) | OpenAI ChatCompletions API で [JAQKET](https://www.nlp.ecei.tohoku.ac.jp/projects/jaqket/) データセットに対し推論 |
+| [OpenAI_Inference_jaqket.ipynb](OpenAI/OpenAI_Inference_Completions_jaqket.ipynb) | OpenAI Completions API で [JAQKET](https://www.nlp.ecei.tohoku.ac.jp/projects/jaqket/) データセットに対し推論 |
 | [OpenAI_Finetune_jaqket.ipynb](OpenAI/OpenAI_Finetune_jaqket.ipynb) | OpenAI API を [JAQKET](https://www.nlp.ecei.tohoku.ac.jp/projects/jaqket/) でファインチューニングし推論 |
+| [OpenAI_Price_Calculator.ipynb](OpenAI/OpenAI_Price_Calculator.ipynb) | OpenAI API の価格を、データのトークン数から試算するための Notebook |

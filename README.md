@@ -24,7 +24,7 @@ AWS の機械学習サービスは **AI Services** 、 **ML Services** 、 **ML 
 * [AI Services](https://aws.amazon.com/jp/machine-learning/ai-services/)
    * アプリケーション開発者の方がWeb API形式で簡単に機械学習機能を扱えるサービスです。代表的なサービスを以下に 2 つ紹介しますが、 20 を超える AI サービスを提供しています。
    * [Amazon Personalize](https://aws.amazon.com/jp/personalize/) は推薦機能が実装できるサービス ([BASE様の事例](https://devblog.thebase.in/entry/2021/12/17/110000))
-   * [Amazon Rekognition](https://aws.amazon.com/jp/rekognition/) は顔やブランドロゴの検出といった画像認識機能を実装できるサービス([千株式会社様の事例](https://sencorp.co.jp/4713/))です。
+   * [Amazon Rekognition](https://aws.amazon.com/jp/rekognition/) は顔やブランドロゴの検出といった画像認識機能を実装できるサービス([千株式会社様の顔検索事例](https://sencorp.co.jp/4713/), [TRUSTDOCK 社の本人確認事例](https://aws.amazon.com/jp/blogs/startup/tech-interview-trustdock-2023/))です。
 * [ML Servies](https://aws.amazon.com/jp/machine-learning/)
    * データサイエンティストの方が機械学習モデルを開発する時、前処理、計算資源の調達、学習結果の管理やモデルのデプロイなど面倒な作業を代行するとともにスケールしやすくするサービスです。
    * [Amazon SageMaker](https://aws.amazon.com/jp/sagemaker/) は機械学習モデル開発を行うための統合開発環境で、 JupyterLab をベースにした環境からデータの前処理、学習、デプロイなどに必要なサービスを簡単に呼び出せます([三菱 UFJ 様の事例](https://pages.awscloud.com/rs/112-TZM-766/images/20210408_AIML_Tokyo_MTEC.pdf)、 [Denso 様の事例](https://aws.amazon.com/jp/solutions/case-studies/denso/)、 [SyntheticGestalt](https://aws.amazon.com/jp/blogs/startup/syntheticgestalt_2022casestudy/)(創薬)、)。
@@ -76,6 +76,8 @@ AI/ML の BlackBelt シリーズである [AI/ML DarkPart](https://www.youtube.c
 ## 📝 実践コンテンツ
 
 AWS で機械学習を実践する時の参考となるサンプルコードなどを紹介します。
+
+※本サンプルコードは [MIT-0](./LICENSE) で公開していますが、サンプルコードで使用されるモデルやデータセットはそれぞれライセンスが付与されています。サンプルコードを参考に独自の実装をする場合、用途がモデルやデータセットのライセンスに違反しないか別途確認してください。
 
 ### Amazon SageMaker
 
@@ -133,8 +135,19 @@ AWS で画像処理や自然言語処理などの機械学習のタスクを解�
 
 #### 🤖 生成系 AI
 
-* `text-to-text`
-   * [Instruction Tuning](./tasks/generative-ai/text-to-text/fine-tuning/instruction-tuning/README.md) : [StableLM](https://huggingface.co/stabilityai/stablelm-base-alpha-3b) や [OpenCALM](https://huggingface.co/cyberagent/open-calm-7b) といった `text-to-text` の基盤モデルをインストラクションチューニングする方法を解説します。対応しているモデルとサンプルコードはフォルダ内の `README.md` を参照してください。
+##### `text-to-image`
+
+| サンプルコード | 詳細 |
+|:-------| :-----------|
+| [Stable Diffusion Web UI](./tasks/generative-ai/text-to-image/inference/stable-diffusion-webui/) | Stable Diffusion の GUI として人気の [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) を EC2 インスタンスに立てて利用できるようにする CloudFormation です。モデルのトレーニングに [bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss)、GUI ベースのファイル操作に [filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) を立ち上げる構成も含まれています。SageMaker JumpStart を利用した Fine Tuning については [たった数枚の画像で Stable Diffusion をファインチューニングできる効率的な Amazon SageMaker JumpStart の使い方](https://aws.amazon.com/jp/blogs/news/machine-learning-inpaint-images-with-stable-diffusion-using-amazon-sagemaker-jumpstart/) をご参照ください。 |
+| [Inpainting](./tasks/generative-ai/text-to-image/inference/Transformers/StableDiffusionInpainting_Inference_with_ClipSeg.ipynb) | 画像の一部を生成した画像で差し替えるサンプルです。差し替える箇所 ( マスク ) の作成には [CLIPSeg](https://huggingface.co/docs/transformers/model_doc/clipseg) を使用しています。詳細は [Stable Diffusion で画像の部分的な差し替えを行う環境を、 Amazon SageMaker JumpStart で簡単に構築する](https://aws.amazon.com/jp/blogs/news/machine-learning-inpaint-images-with-stable-diffusion-using-amazon-sagemaker-jumpstart/) をご参照ください。|
+
+#### `text-to-text`
+
+| サンプルコード | 詳細 |
+|:-------| :-----------|
+| [Instruction Tuning](./tasks/generative-ai/text-to-text/fine-tuning/instruction-tuning/README.md) | `text-to-text` の基盤モデルである [StableLM](https://huggingface.co/stabilityai/stablelm-base-alpha-3b) や [OpenCALM](https://huggingface.co/cyberagent/open-calm-7b) をインストラクションチューニングする方法を解説します。対応しているモデルとサンプルコードはフォルダ内の `README.md` を参照してください。 OpenCALM については [日本語大規模言語モデル OpenCALM の知識でクイズ王に挑戦する](https://aws.amazon.com/jp/blogs/news/open-calm-and-openai-chatgpt-accuracy-on-jaqket-experiment-in-amazon-sagemaker/) をご参考ください。|
+| [LangChain Inference](./tasks/generative-ai/text-to-text/inference/langchain/langchain-sagemaker-intro.ipynb) | [LangChain](https://github.com/hwchase17/langchain) から SageMaker でホスティングした `text-to-text` の基盤モデルを扱うサンプルです。|
 
 ### Solutions
 
