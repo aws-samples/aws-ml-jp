@@ -6,10 +6,20 @@
 
 | Launch Stack | Cfn Template | Description |
 | ------------ | ------------ | ----------- |
-| [![](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=sd-webui&templateURL=https://aws-ml-jp.s3.ap-northeast-1.amazonaws.com/tasks/generative-ai/text-to-image/stable-diffusion-webui/sd-webui.yaml) | [sd-webui.yaml](sd-webui.yaml) | パブリックにアクセス可能 (一部の機能はセキュリティ上の理由から無効化されています) |
-| [![](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=sd-webui&templateURL=https://aws-ml-jp.s3.ap-northeast-1.amazonaws.com/tasks/generative-ai/text-to-image/stable-diffusion-webui/sd-webui-private.yaml) | [sd-webui-private.yaml](sd-webui-private.yaml) | SSM セッションマネージャーポートフォワーディングを介してプライベートにアクセス可能。[filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) を使用してファイルにアクセスできます。|
-| [![](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=sd-webui&templateURL=https://aws-ml-jp.s3.ap-northeast-1.amazonaws.com/tasks/generative-ai/text-to-image/stable-diffusion-webui/sd-webui-kohya-private.yaml) | [sd-webui-kohya-private.yaml](sd-webui-kohya-private.yaml) | [bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss) がインストールされた状態で、SSM セッションマネージャーポートフォワーディングを介してプライベートにアクセス可能。[filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) を使用してファイルにアクセスできます。 |
-| [![](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=sd-webui&templateURL=https://aws-ml-jp.s3.ap-northeast-1.amazonaws.com/tasks/generative-ai/text-to-image/stable-diffusion-webui/sd-webui-kohya-private-s3.yaml) | [sd-webui-kohya-private-s3.yaml](sd-webui-kohya-private-s3.yaml) | [bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss) がインストールされた状態で、SSM セッションマネージャーポートフォワーディングを介してプライベートにアクセス可能。ファイルをクラウド上に保持するために S3 がマウントされます。[filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) を使用してファイルにアクセスできます。 |
+| [![](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://us-east-1.console.aws.amazon.com/cloudformation/home#/stacks/create/review?stackName=sd-webui&templateURL=https://aws-ml-jp.s3.ap-northeast-1.amazonaws.com/tasks/generative-ai/text-to-image/stable-diffusion-webui/sd-webui.yaml) | [sd-webui.yaml](sd-webui.yaml) | パブリックにアクセス可能 (一部の機能はセキュリティ上の理由から無効化されています) |
+| [![](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://us-east-1.console.aws.amazon.com/cloudformation/home#/stacks/create/review?stackName=sd-webui&templateURL=https://aws-ml-jp.s3.ap-northeast-1.amazonaws.com/tasks/generative-ai/text-to-image/stable-diffusion-webui/sd-webui-private.yaml) | [sd-webui-private.yaml](sd-webui-private.yaml) | SSM セッションマネージャーポートフォワーディングを介してプライベートにアクセス可能。[filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) を使用してファイルにアクセスできます。|
+| [![](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://us-east-1.console.aws.amazon.com/cloudformation/home#/stacks/create/review?stackName=sd-webui&templateURL=https://aws-ml-jp.s3.ap-northeast-1.amazonaws.com/tasks/generative-ai/text-to-image/stable-diffusion-webui/sd-webui-kohya-private.yaml) | [sd-webui-kohya-private.yaml](sd-webui-kohya-private.yaml) | [bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss) がインストールされた状態で、SSM セッションマネージャーポートフォワーディングを介してプライベートにアクセス可能。[filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) を使用してファイルにアクセスできます。 |
+| [![](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://us-east-1.console.aws.amazon.com/cloudformation/home#/stacks/create/review?stackName=sd-webui&templateURL=https://aws-ml-jp.s3.ap-northeast-1.amazonaws.com/tasks/generative-ai/text-to-image/stable-diffusion-webui/sd-webui-kohya-private-s3.yaml) | [sd-webui-kohya-private-s3.yaml](sd-webui-kohya-private-s3.yaml) | [bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss) がインストールされた状態で、SSM セッションマネージャーポートフォワーディングを介してプライベートにアクセス可能。ファイルをクラウド上に保持するために S3 がマウントされます。[filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) を使用してファイルにアクセスできます。 |
+
+※ [Cloud Formation](https://aws.amazon.com/jp/cloudformation/) とは、アプリケーションに関連する様々な AWS のリソースを一度に構築できる仕組みです。AWSで環境を構築した際、リソースの消し忘れで課金がされてしまったことはないでしょうか? Cloud Formation を使用すると必要なリソースをまとめて作成しまとめて消すことができます。
+
+本ページの Cloud Formation は、基本的に EC2 インスタンスを立ててそこにアプリケーションを配置し、外部からアクセスできるようにします。 EC2インスタンスを立てる場所を決めるために、 VPC とサブネットの指定が必要です。作成方法やそもそも意味がわからない方は、 [[初心者向け]VPC作成からEC2インスタンス起動までを構成図見ながらやってみる（その1）](https://dev.classmethod.jp/articles/creation_vpc_ec2_for_beginner_1/) の解説が丁寧であるため参照してください。
+
+EC2 インスタンスとして GPU が搭載された G 系のインスタンスを使用します。ただ、デフォルトでは立ち上げられる数が制限されており Cloud Formation の実行がエラーになることがあります。そのため、事前に [引き上げのリクエスト](https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/ec2-resource-limits.html) を参照し制限を引き上げてください。設定値はインスタンスの数ではなく vCPU の数になっており、 `sd-webui` で使用する `g4dn.xlarge` の vCPU 数は 4 です。そのため最低4、さらに `2xlarge` を使用する場合は 8 と`xlarge` の前の数をかけて数を申請してください。なお、vCPUの数は次世代の `g5.xlarge` でも 4 です。申請の承認に数十分程度かかるので、[Running On-Demand G and VT instances](https://us-east-1.console.aws.amazon.com/servicequotas/home/services/ec2/quotas/L-DB2E81BA) からまず申請だけしておくのを推奨します。"On-Demand" とある通り、スポットインスタンスを使う場合の申請と別れています。
+
+![](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png) のボタンを押すと、 Cloud Formation が実行できます。エラーになってしまった場合は、AWS コンソール上で Cloud Formation > Stacks と選択しエラーになったスタックを削除してください。削除した後、制限が足りないなどの原因を解消した後再度ボタンを押し実行してみてください。
+
+起動ができた後の料金について記載しておきます。 [g4dn.xlarge](https://aws.amazon.com/jp/ec2/instance-types/g4/) の場合、0.526 USD / hour = 約75円/hour となります。最新の価格はリンク先の価格表で確認してください。なお、1日4時間までであれば無料で GPU インスタンスが利用できる [SageMaker Studio Lab でのStable Diffusion Web UI の実装](https://github.com/camenduru/stable-diffusion-webui-sagemaker) もあります。1日4時間以上利用する/安定的に運用するケースではこちらの CloudFormation Template をお使いください。
 
 ## はじめに
 
@@ -79,34 +89,26 @@ SSM セッションマネージャーを使用してコマンドラインで操�
 
 ## トラブルシューティング
 
-- サーバーにアクセスできない
-  - VPC リーチャビリティアナライザで到達性をチェックしてください
-  - ポート 7860 がブロックされている場合は、VPN をオフにしてください。
-  - ログを確認してください
-    - 1. コンソールからまたは次のコマンドを使用して、スタックのイベントを確認します : `aws cloudformation describe-stack-events --region <region> --stack-name sd-webui-stack`
-    - 2. EC2 インスタンス上のログを確認します : `sudo cat /var/log/cloud-init-output.log`
-    - 3. `/home/ubuntu/stable-diffusion-webui` にある各ログファイルを確認します。
-  - セキュリティグループとネットワーク ACL を確認してください。
-- コンソールにアクセスできない
-  - ポートフォワーディングが正しく設定されていることを確認してください。
-  - ローカルマシンのファイアウォール設定を確認してください。
-- ファイルブラウザにアクセスできない
-  - ポート 8080 が開かれていることを確認してください。
-  - Filebrowser のログを確認してください : `sudo cat /home/ubuntu/filebrowser/filebrowser.log`
-  - ユーザー名とパスワードが正しいことを確認してください。
-  - `/home/ubuntu/filebrowser/filebrowser.json` で設定を確認します。
-- Kohya SS にアクセスできない
-  - ポート 7861 が開かれていることを確認してください。
-  - Kohya SS のログを確認してください : `sudo cat /home/ubuntu/kohya_ss/kohya_ss.log`
-- Stable Diffusion Web UI から拡張機能をインストールできない（エラー : AssertionError: extension access disabled because of command line flags）
-  - [ セキュリティ上の理由から、パブリックエンドポイントを使用している場合は、UI から拡張機能をインストールできません ](https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/7153)。
-- トレーニング時に CUDA のメモリ不足が発生する
-  - Stable Diffusion Web UI を停止すると、一部の GPU メモリが節約される場合があります。`nvidia-smi` で GPU メモリを消費しているプロセスの PID を確認し、`kill -9 <pid>` で停止させることができます。
-  - または、より大きなインスタンスでクラウドフォーメーションテンプレートを起動することができます。
-- Kohya-ss の「トレーニング」をクリックしても何も起こらない
-  - Kohya-ss には UI のフィードバックがありません。ログは `kohya-log.txt` を確認してください。Filebrowser からアクセスするか、`tail` コマンドでログを表示できます。
-- Insufficient Capacity でインスタンスが立ち上げられない。
-  - [AMI](https://aws.amazon.com/releasenotes/aws-deep-learning-ami-gpu-pytorch-2-0-ubuntu-20-04/) をサポートしている他のインスタンスタイプを利用するか別リージョンで試してみてください。
+- サーバにアクセスできない
+  - VPC Reachability Analyzerで到達可能性を確認する
+  - ポート7860がブロックされている場合は、VPNをオフにしてください。
+  - ログを見る
+    - 1.コンソールから SSM Session Manager でインスタンスにログインするか、`aws ssm start-session --region <region> --target <instance_id>` コマンドを実行する。
+    - 2. `tail /var/log/cloud-init-output.log` でユーザーデータの実行ログを見る。
+    - 3. Stable Diffusion Web UI のログを `tail /home/ubuntu/sd-webui-log.txt` で表示する。
+    - 4. Kohya SS のログを `tail /home/ubuntu/kohya-log.txt` で表示する。
+- SSMセッションマネージャでサーバにアクセスできない
+  - [SSMセッションマネージャ](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-getting-started.html)のガイドに従って、セッションマネージャを有効にしてください。
+  - リージョンレベルの設定は [Fleet Manager](https://us-east-1.console.aws.amazon.com/systems-manager/managed-instances/dhmc-configuration?region=us-east-1)から選ぶと簡単です。
+- UI から拡張機能をインストールできない (Error: AssertionError: extension access disabled because of command line flags）
+  - [セキュリティ上の理由でパブリックエンドポイントを使用している場合、UIから拡張機能をインストールできません](https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/7153)。
+- トレーニング時の CUDA out of memory。
+  - Stable Diffusion Web UIを停止すると、GPUメモリが節約される場合があります。`nvidia-smi` でGPUメモリを消費しているpidを確認し、`kill -9 <pid>` で停止してください。
+  - あるいは、より大きなインスタンスでcloudformationテンプレートを起動することもできます。
+- kohya_ss の train / caption をクリックしても何も起こらない。
+  - kohya_ssのUIフィードバックはありません。ログは `kohya-log.txt` を参照してください。ファイルブラウザからアクセスしてください。
+- インスタンス起動時の容量不足
+  - [AMI](https://aws.amazon.com/releasenotes/aws-deep-learning-ami-gpu-pytorch-2-0-ubuntu-20-04/)をサポートする別のインスタンスタイプか、別のリージョンを試してください。
 
 ## 含まれるソフトウェアのライセンスに関するお知らせ
 
