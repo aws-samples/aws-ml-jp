@@ -155,6 +155,7 @@ SageMaker と他のサービスを組み合わせ、業務プロセスの効率�
 
 * [Simple Lex Kendra JP](https://github.com/aws-samples/simple-lex-kendra-jp)
   * 情報システム部門のヘルプデスクへの問い合わせ件数を削減するため、問い合わせを受け付けるチャットボットを設置するソリューションです。社内文書の検索を行う `Amazon Kendra` と問い合わせを受け付けるチャットボットの `Amazon Lex v2` を組み合わせて実装しています。 `AWS CDK` で構成されているため、シンプルにデプロイ可能です。
+  * [SBI 生命様のコールセンターでの導入事例](https://xtech.nikkei.com/atcl/nxt/news/18/15545/?ST=ch_businessAI)
 * [検索と生成系 AI を組み合わせ検索体験を改善する (RAG:Retrieval Augmented Generation)](https://aws.amazon.com/jp/blogs/news/quickly-build-high-accuracy-generative-ai-applications-on-enterprise-data-using-amazon-kendra-langchain-and-large-language-models/)
   * カスタマーサポートなどで生成系 AI を利用する場合、自然な応答による顧客体験の改善が期待できるものの、誤った発言 ( ハルシネーション ) が発生する恐れがあります。生成元のドキュメントを指定することで誤った発言を抑止することができ、検索エンジンから生成系 AI にドキュメントを与え生成する仕組みを RAG と呼びます。本ソリューションでは、検索エンジンとして `Amazon Kendra` 、生成系 AI として `Anthropic Claude-V1` 等を用いて RAG を実現します。
 * [コールセンターのリアルタイム会話分析](https://aws.amazon.com/jp/blogs/news/live-call-analytics-and-agent-assist-for-your-contact-center-with-amazon-language-ai-services/)
