@@ -87,7 +87,7 @@ Resources:
             cd /home/ubuntu
             # setup script uses existing folder if it exists. Feel free to change version here.
             sudo -u ubuntu git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git -b ${SDWebUIVersion}
-            sudo -u ubuntu nohup bash -c 'bash <(wget -qO- https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh) --listen --xformers &> sd-webui-log.txt' &
+            sudo -u ubuntu nohup bash -c 'stable-diffusion-webui/webui.sh --listen --xformers &> sd-webui-log.txt' &
             --//
   MyEIP:
     Type: AWS::EC2::EIP
