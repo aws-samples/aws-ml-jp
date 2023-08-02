@@ -153,13 +153,14 @@ AWS で画像処理や自然言語処理などの機械学習のタスクを解�
 
 SageMaker と他のサービスを組み合わせ、業務プロセスの効率化や差別化を行うためのソリューションを格納/紹介します。
 
+* [JP RAG SOLUTION](https://github.com/aws-samples/jp-rag-sample)
+  * カスタマーサポートなどで生成系 AI を利用する場合、自然な応答による顧客体験の改善が期待できるものの、誤った発言 ( ハルシネーション ) が発生する恐れがあります。生成元のドキュメントを指定することで誤った発言を抑止することができ、検索エンジンから生成系 AI にドキュメントを与え生成する仕組みを RAG と呼びます。本ソリューションでは、検索エンジンとして `Amazon Kendra` 、生成系 AI として `Anthropic Claude` /  [`rinna/japanese-gpt-neox-3.6b-instruction-ppo`](https://huggingface.co/rinna/japanese-gpt-neox-3.6b-instruction-ppo) を用いて RAG を実現します。
+  * 参考記事: [高精度な生成系 AI アプリケーションを Amazon Kendra、LangChain、大規模言語モデルを使って作る](https://aws.amazon.com/jp/blogs/news/quickly-build-high-accuracy-generative-ai-applications-on-enterprise-data-using-amazon-kendra-langchain-and-large-language-models/)
+* [コールセンターのリアルタイム会話分析](https://aws.amazon.com/jp/blogs/news/live-call-analytics-and-agent-assist-for-your-contact-center-with-amazon-language-ai-services/)
+  * コールセンターで会話の文字起こし、翻訳、感情分析、会話内容の要約、オペレーターへのアドバイスをリアルタイムで行うソリューションです。文字起こしは `Amazon Transcribe` 、翻訳は `Amazon Translate` 、 感情分析は `Amazon Comprehend` 、 要約は `Amazon SageMaker` 、 アドバイスは `Amazon Lex` と `Amazon Kendra` で実装しています。
 * [Simple Lex Kendra JP](https://github.com/aws-samples/simple-lex-kendra-jp)
   * 情報システム部門のヘルプデスクへの問い合わせ件数を削減するため、問い合わせを受け付けるチャットボットを設置するソリューションです。社内文書の検索を行う `Amazon Kendra` と問い合わせを受け付けるチャットボットの `Amazon Lex v2` を組み合わせて実装しています。 `AWS CDK` で構成されているため、シンプルにデプロイ可能です。
   * [SBI 生命様のコールセンターでの導入事例](https://xtech.nikkei.com/atcl/nxt/news/18/15545/?ST=ch_businessAI)
-* [検索と生成系 AI を組み合わせ検索体験を改善する (RAG:Retrieval Augmented Generation)](https://aws.amazon.com/jp/blogs/news/quickly-build-high-accuracy-generative-ai-applications-on-enterprise-data-using-amazon-kendra-langchain-and-large-language-models/)
-  * カスタマーサポートなどで生成系 AI を利用する場合、自然な応答による顧客体験の改善が期待できるものの、誤った発言 ( ハルシネーション ) が発生する恐れがあります。生成元のドキュメントを指定することで誤った発言を抑止することができ、検索エンジンから生成系 AI にドキュメントを与え生成する仕組みを RAG と呼びます。本ソリューションでは、検索エンジンとして `Amazon Kendra` 、生成系 AI として `Anthropic Claude-V1` 等を用いて RAG を実現します。
-* [コールセンターのリアルタイム会話分析](https://aws.amazon.com/jp/blogs/news/live-call-analytics-and-agent-assist-for-your-contact-center-with-amazon-language-ai-services/)
-  * コールセンターで会話の文字起こし、翻訳、感情分析、会話内容の要約、オペレーターへのアドバイスをリアルタイムで行うソリューションです。文字起こしは `Amazon Transcribe` 、翻訳は `Amazon Translate` 、 感情分析は `Amazon Comprehend` 、 要約は `Amazon SageMaker` 、 アドバイスは `Amazon Lex` と `Amazon Kendra` で実装しています。
 * [レビューコメント分析ダッシュボード](./review_analysis_dashboard/)
   * 自然言語処理でレビューを分析した結果を `Amazon Quicksight` でダッシュボードとして表示するソリューションです。オープンソースの形態素解析ツールである [GiNZA](https://megagonlabs.github.io/ginza/) を用いて時系列のレビュー数に加え頻出単語・係り受け関係を参照できます。[ブログ記事](https://aws.amazon.com/jp/blogs/news/amazon-sagemaker-amazon-quicksight-nlp-dashboard/)では、評価の低い DVD に対し 「まだ」「届く」の発生が多いことから発送遅延が原因ではないかといった分析例を示しています。
 
