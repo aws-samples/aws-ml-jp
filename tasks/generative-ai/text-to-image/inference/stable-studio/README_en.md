@@ -13,6 +13,11 @@ There are two cloudformation templates
 
 1. Deploy Stable Studio on Single EC2 Instance
    1. [![](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=sd-webui&templateURL=https://aws-ml-jp.s3.ap-northeast-1.amazonaws.com/tasks/generative-ai/text-to-image/stable-studio/stable-studio-webui.yaml)
+2. Setup Stable Studio (This step is required for all user using the app)
+    1. Open `<public ip address>:3000` on browser
+    2. Open setting from icon on top right, and enter `http://<public ip address>:7861` for host url.
+    3. Go back to generation page, open `Advanced` and select `model` and `sampler` option.
+    4. Click `Dream` to generate image.
 
 ## Installation (Static Site + Backend)
 
@@ -57,6 +62,7 @@ frontend:
   - Turn off VPN in case the port is blocked.
   - See logs
     - 1. Get in to the instance with SSM Session Manager from console or with command `aws ssm start-session --region <region> --target <instance_id>`
+        - Prerequisite: Install [Session Manger Plugin](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html) and attach IAM role with [SSM Permission](https://docs.aws.amazon.com/systems-manager/latest/userguide/getting-started-add-permissions-to-existing-profile.html) to the instance.（Not required if [default host management configuration](https://docs.aws.amazon.com/systems-manager/latest/userguide/managed-instances-default-host-management.html) is enabled）。
     - 2. View log of running userdata with `tail /var/log/cloud-init-output.log`
     - 3. View log of Stable Diffusion Web UI with `tail /home/ubuntu/sd-webui-log.txt`
 - Insufficient Capacity when launching instance

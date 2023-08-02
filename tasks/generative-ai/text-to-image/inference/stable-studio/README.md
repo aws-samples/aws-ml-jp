@@ -16,6 +16,12 @@
 
 1. Stable Studio を EC2 インスタンスにデプロイする
    1. [![](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://us-east-1.console.aws.amazon.com/cloudformation/home#/stacks/create/review?stackName=stable-studio&templateURL=https://aws-ml-jp.s3.ap-northeast-1.amazonaws.com/tasks/generative-ai/text-to-image/stable-studio/stable-studio-webui.yaml)
+2. Stable Studio のセットアップを完了します (このステップは、アプリを使用するすべてのユーザーに必要です)
+   1. ブラウザで `<public ip address>:3000` を開きます。
+   2. 右上のアイコンをクリックして設定を開き、ホストURL に `http://<public ip address>:7861`
+   3. 生成ページに戻り、`Advanced`を開き、オプションから`model`と`sampler`を設定する。
+   4. `Dream` をクリックして画像が生成されることを確認します。
+
 
 ## インストール (静的サイト + バックエンド構成)
 
@@ -57,9 +63,10 @@ frontend:
 
 - サーバにアクセスできない
   - VPC Reachability Analyzerで到達可能性を確認する
-  - ポート7860がブロックされている場合は、VPNをオフにしてください。
+  - ポート 3000 や 7860 が VPN でブロックされている場合があります。その場合は、VPNをオフにしてください。
   - ログを見る
     - 1.コンソールから SSM Session Manager でインスタンスにログインするか、`aws ssm start-session --region <region> --target <instance_id>` コマンドを実行する。
+    　　-　前提条件：[セッションマネージャープラグイン](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html)のインストール及びインスタンスの IAM Role への [SSM 権限](https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/getting-started-add-permissions-to-existing-profile.html)の付与（[デフォルトのホスト管理設定](https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/managed-instances-default-host-management.html)が設定されていれば不要）。
     - 2. `tail /var/log/cloud-init-output.log` でユーザーデータの実行ログを見る。
     - 3. Stable Diffusion Web UI のログを `tail /home/ubuntu/sd-webui-log.txt` で表示する。
 - インスタンス起動時の容量不足

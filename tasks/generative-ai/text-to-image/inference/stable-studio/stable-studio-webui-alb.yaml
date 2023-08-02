@@ -209,7 +209,7 @@ Resources:
               sudo -u ubuntu git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git -b ${SDWebUIVersion}
               # Set config.json with default value to prevent error.
               echo "{\"sd_model_checkpoint\": \"\", \"sd_checkpoint_hash\": \"\"}" > stable-diffusion-webui/config.json
-              sudo -u ubuntu nohup bash -c 'bash <(wget -qO- https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh) --xformers --listen --nowebui --cors-allow-origins=${StableStudioURL} &> sd-webui-log.txt' &
+              sudo -u ubuntu nohup bash -c 'stable-diffusion-webui/webui.sh --xformers --listen --nowebui --cors-allow-origins=${StableStudioURL} &> sd-webui-log.txt' &
         ImageId: !Ref Ec2ImageId
         InstanceType: !Ref Ec2InstanceType
         NetworkInterfaces: 
