@@ -2,7 +2,7 @@
 
 import os
 import sys
-from typing import List
+from typing import List, Dict
 
 import fire
 import torch
@@ -45,6 +45,8 @@ class SavePeftModelCallback(TrainerCallback):
 def train(
     # model/data params
     base_model: str = "",  # the only required argument
+    tokenizer_name: str = "",
+    tokenizer_kwargs: Dict[str, any] = {},
     data_path: str = "yahma/alpaca-cleaned",
     output_dir: str = "./lora-alpaca",
     trust_remote_code: bool = False,
@@ -157,7 +159,9 @@ def train(
         )
     model.model_parallel = False  # For MPT patch compatibility
 
-    tokenizer = AutoTokenizer.from_pretrained(base_model)
+    tokenizer_name = tokenizer_name or base_model
+    print(tokenizer_name, tokenizer_kwargs)
+    tokenizer = AutoTokenizer.from_pretrained(tokenizer_name, **tokenizer_kwargs)
 
     print(tokenizer.special_tokens_map)
     print("bos_token :", tokenizer.eos_token, ",", tokenizer.bos_token_id)
