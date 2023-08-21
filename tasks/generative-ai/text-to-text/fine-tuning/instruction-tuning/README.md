@@ -35,16 +35,22 @@
 | [Cerebras_LoRA_ja.ipynb](Transformers/Cerebras_LoRA_ja.ipynb) | Cerebras を 日本語 Dolly Dataset で LoRA チューニングとデプロイ |
 | [StableLM_Inference.ipynb](Transformers/StableLM_Inference.ipynb) | StableLM をデプロイ |
 | [StableLM_LoRA.ipynb](Transformers/StableLM_LoRA.ipynb) | StableLM を Dolly Dataset で LoRA チューニングとデプロイ |
+| [StableLM_Inference_ja.ipynb](Transformers/StableLM_Inference_ja.ipynb) | StableLM JP をデプロイ |
+| [StableLM_LoRA_ja.ipynb](Transformers/StableLM_LoRA_ja.ipynb) | StableLM JP を 日本語 Dolly Dataset で LoRA チューニングとデプロイ |
 | [Dolly_v2_Inference.ipynb](Transformers/Dolly_v2_Inference.ipynb) | Dolly v2 をデプロイ |
 | [Dolly_v2_LoRA.ipynb](Transformers/Dolly_v2_LoRA.ipynb) | Dolly v2 を Dolly Dataset で LoRA チューニングとデプロイ |
 | [OpenCALM_Inference_ja.ipynb](Transformers/OpenCALM_Inference_ja.ipynb) | OpenCALM をデプロイ |
 | [OpenCALM_LoRA_ja.ipynb](Transformers/OpenCALM_LoRA_ja.ipynb) | OpenCALM を Dolly Dataset で LoRA チューニングとデプロイ |
 | [Rinna_Neox_Inference_ja.ipynb](Transformers/Rinna_Neox_Inference_ja.ipynb) | Rinna NeoX をデプロイ |
 | [Rinna_Neox_LoRA_ja.ipynb](Transformers/Rinna_Neox_LoRA_ja.ipynb) | Rinna NeoX を Dolly Dataset で LoRA チューニングとデプロイ |
+| [Rinna_Neox_LoRA_ja_djl.ipynb](Transformers/Rinna_Neox_LoRA_ja_djl.ipynb) | Rinna NeoX を Dolly Dataset で LoRA チューニングと DJL を使用してデプロイ |
 | [RWKV_Inference.ipynb](Transformers/RWKV_Inference.ipynb) | RWKV のデプロイ |
 | [MPT_Inference.ipynb](Transformers/MPT_Inference.ipynb) | MPT のデプロイ |
 | [MPT_LoRA.ipynb](Transformers/MPT_LoRA.ipynb) | MPT を Dolly Dataset で LoRA チューニングとデプロイ |
 | [MPT_LoRA_ja.ipynb](Transformers/MPT_LoRA_ja.ipynb) | MPT を 日本語 Dolly データセットで LoRA チューニングとデプロイ |
+| [Falcon_Inference.ipynb](Transformers/Falcon_Inference.ipynb) | Falcon を デプロイ |
+| [Falcon_LoRA.ipynb](Transformers/Falcon_LoRA.ipynb) | Falcon を Dolly データセットで LoRA チューニングとデプロイ |
+| [Falcon_LoRA_ja.ipynb](Transformers/Falcon_LoRA_ja.ipynb) | Falcon を 日本語 Dolly データセットで LoRA チューニングとデプロイ |
 | [RWKV_Finetune.ipynb](RWKV/RWKV_Finetune.ipynb) | RWKV を Dolly Dataset でファインチューニングとデプロイ |
 | [RWKV_LoRA.ipynb](RWKV/RWKV_Finetune.ipynb) | RWKV を Dolly Dataset で LoRA チューニングとデプロイ |
 | [RWKV_LoRA_ja.ipynb](RWKV/RWKV_Finetune.ipynb) | RWKV を 日本語 Dolly データセットで LoRA チューニングとデプロイ |
