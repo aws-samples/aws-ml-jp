@@ -17,3 +17,4 @@ evaluate
 pynvml==11.4.1
 protobuf==3.20.2
 einops
+wandb
