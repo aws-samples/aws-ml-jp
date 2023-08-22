@@ -2,6 +2,7 @@
 
 import os
 import sys
+import subprocess
 from typing import List, Dict
 
 import fire
@@ -128,6 +129,7 @@ def train(
     )
     # Only overwrite environ if wandb param passed
     if len(wandb_project) > 0:
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'wandb'])
         os.environ["WANDB_PROJECT"] = wandb_project
     if len(wandb_watch) > 0:
         os.environ["WANDB_WATCH"] = wandb_watch
