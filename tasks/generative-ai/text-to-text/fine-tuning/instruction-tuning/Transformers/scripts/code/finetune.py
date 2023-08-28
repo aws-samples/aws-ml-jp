@@ -2,7 +2,8 @@
 
 import os
 import sys
-from typing import List
+import subprocess
+from typing import List, Dict
 
 import fire
 import torch
@@ -45,6 +46,8 @@ class SavePeftModelCallback(TrainerCallback):
 def train(
     # model/data params
     base_model: str = "",  # the only required argument
+    tokenizer_name: str = "",
+    tokenizer_kwargs: Dict[str, any] = {},
     data_path: str = "yahma/alpaca-cleaned",
     output_dir: str = "./lora-alpaca",
     trust_remote_code: bool = False,
@@ -126,6 +129,7 @@ def train(
     )
     # Only overwrite environ if wandb param passed
     if len(wandb_project) > 0:
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'wandb'])
         os.environ["WANDB_PROJECT"] = wandb_project
     if len(wandb_watch) > 0:
         os.environ["WANDB_WATCH"] = wandb_watch
@@ -143,7 +147,8 @@ def train(
             base_model,
             quantization_config=nf4_config,
             device_map=device_map,
-            trust_remote_code=trust_remote_code
+            trust_remote_code=trust_remote_code,
+            cache_dir="/tmp/model_cache/",
         )
     else:
         model = AutoModelForCausalLM.from_pretrained(
@@ -151,11 +156,14 @@ def train(
             load_in_8bit=load_in_8bit,
             torch_dtype=torch.float16,
             device_map=device_map,
-            trust_remote_code=trust_remote_code
+            trust_remote_code=trust_remote_code,
+            cache_dir="/tmp/model_cache/",
         )
     model.model_parallel = False  # For MPT patch compatibility
 
-    tokenizer = AutoTokenizer.from_pretrained(base_model)
+    tokenizer_name = tokenizer_name or base_model
+    print(tokenizer_name, tokenizer_kwargs)
+    tokenizer = AutoTokenizer.from_pretrained(tokenizer_name, **tokenizer_kwargs)
 
     print(tokenizer.special_tokens_map)
     print("bos_token :", tokenizer.eos_token, ",", tokenizer.bos_token_id)

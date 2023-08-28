@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+from typing import Dict
 
 import torch
 import transformers
@@ -28,9 +29,11 @@ def main(
     use_deepspeed: bool = False,
     use_optimum: bool = False,
     base_model: str = "",
+    tokenizer_name: str = "",
     peft: bool = True,
     lora_weights: str = "tloen/alpaca-lora-7b",
     prompt_template: str = "",
+    tokenizer_kwargs: Dict[str, any] = {},
     **kwargs,
 ):
     if torch.cuda.is_available():
@@ -42,9 +45,10 @@ def main(
 
     base_model = base_model or os.environ.get("BASE_MODEL", "")
     assert (base_model), "Please specify a --base_model"
+    tokenizer_name = tokenizer_name or base_model
 
     prompter = Prompter(prompt_template)
-    tokenizer = AutoTokenizer.from_pretrained(base_model)
+    tokenizer = AutoTokenizer.from_pretrained(tokenizer_name, **tokenizer_kwargs)
 
     print("Loading Model: ", base_model)
     if device == "cuda":
@@ -73,9 +77,6 @@ def main(
             )
 
         model.model_parallel = False  # For MPT patch compatibility
-        if torch.cuda.device_count() > 1:
-            model.is_parallelizable = True
-            model.model_parallel = True
 
         if peft:
             print("Loading Lora Weight")
