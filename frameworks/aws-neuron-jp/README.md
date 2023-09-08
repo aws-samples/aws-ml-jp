@@ -5,7 +5,7 @@
 
 
 
-![Neuron Overview](./neuron-aws-ml-chip.png)
+![Neuron Overview](./neuron-aws-ml-chips.png)
 
 
 ## Amazon EC2 Inf1 インスタンス
