@@ -54,7 +54,7 @@ AWS Trainium と同じ世代となる NeuronCore-v2 を搭載、推論だけで�
 
 ## 📝 注目コンテンツ
 
-* Llama2 7B (学習)
+* Llama2 7B/13B (学習)
   * [Llama2 pretraining job using neuronx-nemo-megatron](https://github.com/aws-neuron/aws-neuron-parallelcluster-samples/blob/master/examples/jobs/neuronx-nemo-megatron-llamav2-job.md)
 * Llama2 7B/13B (推論 - テキスト生成)
   * [Llama2 autoregressive sampling using transformers-neuronx](https://github.com/aws-neuron/aws-neuron-samples/blob/master/torch-neuronx/transformers-neuronx/inference/meta-llama-2-13b-sampling.ipynb)
