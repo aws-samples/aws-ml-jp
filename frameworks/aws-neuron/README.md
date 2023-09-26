@@ -37,6 +37,9 @@ AWS Trainium と同じ世代となる NeuronCore-v2 を搭載、推論だけで�
   * Vision Transformer (ViT) モデルを beans データセットを使ってファインチューニングから推論まで同一インスタンス上で通して実行
   * inf2.xlarge もしくは trn1.2xlarge上で実行可能（より大きいサイズのインスタンスでも実行可能）
 
+**Note**
+コンテンツはJupyter Nodebook形式で提供しています。Jupter Notebook環境のセットアップ方法は[こちら](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/general/setup/notebook/setup-jupyter-notebook-steps-troubleshooting.html)をご参照下さい。
+
 ## :books: グローバルコンテンツ
 
 * https://awsdocs-neuron.readthedocs-hosted.com/en/latest/general/arch/model-architecture-fit.html
@@ -60,4 +63,4 @@ AWS Trainium と同じ世代となる NeuronCore-v2 を搭載、推論だけで�
   * [HuggingFace Stable Diffusion 1.5 (512x512)](https://github.com/aws-neuron/aws-neuron-samples/blob/master/torch-neuronx/inference/hf_pretrained_sd15_512_inference.ipynb)
   * [HuggingFace Stable Diffusion 2.1 (512x512)](https://github.com/aws-neuron/aws-neuron-samples/blob/master/torch-neuronx/inference/hf_pretrained_sd2_512_inference.ipynb)
   * [HuggingFace Stable Diffusion 2.1 (768x768)](https://github.com/aws-neuron/aws-neuron-samples/blob/master/torch-neuronx/inference/hf_pretrained_sd2_768_inference.ipynb)
-  * [HuggingFace Stable Diffusion XL 1.0 (1024x1024)](https://github.com/aws-neuron/aws-neuron-samples/blob/master/torch-neuronx/inference/hf_pretrained_sdxl_1024_inference.ipynb)
+  * [HuggingFace Stable Diffusion XL 1.0 (1024x1024)](https://github.com/aws-neuron/aws-neuron-samples/blob/master/torch-neuronx/inference/hf_pretrained_sdxl_base_and_refiner_1024_inference.ipynb)
