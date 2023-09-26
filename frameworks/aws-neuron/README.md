@@ -37,8 +37,8 @@ AWS Trainium と同じ世代となる NeuronCore-v2 を搭載、推論だけで�
   * Vision Transformer (ViT) モデルを beans データセットを使ってファインチューニングから推論まで同一インスタンス上で通して実行
   * inf2.xlarge もしくは trn1.2xlarge上で実行可能（より大きいサイズのインスタンスでも実行可能）
 
-**Note**
-コンテンツはJupyter Nodebook形式で提供しています。Jupter Notebook環境のセットアップ方法は[こちら](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/general/setup/notebook/setup-jupyter-notebook-steps-troubleshooting.html)をご参照下さい。
+> [!NOTE]
+> コンテンツは Jupyter Nodebook 形式で提供しています。Jupter Notebook 環境のセットアップ方法は[こちら](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/general/setup/notebook/setup-jupyter-notebook-steps-troubleshooting.html)をご参照下さい。
 
 ## :books: グローバルコンテンツ
 
