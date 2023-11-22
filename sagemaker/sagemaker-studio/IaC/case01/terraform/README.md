@@ -2,8 +2,8 @@
 
 ### git clone & cd
 ```
-git clone https://gitlab.aws.dev/kudtomoy/cdk-sagemaker-studio.git
-cd cdk-sagemaker-studio/case01/terraform
+git clone https://github.com/aws-samples/aws-ml-jp.git
+cd aws-ml-jp/sagemaker/sagemaker-studio/IaC/case01/terraform
 ```
 
 ### 鍵保管用のディレクトリ作成
