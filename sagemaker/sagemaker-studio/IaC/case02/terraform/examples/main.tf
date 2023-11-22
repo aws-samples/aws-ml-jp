@@ -537,6 +537,13 @@ resource "aws_security_group" "sagemaker_studio_outbound" {
   name        = "sagemaker_studio_outbound"
   description = "Sagemaker Studio Doamain sample"
   vpc_id      = module.vpc_for_sagemaker.vpc_id
+  ingress {
+    description      = "tcp access from KernelGateway"
+    from_port        = 8192
+    to_port          = 65535
+    protocol         = "tcp"
+    cidr_blocks      = ["10.0.0.0/16"]
+  }
   egress {
     from_port        = 0
     to_port          = 0
@@ -561,11 +568,6 @@ resource "aws_sagemaker_domain" "domain" {
   default_user_settings {
     execution_role  = aws_iam_role.sagemaker_execution_role_default.arn
     security_groups = [aws_security_group.sagemaker_studio_outbound.id]
-    jupyter_server_app_settings {
-      default_resource_spec {
-        sagemaker_image_arn = "arn:aws:sagemaker:${data.aws_region.current.name}:081325390199:image/jupyter-server-3"
-      }
-    }
   }
 }
 
