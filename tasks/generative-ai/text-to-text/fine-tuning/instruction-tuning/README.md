@@ -53,6 +53,9 @@
 | [Falcon_Inference.ipynb](Transformers/Falcon_Inference.ipynb) | Falcon を デプロイ |
 | [Falcon_LoRA.ipynb](Transformers/Falcon_LoRA.ipynb) | Falcon を Dolly データセットで LoRA チューニングとデプロイ |
 | [Falcon_LoRA_ja.ipynb](Transformers/Falcon_LoRA_ja.ipynb) | Falcon を 日本語 Dolly データセットで LoRA チューニングとデプロイ |
+| [Llama2_LoRA__TGI_ja.ipynb](Transformers/Llama2_LoRA__TGI_ja.ipynb) | Llama2 を 日本語 Dolly データセットで LoRA チューニングして TGI コンテナでデプロイ |
+| [Elyza_Inference_TGI_ja.ipynb](Transformers/Elyza_Inference_TGI_ja.ipynb) | Elyza を TGI コンテナでデプロイ |
+| [Elyza_LoRA_TGI_ja.ipynb](Transformers/Elyza_LoRA_TGI_ja.ipynb) | Elyza を 日本語 Dolly データセットで LoRA チューニングして TGI コンテナでデプロイ |
 | [RWKV_Finetune.ipynb](RWKV/RWKV_Finetune.ipynb) | RWKV を Dolly Dataset でファインチューニングとデプロイ |
 | [RWKV_LoRA.ipynb](RWKV/RWKV_Finetune.ipynb) | RWKV を Dolly Dataset で LoRA チューニングとデプロイ |
 | [RWKV_LoRA_ja.ipynb](RWKV/RWKV_Finetune.ipynb) | RWKV を 日本語 Dolly データセットで LoRA チューニングとデプロイ |
