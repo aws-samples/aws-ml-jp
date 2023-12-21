@@ -1,0 +1,118 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: A CloudFormation template to deploy the Stable Diffusion Web UI by Automatic1111
+Parameters:
+  VpcId:
+    Description: The ID of the VPC where the EC2 instance will be launched.
+    Type: AWS::EC2::VPC::Id
+  SubnetId:
+    Description: The ID of the subnet where the EC2 instance will be launched.
+    Type: AWS::EC2::Subnet::Id
+  Ec2ImageId:
+    Type: String
+    Default: ami-08d56feea76b6f38b
+    Description: Enter appropriate AMI ID in your region. Tested with "Deep Learning AMI GPU PyTorch 1.13.1 (Ubuntu 20.04) 20230510" in us-east-1.
+  Ec2InstanceType:
+    Type: String
+    Default: g4dn.xlarge
+  SDWebUIVersion:
+    Type: String
+    Description: Branch of AUTOMATIC1111/stable-diffusion-webui
+    Default: v1.3.2
+Resources:
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: sd-webui-sg
+      GroupDescription: Security group for SD WebUI EC2 instance
+      VpcId: !Ref VpcId
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 7861
+          ToPort: 7861
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 3000
+          ToPort: 3000
+          CidrIp: 0.0.0.0/0
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref Ec2InstanceType
+      ImageId: !Ref Ec2ImageId
+      SubnetId: !Ref SubnetId
+      BlockDeviceMappings:
+        - DeviceName: /dev/sda1
+          Ebs:
+            VolumeSize: 300
+            VolumeType: gp2
+      "Tags" : [
+            {"Key" : "Name", "Value" : "sd-web-ui-cf"},
+        ]
+      SecurityGroupIds:
+        - Ref: SecurityGroup
+      UserData:
+        'Fn::Base64': !Sub |
+            Content-Type: multipart/mixed; boundary="//"
+            MIME-Version: 1.0
+
+            --//
+            Content-Type: text/cloud-config; charset="us-ascii"
+            MIME-Version: 1.0
+            Content-Transfer-Encoding: 7bit
+            Content-Disposition: attachment; filename="cloud-config.txt"
+
+            #cloud-config
+            cloud_final_modules:
+            - [scripts-user, always]
+
+            --//
+            Content-Type: text/x-shellscript; charset="us-ascii"
+            MIME-Version: 1.0
+            Content-Transfer-Encoding: 7bit
+            Content-Disposition: attachment; filename="userdata.txt"
+            
+            #!/bin/bash
+
+            # Install packages
+            curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+            echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+            curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash - 
+            sudo apt update
+            sudo add-apt-repository ppa:deadsnakes/ppa -y
+            sudo apt install -y nodejs yarn
+            sudo apt -y install wget git
+            sudo apt -y install python3 python-is-python3 python3-pip python3-venv
+            sudo apt -y install python3.10 python3.10-distutils python3.10-venv python3.10-tk
+            curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
+            python3.10 -m pip install --upgrade pip
+            sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
+
+            # Launch Stable Diffusion Web UI
+            cd /home/ubuntu
+            # setup script uses existing folder if it exists. Feel free to change version here.
+            sudo -u ubuntu git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git -b ${SDWebUIVersion}
+            # Set config.json with default value to prevent error.
+            echo "{\"sd_model_checkpoint\": \"\", \"sd_checkpoint_hash\": \"\"}" > stable-diffusion-webui/config.json
+            sudo -u ubuntu nohup bash -c 'stable-diffusion-webui/webui.sh --xformers --listen --nowebui --cors-allow-origins=* &> sd-webui-log.txt' &
+
+            # Launch Stable Studio
+            cd /home/ubuntu
+            sudo -u ubuntu git clone https://github.com/Stability-AI/StableStudio.git
+            cd /home/ubuntu/StableStudio
+            sudo -u ubuntu yarn
+            sudo -u ubuntu nohup bash -c 'yarn dev:use-webui-plugin --host --port 3000 &> ../stable-studio-log.txt' &
+            --//
+  MyEIP:
+    Type: AWS::EC2::EIP
+  MyEIPAssociation:
+    Type: AWS::EC2::EIPAssociation
+    Properties:
+      AllocationId: !GetAtt MyEIP.AllocationId
+      InstanceId: !Ref EC2Instance
+Outputs:
+  PublicIp:
+    Description: EC2Instance Public IP
+    Value: !GetAtt EC2Instance.PublicIp
+  InstanceID:
+    Description: EC2Instance ID
+    Value: !Ref EC2Instance
