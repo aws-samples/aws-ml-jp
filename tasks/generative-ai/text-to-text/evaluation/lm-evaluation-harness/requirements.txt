@@ -1,0 +1,1 @@
+git+https://github.com/Stability-AI/lm-evaluation-harness.git@jp-stable#egg=lm_eval[ja]
