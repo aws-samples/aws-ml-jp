@@ -1,11 +1,8 @@
 import subprocess
-from time import sleep
 # import sagemaker_ssh_helper
 # sagemaker_ssh_helper.setup_and_start_ssh()
 
-import os
-
-import os, argparse
+import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument(

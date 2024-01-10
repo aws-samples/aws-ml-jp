@@ -1,1 +1,3 @@
 git+https://github.com/Stability-AI/lm-evaluation-harness.git@jp-stable#egg=lm_eval[ja]
+ruff
+boto3 >= 1.28.57

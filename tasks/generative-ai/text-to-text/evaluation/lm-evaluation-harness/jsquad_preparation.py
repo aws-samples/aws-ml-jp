@@ -64,6 +64,7 @@ def convert_to_instruction_format(
             for question_index, question in enumerate(paragraph["qas"]):
                 instruction = question["question"]
                 answer = question["answers"][0]["text"]
+                answer_start = question["answers"][0]["answer_start"]
                 question_id = question["id"]
                 qa = {
                     "title_index": title_index,
@@ -73,6 +74,7 @@ def convert_to_instruction_format(
                     "input": context,
                     "instruction": instruction,
                     "output": answer,
+                    "output_start": answer_start
                 }
                 question_answers.append(qa)
 
@@ -135,5 +137,5 @@ if __name__ == "__main__":
     )
     logger.info(f"{len(jsquad_file_paths)} files are created.")
     for path in jsquad_file_paths:
-        logger.info(f"\t{path.names}")
+        logger.info(f"\t{path.name}")
     logger.info(f"Show one sample of data : {json.dumps(train_instruction_data[0], indent=4, ensure_ascii=False)}")
