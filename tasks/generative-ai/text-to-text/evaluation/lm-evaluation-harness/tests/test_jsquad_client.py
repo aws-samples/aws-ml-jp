@@ -39,6 +39,19 @@ class TestJSQuADClaude:
         assert sample["input"].split("[SEP]")[-1].strip() in prompt
         assert sample["instruction"] in prompt
 
+    def test_prompt_with_examples(self):
+        prompter = JSQuADClaude()
+        sample = self._sample()
+        num_examples = 2
+        examples = [self._sample() for i in range(num_examples)]
+        prompt = prompter.doc_to_text(sample, examples)
+        assert sample["input"].split("[SEP]")[-1].strip() in prompt
+        assert sample["instruction"] in prompt
+        print(prompt)
+        assert prompt.count("<example>") == num_examples
+        assert prompt.count("</example>") == num_examples
+        assert False
+
     def test_answer(self):
         # Extract sample
         prompter = JSQuADClaude()
@@ -47,7 +60,6 @@ class TestJSQuADClaude:
         # Generate answer
         prompt = prompter.doc_to_text(sample)
         answer = prompter.ask(prompt, prompter.choose_model(version="2.1")).strip()
-        print(prompt)
 
         # Evaluate answer
         print(f"Claude answered {answer} and actual answer is {sample['output']}.")
@@ -59,7 +71,6 @@ class TestJSQuADClaude:
         assert gold["f1"] == 100.0
 
         # 2. compare with generate answer
-        print(result)
         if answer == sample["output"]:
             assert result["exact_match"] == 100.0
         elif sample["output"] in answer:
@@ -77,6 +88,26 @@ class TestJSQuADClaude:
             assert result_multiple["exact_match"] == 50.0
         else:
             assert result_multiple["exact_match"] == 0.0
+
+    def test_answer_with_examples(self):
+        prompter = JSQuADClaude()
+        num_examples = 3
+        examples = [self._sample() for i in range(num_examples)]
+        sample = examples[0]
+        examples = examples[1:]
+
+        # Generate answer
+        prompt = prompter.doc_to_text(sample, examples)
+        answer = prompter.ask(prompt, prompter.choose_model(version="2.1")).strip()
+
+        # Evaluate answer
+        print(f"Claude answered {answer} and actual answer is {sample['output']}.")
+        result = prompter.compute(sample, answer)
+
+        if answer == sample["output"]:
+            assert result["exact_match"] == 100.0
+        elif sample["output"] in answer:
+            assert result["f1"] > 1
 
     def test_answer_batch(self, s3_bucket):
         # Extract sample

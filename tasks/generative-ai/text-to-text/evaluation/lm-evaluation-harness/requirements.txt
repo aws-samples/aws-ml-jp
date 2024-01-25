@@ -1,5 +1,5 @@
 git+https://github.com/Stability-AI/lm-evaluation-harness.git@jp-stable#egg=lm_eval[ja]
-./bin/boto3-1.29.4-py3-none-any.whl
-./bin/botocore-1.32.4-py3-none-any.whl
+./lib/boto3-1.29.4-py3-none-any.whl
+./lib/botocore-1.32.4-py3-none-any.whl
 ruff
 pytest

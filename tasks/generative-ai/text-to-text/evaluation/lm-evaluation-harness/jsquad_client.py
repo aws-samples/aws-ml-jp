@@ -95,16 +95,30 @@ class JSQuADClaude(JSQuADClient):
     PROMPT_VERSION = 9.9  # Avoid the conflict of existing version
     SEP = "\n"
 
-    def doc_to_text(self, doc: dict) -> str:
+    def doc_to_text(self, doc: dict, samples: list[dict] = ()) -> str:
         context = doc["input"].split("[SEP]")[-1].strip()
         question = doc["instruction"]
-        input_text = (
-            f"inputを注意深く読み、instructionに対する回答となる名詞を正確に抽出してください。"
-            "回答の名詞以外に何も含まないことを厳守してください。\n"
-            f"<input>{context}</input>\n"
+        task_context = f"与えられたinputからinstructionに対する回答を抽出する関数を実行してください。"
+        examples = ""
+        if len(samples) > 0:
+            examples = "\n\n入出力のexampleを示します。\n\n"
+            for sample in samples:
+                sample_input = sample["input"].split("[SEP]")[-1].strip()
+                sample_instruction = sample["instruction"]
+                sample_answer = sample["output"]
+
+                sample_input = f"<input>{sample_input}</input>"
+                sample_instruction = f"<instruction>{sample_instruction}</instruction>"
+                examples += f"<example>\n{sample_input}\n{sample_instruction}\nAnswer:{sample_answer}\n</example>\n"
+
+        input_text = "\n".join([
+            task_context,
+            examples,
+            "次のinputからinstructionに対する回答を抽出してください。結果はAnswer:の後に記載し名詞以外何も含まないことを厳守してください。",
+            f"<input>{context}</input>",
             f"<instruction>{question}</instruction>"
-        )
-        return f"\n\nHuman: {input_text}\n\nAssistant:"
+        ])
+        return f"\n\nHuman: {input_text}\n\nAssistant:Answer:"
 
     def choose_model(self, version, instant=False):
         if instant:
