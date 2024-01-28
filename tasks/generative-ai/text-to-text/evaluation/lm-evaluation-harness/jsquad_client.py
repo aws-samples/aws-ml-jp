@@ -3,6 +3,7 @@ import time
 import io
 from typing import Optional, Union
 from datetime import datetime
+import logging
 
 import boto3
 from lm_eval.tasks.ja.jsquad import JSQuAD
@@ -30,11 +31,14 @@ class JSQuADClient(JSQuAD):
 
     def ask_batch(
         self,
+        bucket_name: str,
         prompts: list[str],
         model_id: str,
         max_length: int = 1024,
         temperature: float = 1.0,
         top_p: float = 0.99,
+        role_arn: str = "",
+        identifier: str = ""
     ) -> list[str]:
         raise NotImplementedError
 
@@ -98,7 +102,7 @@ class JSQuADClaude(JSQuADClient):
     def doc_to_text(self, doc: dict, samples: list[dict] = ()) -> str:
         context = doc["input"].split("[SEP]")[-1].strip()
         question = doc["instruction"]
-        task_context = f"与えられたinputからinstructionに対する回答を抽出する関数を実行してください。"
+        task_context = "与えられたinputからinstructionに対する回答を抽出する関数を実行してください。"
         examples = ""
         if len(samples) > 0:
             examples = "\n\n入出力のexampleを示します。\n\n"
@@ -120,7 +124,7 @@ class JSQuADClaude(JSQuADClient):
         ])
         return f"\n\nHuman: {input_text}\n\nAssistant:Answer:"
 
-    def choose_model(self, version, instant=False):
+    def choose_model(self, version:str, instant:bool = False):
         if instant:
             # instant is only v1
             model_id = "anthropic.claude-instant-v1"
@@ -164,6 +168,8 @@ class JSQuADClaude(JSQuADClient):
         temperature: float = 1.0,
         top_p: float = 0.99,
         role_arn: str = "",
+        id_prefix: str = "",
+        logger: logging.Logger = None
     ) -> list[str]:
         requests = []
         # Upload file format
@@ -182,7 +188,10 @@ class JSQuADClaude(JSQuADClient):
 
         # upload to S3
         now = datetime.now()
-        job_name = f"{type(self).__name__}-{now.strftime('%Y%m%d-%H%M%S')}"
+        _identifier = now.strftime("%Y%m%d-%H%M%S")
+        if id_prefix:
+            _identifier = f"{id_prefix}-{_identifier}"
+        job_name = f"{type(self).__name__}-{_identifier}"
         input_key = f"input/{job_name}.jsonl"
         self.s3.Object(bucket_name, input_key).put(Body=jsonl_data)
 
@@ -202,7 +211,6 @@ class JSQuADClaude(JSQuADClient):
             .replace("assumed-role/", "role/service-role/")
             .replace("/SageMaker", "")
         )
-        print(_role_arn)
         response = self.batch_client.create_model_invocation_job(
             roleArn=_role_arn,
             modelId=model_id,
@@ -212,6 +220,8 @@ class JSQuADClaude(JSQuADClient):
         )
 
         job_id = response.get("jobArn")
+        if logger is not None:
+            logger.info(f"Amazon Bedrock Job executed by id {job_id}.")
         status = self.batch_client.get_model_invocation_job(jobIdentifier=job_id)[
             "status"
         ]
@@ -222,11 +232,13 @@ class JSQuADClaude(JSQuADClient):
             status = self.batch_client.get_model_invocation_job(jobIdentifier=job_id)[
                 "status"
             ]
+            logger.info(f"Amazon Bedrock Job status: {status}.")
 
         contents = []
         if status == "Completed":
             # Output file format
             # https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-create.html
+            # https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-list.html
             bucket = self.s3.Bucket(bucket_name)
             job_id_base = job_id.split("/")[-1].strip()
             for _object in bucket.objects.filter(
