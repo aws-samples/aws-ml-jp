@@ -96,7 +96,7 @@ if __name__ == "__main__":
 
     bucket_name = "bedrock.jsquad.client.aws.ml.jp"
     parser.add_argument("-b", "--bucket-name", default=bucket_name)
-    parser.add_argument("-v", "--version", default="1")
+    parser.add_argument("-v", "--version", default="2.1")
     parser.add_argument("-i", "--instant", action="store_const", default=False)
     parser.add_argument("-ds", "--dataset-size", type=int, default=0)
     parser.add_argument("-limit", "--validation-limit", type=int, default=-1)
