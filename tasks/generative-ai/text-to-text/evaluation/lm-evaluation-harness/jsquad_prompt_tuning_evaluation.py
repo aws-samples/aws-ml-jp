@@ -19,6 +19,7 @@ def main(
         temperature: float = 0.0,
         top_p: float = 0.99,
         validation_limit: int = -1,
+        validation_start: int = -1,
         logger: logging.Logger = None):
     # Prepare training dataset
     DATA_DIR = Path(__file__).parent.joinpath("data")
@@ -43,6 +44,9 @@ def main(
     validation_file = DATA_DIR.joinpath("valid-v1.1.json")
     validation_data = convert_to_instruction_format(validation_file, logger=logger)
     logger.info(f"Validation data set size: {len(validation_data)}.")
+    if validation_start > 0:
+        validation_data = validation_data[validation_start:]
+        logger.info(f"\t Start from validation data {validation_start}~.")
     if validation_limit > 0:
         validation_data = validation_data[:validation_limit]
         logger.info(f"\t Limit validation data size to {validation_limit}.")
@@ -100,6 +104,7 @@ if __name__ == "__main__":
     parser.add_argument("-i", "--instant", action="store_const", default=False)
     parser.add_argument("-ds", "--dataset-size", type=int, default=0)
     parser.add_argument("-limit", "--validation-limit", type=int, default=-1)
+    parser.add_argument("-start", "--validation-start", type=int, default=-1)
     parser.add_argument("-len", "--max-length", type=int, default=1024)
     parser.add_argument("-t", "--temperature", type=float, default=0.0)
     parser.add_argument("-p", "--top-p", type=float, default=0.99)
@@ -124,6 +129,7 @@ if __name__ == "__main__":
         instant=args.instant,
         dataset_size=args.dataset_size,
         validation_limit=args.validation_limit,
+        validation_start=args.validation_start,
         max_length=args.max_length,
         temperature=args.temperature,
         top_p = args.top_p,
