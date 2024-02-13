@@ -203,17 +203,13 @@ export class ChococonesStack extends cdk.Stack {
         allowAllOutbound: true,
       }
     )
+    domainSecurityGroup.addIngressRule(ec2.Peer.ipv4('10.0.0.0/16'), ec2.Port.tcpRange(8192,65535))
     // Studio Domain
     const domain = new sagemaker.CfnDomain(this, 'Domain', {
       authMode: 'IAM',
       defaultUserSettings: {
         executionRole: defaultRole.roleArn,
         securityGroups: [domainSecurityGroup.securityGroupId],
-        jupyterServerAppSettings: {
-          defaultResourceSpec: {
-            sageMakerImageArn: `arn:aws:sagemaker:${this.region}:102112518831:image/jupyter-server-3`,
-          },
-        },
       },
       domainName,
       vpcId: vpc.vpcId,

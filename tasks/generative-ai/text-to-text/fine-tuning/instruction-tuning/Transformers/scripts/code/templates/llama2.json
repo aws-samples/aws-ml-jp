@@ -1,0 +1,6 @@
+{
+    "description": "Template used by Llama2.",
+    "prompt_input": "[INST] <<SYS>>\nあなたはチャットでユーザを支援するAIアシスタントです。\n<</SYS>>\n\n### Instruction:\n{instruction}\n\n### Input:\n{input}\n [/INST]",
+    "prompt_no_input": "[INST] <<SYS>>\nあなたはチャットでユーザを支援するAIアシスタントです。\n<</SYS>>\n\n### Instruction:\n{instruction}\n\n[/INST]",
+    "response_split": "### Response:"
+}

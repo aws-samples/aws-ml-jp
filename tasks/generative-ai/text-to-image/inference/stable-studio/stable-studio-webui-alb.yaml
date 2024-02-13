@@ -1,0 +1,366 @@
+AWSTemplateFormatVersion: 
+  "2010-09-09"
+Parameters:
+  PJPrefix:
+    Type: String
+  Ec2ImageId:
+    Type: String
+    Default: ami-08d56feea76b6f38b
+    Description: Enter appropriate AMI ID in your region. Tested with "Deep Learning AMI GPU PyTorch 1.13.1 (Ubuntu 20.04) 20230510" in us-east-1.
+  Ec2InstanceType:
+    Type: String
+    Default: g4dn.xlarge
+  SDWebUIVersion:
+    Type: String
+    Description: Branch of AUTOMATIC1111/stable-diffusion-webui
+    Default: v1.3.2
+  StableStudioURL:
+    Type: String
+    Description: URL of frontend application for CORS setting.
+    Default: https://main.*.amplifyapp.com
+  HostZoneId:
+    Description: FQDN of the hosted zone
+    Type: String
+    Default: 'Z0xxx'
+  DomainName:
+    Description: FQDN of the HostZone
+    Type: String
+    Default: 'example.com'
+  SubDomain:
+    Description: FQDN of the certificate
+    Type: String
+    Default: 'test.example.com'
+Resources: 
+  VPC: 
+    Type: "AWS::EC2::VPC"
+    Properties:
+      CidrBlock: "10.0.0.0/16"
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      InstanceTenancy: default
+      Tags: 
+        - Key: Name
+          Value: !Sub "${PJPrefix}-vpc"
+  InternetGateway: 
+    Type: "AWS::EC2::InternetGateway"
+    Properties: 
+      Tags: 
+        - Key: Name
+          Value: !Sub "${PJPrefix}-igw"
+  InternetGatewayAttachment: 
+    Type: "AWS::EC2::VPCGatewayAttachment"
+    Properties: 
+      InternetGatewayId: !Ref InternetGateway
+      VpcId: !Ref VPC 
+  Public1Subnet: 
+    Type: "AWS::EC2::Subnet"
+    Properties: 
+      AvailabilityZone: "us-east-1a"
+      CidrBlock: "10.0.0.0/24"
+      VpcId: !Ref VPC 
+      Tags: 
+        - Key: Name
+          Value: !Sub "${PJPrefix}-public1-subnet"
+  Public2Subnet: 
+    Type: "AWS::EC2::Subnet"
+    Properties: 
+      AvailabilityZone: "us-east-1c"
+      CidrBlock: "10.0.1.0/24"
+      VpcId: !Ref VPC 
+      Tags: 
+        - Key: Name
+          Value: !Sub "${PJPrefix}-public2-subnet"
+  Private1Subnet: 
+    Type: "AWS::EC2::Subnet"
+    Properties: 
+      AvailabilityZone: "us-east-1a"
+      CidrBlock: "10.0.10.0/24"
+      VpcId: !Ref VPC 
+      Tags: 
+        - Key: Name
+          Value: !Sub "${PJPrefix}-private1-subnet"
+  Private2Subnet: 
+    Type: "AWS::EC2::Subnet"
+    Properties: 
+      AvailabilityZone: "us-east-1c"
+      CidrBlock: "10.0.11.0/24"
+      VpcId: !Ref VPC 
+      Tags: 
+        - Key: Name
+          Value: !Sub "${PJPrefix}-private2-subnet"
+  NATGateway: 
+    Type: "AWS::EC2::NatGateway"
+    Properties:
+      AllocationId: !GetAtt NATGatewayAEIP.AllocationId 
+      SubnetId: !Ref Public1Subnet
+      Tags: 
+        - Key: Name
+          Value: !Sub "${PJPrefix}-natgw"
+  NATGatewayAEIP: 
+    Type: "AWS::EC2::EIP"
+    Properties:
+      Domain: vpc  
+  PublicRouteTable: 
+    Type: "AWS::EC2::RouteTable"
+    Properties: 
+      VpcId: !Ref VPC 
+      Tags: 
+        - Key: Name
+          Value: !Sub "${PJPrefix}-public1-route"
+  PrivateRouteTable: 
+    Type: "AWS::EC2::RouteTable"
+    Properties: 
+      VpcId: !Ref VPC
+      Tags: 
+        - Key: Name
+          Value: !Sub "${PJPrefix}-private1-route"
+  PublicRoute: 
+    Type: "AWS::EC2::Route"
+    Properties: 
+      RouteTableId: !Ref PublicRouteTable 
+      DestinationCidrBlock: "0.0.0.0/0"
+      GatewayId: !Ref InternetGateway 
+  PrivateRoute: 
+    Type: "AWS::EC2::Route"
+    Properties: 
+      RouteTableId: !Ref PrivateRouteTable 
+      DestinationCidrBlock: "0.0.0.0/0"
+      NatGatewayId: !Ref NATGateway 
+  Public1SubnetRouteTableAssociation: 
+    Type: "AWS::EC2::SubnetRouteTableAssociation"
+    Properties: 
+      SubnetId: !Ref Public1Subnet
+      RouteTableId: !Ref PublicRouteTable
+  Public2SubnetRouteTableAssociation: 
+    Type: "AWS::EC2::SubnetRouteTableAssociation"
+    Properties: 
+      SubnetId: !Ref Public2Subnet
+      RouteTableId: !Ref PublicRouteTable
+  Private1SubnetRouteTableAssociation: 
+    Type: "AWS::EC2::SubnetRouteTableAssociation"
+    Properties: 
+      SubnetId: !Ref Private1Subnet
+      RouteTableId: !Ref PrivateRouteTable
+  Private2SubnetRouteTableAssociation: 
+    Type: "AWS::EC2::SubnetRouteTableAssociation"
+    Properties: 
+      SubnetId: !Ref Private2Subnet
+      RouteTableId: !Ref PrivateRouteTable
+  WebServerSG:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: web-sg-cf
+      GroupDescription: web server sg
+      VpcId: !Ref VPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 7861
+          ToPort: 7861
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: !Sub "${PJPrefix}-web-server-sg"
+  EC2InstanceLaunchTemplate:
+    Type: AWS::EC2::LaunchTemplate
+    Properties:
+      LaunchTemplateName: !Sub "${PJPrefix}-web-server-template"
+      LaunchTemplateData:
+        TagSpecifications:
+        - ResourceType: instance
+          Tags:
+          - Key: Name
+            Value: !Sub "${PJPrefix}-web-server"
+        UserData:
+          Fn::Base64: !Sub |
+              Content-Type: multipart/mixed; boundary="//"
+              MIME-Version: 1.0
+
+              --//
+              Content-Type: text/cloud-config; charset="us-ascii"
+              MIME-Version: 1.0
+              Content-Transfer-Encoding: 7bit
+              Content-Disposition: attachment; filename="cloud-config.txt"
+
+              #cloud-config
+              cloud_final_modules:
+              - [scripts-user, always]
+
+              --//
+              Content-Type: text/x-shellscript; charset="us-ascii"
+              MIME-Version: 1.0
+              Content-Transfer-Encoding: 7bit
+              Content-Disposition: attachment; filename="userdata.txt"
+              
+              #!/bin/bash
+
+              # Install packages
+              sudo apt update
+              sudo add-apt-repository ppa:deadsnakes/ppa -y
+              sudo apt -y install wget git s3fs
+              sudo apt -y install python3 python-is-python3 python3-pip python3-venv
+              sudo apt -y install python3.10 python3.10-distutils python3.10-venv python3.10-tk
+              curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
+              python3.10 -m pip install --upgrade pip
+              sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
+
+              # Launch Stable Diffusion Web UI
+              cd /home/ubuntu
+              # setup script uses existing folder if it exists. Feel free to change version here.
+              sudo -u ubuntu git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git -b ${SDWebUIVersion}
+              # Set config.json with default value to prevent error.
+              echo "{\"sd_model_checkpoint\": \"\", \"sd_checkpoint_hash\": \"\"}" > stable-diffusion-webui/config.json
+              sudo -u ubuntu nohup bash -c 'stable-diffusion-webui/webui.sh --xformers --listen --nowebui --cors-allow-origins=${StableStudioURL} &> sd-webui-log.txt' &
+        ImageId: !Ref Ec2ImageId
+        InstanceType: !Ref Ec2InstanceType
+        NetworkInterfaces: 
+        - AssociatePublicIpAddress: false
+          DeviceIndex: 0
+          Groups:
+            - !Ref WebServerSG
+  TargetGroup: 
+    Type: "AWS::ElasticLoadBalancingV2::TargetGroup"
+    Properties: 
+      VpcId: !Ref VPC
+      Name: !Sub "${PJPrefix}-tg"
+      Protocol: HTTP
+      Port: 7861
+      HealthCheckProtocol: HTTP
+      HealthCheckPath: "/docs"
+      HealthCheckPort: "traffic-port"
+      HealthyThresholdCount: 2
+      UnhealthyThresholdCount: 2
+      HealthCheckTimeoutSeconds: 5
+      HealthCheckIntervalSeconds: 10
+      Matcher: 
+        HttpCode: "200"
+      Tags: 
+        - Key: Name
+          Value: !Sub "${PJPrefix}-tg"
+  InternetALB: 
+    Type: "AWS::ElasticLoadBalancingV2::LoadBalancer"
+    Properties: 
+      Name: !Sub "${PJPrefix}-alb"
+      Tags: 
+        - Key: Name
+          Value: !Sub "${PJPrefix}-alb"
+      Scheme: "internet-facing"
+      LoadBalancerAttributes:
+        - Key: "deletion_protection.enabled"
+          Value: "false"
+        - Key: "idle_timeout.timeout_seconds"
+          Value: "60"
+      SecurityGroups:
+        - !Ref ALBSecurityGroup
+      Subnets: 
+        - !Ref Public1Subnet
+        - !Ref Public2Subnet
+  ALBListenerHTTP: 
+    Type: "AWS::ElasticLoadBalancingV2::Listener"
+    Properties:
+      Port: 80
+      Protocol: HTTP
+      DefaultActions:
+        - Type: redirect
+          RedirectConfig: 
+            Host: '#{host}'
+            Path: '/#{path}'
+            Port: '443'
+            Protocol: HTTPS
+            Query: '#{query}'
+            StatusCode: HTTP_301
+      LoadBalancerArn: !Ref InternetALB
+  ALBListenerHTTPS:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      Port: 443
+      Protocol: HTTPS
+      Certificates:
+        - CertificateArn: !Ref ACM
+      DefaultActions:
+        - TargetGroupArn: !Ref TargetGroup
+          Type: forward
+      LoadBalancerArn: !Ref InternetALB
+  ALBSecurityGroup:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      VpcId: !Ref VPC
+      GroupName: !Sub "${PJPrefix}-alb-sg"
+      GroupDescription: "-"
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: "0.0.0.0/0"
+      Tags:
+        - Key: "Name"
+          Value: !Sub "${PJPrefix}-alb-sg"
+  AutoScalingGroup:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    Properties:
+      AutoScalingGroupName: !Sub "${PJPrefix}-autoscalinggroup"
+      VPCZoneIdentifier:
+        - !Ref Private1Subnet
+        - !Ref Private2Subnet
+      LaunchTemplate:
+        LaunchTemplateId: !Ref 'EC2InstanceLaunchTemplate'
+        Version: !GetAtt 'EC2InstanceLaunchTemplate.LatestVersionNumber'
+      TargetGroupARNs:
+        - !Ref TargetGroup
+      DesiredCapacity: "2"
+      MaxSize: "4"
+      MinSize: "2"
+      Tags:
+        - Key: Name
+          Value: !Sub "${PJPrefix}-server"
+          PropagateAtLaunch: true
+  DnsRecord:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      HostedZoneId: !Sub '${HostZoneId}'
+      Comment: "DNS for ALB"
+      Name: !Sub '${SubDomain}'
+      Type: A
+      AliasTarget:
+        HostedZoneId: !GetAtt 'InternetALB.CanonicalHostedZoneID'
+        DNSName: !GetAtt 'InternetALB.DNSName'
+  ACM:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName: !Sub '${SubDomain}'
+      DomainValidationOptions:
+        - DomainName: !Sub '${SubDomain}'
+          HostedZoneId: !Sub '${HostZoneId}'
+      ValidationMethod: DNS
+Outputs:
+  VPC:
+    Value: !Ref VPC
+    Export:
+      Name: !Sub "${PJPrefix}-vpc"
+  Public1Subnet:
+    Value: !Ref Public1Subnet
+    Export:
+      Name: !Sub "${PJPrefix}-public1-subnet"
+  Public2Subnet:
+    Value: !Ref Public2Subnet
+    Export:
+      Name: !Sub "${PJPrefix}-public2-subnet"
+  Private1Subnet:
+    Value: !Ref Private1Subnet
+    Export:
+      Name: !Sub "${PJPrefix}-private1-subnet"
+  Private2Subnet:
+    Value: !Ref Private2Subnet
+    Export:
+      Name: !Sub "${PJPrefix}-private2-subnet"
+  EC2InstanceLaunchTemplate:
+    Value: !Ref EC2InstanceLaunchTemplate
+    Export:
+      Name: !Sub "${PJPrefix}-web1-server"
+  TargetGroup:
+    Value: !Ref TargetGroup
+    Export:
+      Name: !Sub "${PJPrefix}-tg"
+  InternetALB:
+    Value: !Ref InternetALB
+    Export:
+      Name: !Sub "${PJPrefix}-alb"

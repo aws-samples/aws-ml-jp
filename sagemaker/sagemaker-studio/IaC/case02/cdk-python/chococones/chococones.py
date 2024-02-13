@@ -255,6 +255,10 @@ class ChococonesStack(Stack):
             vpc=vpc,
             allow_all_outbound=True,
         )
+        domain_security_group.add_ingress_rule(
+            ec2.Peer.ipv4("10.0.0.0/16"),
+            ec2.Port.tcp_range(8192,65535)
+        )
 
         # Studio Domain
         domain = sagemaker.CfnDomain(
@@ -264,13 +268,6 @@ class ChococonesStack(Stack):
             default_user_settings=sagemaker.CfnDomain.UserSettingsProperty(
                 execution_role=default_role.role_arn,
                 security_groups=[domain_security_group.security_group_id],
-                jupyter_server_app_settings=sagemaker.CfnDomain.JupyterServerAppSettingsProperty(
-                    default_resource_spec=sagemaker.CfnDomain.ResourceSpecProperty(
-                        # 以下 ARN は Region ごとに違うので、以下ドキュメントを参照のこと
-                        # https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jl.html
-                        sage_maker_image_arn=f"arn:aws:sagemaker:{REGION}:081325390199:image/jupyter-server-3",
-                    )
-                ),
             ),
             domain_name=DOMAIN_NAME,
             vpc_id=vpc.vpc_id,

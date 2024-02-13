@@ -53,6 +53,7 @@ def train(
     trust_remote_code: bool = False,
     load_in_8bit: bool = False,
     load_in_4bit: bool = False, # If 8 bit is also specified, 4 bit has priority
+    save_merged: bool = False, # Merge peft to model when final model save
     pad_token_id: int = 0,
     # training hyperparams
     batch_size: int = 128,
@@ -256,7 +257,7 @@ def train(
         if os.path.exists(checkpoint_name):
             print(f"Restarting from {checkpoint_name}")
             adapters_weights = torch.load(checkpoint_name)
-            model = set_peft_model_state_dict(model, adapters_weights)
+            set_peft_model_state_dict(model, adapters_weights)
         else:
             print(f"Checkpoint {checkpoint_name} not found")
 
@@ -320,7 +321,15 @@ def train(
 
     trainer.train(resume_from_checkpoint=resume_from_checkpoint)
 
-    model.save_pretrained(output_dir)
+    if save_merged:
+        # Save Entire Model
+        model = model.merge_and_unload()
+        model.save_pretrained(output_dir, safe_serialization=True)
+        tokenizer.save_pretrained(output_dir)
+    else:
+        # Only save LoRA weight
+        model.save_pretrained(output_dir)
+    
 
 
 if __name__ == "__main__":

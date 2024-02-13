@@ -48,6 +48,9 @@ Models are standardized to accept json with following format for ease of use.
 | [MPT_LoRA_ja.ipynb](Transformers/MPT_LoRA_ja.ipynb) | Finetuning and deploying MPT using LoRA with |
 | [Falcon_Inference.ipynb](Transformers/Falcon_Inference.ipynb) | Falcon を デプロイ |
 | [Falcon_LoRA.ipynb](Transformers/Falcon_LoRA.ipynb) | Falcon を Dolly データセットで LoRA チューニングとデプロイ |
+| [Llama2_LoRA__TGI_ja.ipynb](Transformers/Llama2_LoRA__TGI_ja.ipynb) | Lora Finetune Llama2 and deploy with TGI container |
+| [Elyza_Inference_TGI_ja.ipynb](Transformers/Elyza_Inference_TGI_ja.ipynb) | Deploy Elyza with TGI container |
+| [Elyza_LoRA_TGI_ja.ipynb](Transformers/Elyza_LoRA_TGI_ja.ipynb) | Lora Finetune Elyza and deploy with TGI container |
 | [RWKV_Inference.ipynb](Transformers/RWKV_Inference.ipynb) | Deploying Pre-trained RWKV |
 | [RWKV_Finetune.ipynb](RWKV/RWKV_Finetune.ipynb) | Finetuning and deploying RWKV with Dolly Dataset |
 | [RWKV_LoRA.ipynb](RWKV/RWKV_Finetune.ipynb) | Finetuning and deploying RWKV using LoRA with Dolly Dataset |
