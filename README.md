@@ -10,6 +10,7 @@ AWS で機械学習をはじめる方法を学ぶことができるリポジト�
   * 機械学習モデルの開発効率化やパイプライン化を検討している方が、 Amazon SageMaker をどう使えば実現できるか学ぶためのコンテンツ。
 * `frameworks`
   * すでに TensorFlow や PyTorch で開発している方が、モデルを SageMaker 上で学習、推論させるための移行方法を学ぶためのコンテンツ。
+  * `aws-neuron` AWSが設計した機械学習アクセラレーター AWS Trainium、AWS Inferentia を活用する方法を学ぶためのコンテンツ。
 * `tasks`
   * 画像のセグメンテーションや物体検知、自然言語処理のQAや要約など、個別具体的なタスクを SageMaker でどのように解けるか学ぶためのコンテンツ。
 * `solutions`
