@@ -91,6 +91,14 @@ Amazon SageMaker で機械学習の構築、学習、デプロイをスケール
 * [Amazon SageMaker Processing と AWS Step Functions でモデルの学習・評価・更新プロセスを構築する](./sagemaker/mlops/step-functions-data-science-sdk/step_functions_mlworkflow_scikit_learn_data_processing_and_model_evaluation_with_experiments.ipynb)
 * [Amazon SageMaker Processing と AWS Step Functions でモデルの学習・評価・更新プロセスを構築する (Studio 版 )](./sagemaker/mlops/step-functions-data-science-sdk/studio_step_functions_mlworkflow_scikit_learn_data_processing_and_model_evaluation_with_experiments.ipynb)
 
+### [Amazon Bedrock](https://aws.amazon.com/jp/bedrock/)
+生成 AI を使ったアプリケーションを、構築・運用するための基盤となるサービス
+
+#### サンプル
+| サンプル名 | 詳細 |
+|:-------| :-----------|
+|[Amazon Bedrock Beginners Handson](bedrock/bedrock-beginners-handson/README.md) | Amazon Bedrock を初めて触る方向けに、Amazon Bedrock を使ったテキスト生成やプロンプトエンジニアリングをお試しいただけるような Notebook コンテンツを提供します。 |
+
 ### 🚚 ML Frameworks
 
 機械学習フレームワークの実装を SageMaker へ移行する。
@@ -134,7 +142,8 @@ AWS で画像処理や自然言語処理などの機械学習のタスクを解�
   * [細胞診 (FNA) 結果からの乳がん診断](./tasks/tabular/classification/BreastCancerPrediction_R.ipynb)
 
 
-#### 🤖 生成系 AI
+#### 🤖 生成 AI
+
 
 ##### `text-to-image`
 
@@ -143,7 +152,7 @@ AWS で画像処理や自然言語処理などの機械学習のタスクを解�
 | [Stable Diffusion Web UI](./tasks/generative-ai/text-to-image/inference/stable-diffusion-webui/) | Stable Diffusion の GUI として人気の [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) を EC2 インスタンスに立てて利用できるようにする CloudFormation です。モデルのトレーニングに [bmaltais/kohya_ss](https://github.com/bmaltais/kohya_ss)、GUI ベースのファイル操作に [filebrowser/filebrowser](https://github.com/filebrowser/filebrowser) を立ち上げる構成も含まれています。SageMaker JumpStart を利用した Fine Tuning については [たった数枚の画像で Stable Diffusion をファインチューニングできる効率的な Amazon SageMaker JumpStart の使い方](https://aws.amazon.com/jp/blogs/news/machine-learning-inpaint-images-with-stable-diffusion-using-amazon-sagemaker-jumpstart/) をご参照ください。 |
 | [Inpainting](./tasks/generative-ai/text-to-image/inference/Transformers/StableDiffusionInpainting_Inference_with_ClipSeg.ipynb) | 画像の一部を生成した画像で差し替えるサンプルです。差し替える箇所 ( マスク ) の作成には [CLIPSeg](https://huggingface.co/docs/transformers/model_doc/clipseg) を使用しています。詳細は [Stable Diffusion で画像の部分的な差し替えを行う環境を、 Amazon SageMaker JumpStart で簡単に構築する](https://aws.amazon.com/jp/blogs/news/machine-learning-inpaint-images-with-stable-diffusion-using-amazon-sagemaker-jumpstart/) をご参照ください。|
 
-#### `text-to-text`
+##### `text-to-text`
 
 | サンプルコード | 詳細 |
 |:-------| :-----------|
@@ -155,7 +164,7 @@ AWS で画像処理や自然言語処理などの機械学習のタスクを解�
 SageMaker と他のサービスを組み合わせ、業務プロセスの効率化や差別化を行うためのソリューションを格納/紹介します。
 
 * [JP RAG SOLUTION](https://github.com/aws-samples/jp-rag-sample)
-  * カスタマーサポートなどで生成系 AI を利用する場合、自然な応答による顧客体験の改善が期待できるものの、誤った発言 ( ハルシネーション ) が発生する恐れがあります。生成元のドキュメントを指定することで誤った発言を抑止することができ、検索エンジンから生成系 AI にドキュメントを与え生成する仕組みを RAG と呼びます。本ソリューションでは、検索エンジンとして `Amazon Kendra` 、生成系 AI として `Anthropic Claude` /  [`rinna/japanese-gpt-neox-3.6b-instruction-ppo`](https://huggingface.co/rinna/japanese-gpt-neox-3.6b-instruction-ppo) を用いて RAG を実現します。
+  * カスタマーサポートなどで生成 AI を利用する場合、自然な応答による顧客体験の改善が期待できるものの、誤った発言 ( ハルシネーション ) が発生する恐れがあります。生成元のドキュメントを指定することで誤った発言を抑止することができ、検索エンジンから生成 AI にドキュメントを与え生成する仕組みを RAG と呼びます。本ソリューションでは、検索エンジンとして `Amazon Kendra` 、生成 AI として `Anthropic Claude` /  [`rinna/japanese-gpt-neox-3.6b-instruction-ppo`](https://huggingface.co/rinna/japanese-gpt-neox-3.6b-instruction-ppo) を用いて RAG を実現します。
   * 参考記事: [高精度な生成系 AI アプリケーションを Amazon Kendra、LangChain、大規模言語モデルを使って作る](https://aws.amazon.com/jp/blogs/news/quickly-build-high-accuracy-generative-ai-applications-on-enterprise-data-using-amazon-kendra-langchain-and-large-language-models/)
 * [コールセンターのリアルタイム会話分析](https://aws.amazon.com/jp/blogs/news/live-call-analytics-and-agent-assist-for-your-contact-center-with-amazon-language-ai-services/)
   * コールセンターで会話の文字起こし、翻訳、感情分析、会話内容の要約、オペレーターへのアドバイスをリアルタイムで行うソリューションです。文字起こしは `Amazon Transcribe` 、翻訳は `Amazon Translate` 、 感情分析は `Amazon Comprehend` 、 要約は `Amazon SageMaker` 、 アドバイスは `Amazon Lex` と `Amazon Kendra` で実装しています。

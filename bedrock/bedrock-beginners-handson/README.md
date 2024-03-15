@@ -1,6 +1,6 @@
 # bedrock-beginners-handson
 
-このリポジトリでは、Amazon Bedrock を初めて触る方向けに、ノートブック上で Amazon Bedrock をお試しいただけるような Notebook コンテンツを提供します。
+このリポジトリでは、Amazon Bedrock を初めて触る方向けに、Amazon Bedrock をお試しいただけるような Notebook コンテンツを提供します。
 以下の 3 つのコンテンツを提供予定です。
 
 ## [Chapter1: Bedrock 基盤モデルの基本的な呼び出し](bedrock/bedrock-beginners-handson/chapter0_introduction.ipynb)
