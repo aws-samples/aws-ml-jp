@@ -97,9 +97,9 @@ Amazon SageMaker で機械学習の構築、学習、デプロイをスケール
 生成 AI を使ったアプリケーションを、構築・運用するための基盤となるサービス
 
 #### サンプル
-| サンプル名 | 詳細 |
-|:-------| :-----------|
-|[Amazon Bedrock Beginners Handson](bedrock/bedrock-beginners-handson/README.md) | Amazon Bedrock を初めて触る方向けに、Amazon Bedrock を使ったテキスト生成やプロンプトエンジニアリングをお試しいただけるような Notebook コンテンツを提供します。 |
+| No | Title | Description | Content | 
+|:-------| :-----------| :---- | :---- |
+| 1 | Amazon Bedrock Beginners Handson | Amazon Bedrock を初めて触る方向けに、質問回答や要約の作成など基盤モデルのユースケースをお試しいただけるような Notebook コンテンツを提供します。 | [![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)](./bedrock/bedrock-beginners-handson/README.md)
 
 ### 🚚 ML Frameworks
 
