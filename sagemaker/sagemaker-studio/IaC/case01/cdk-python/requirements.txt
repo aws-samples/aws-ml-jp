@@ -1,5 +1,5 @@
 aws-cdk-lib==2.38.0
 constructs>=10.0.0,<11.0.0
 flake8==5.0.4
-black==22.8.0
+black==24.3.0
 jsii==1.70.0
