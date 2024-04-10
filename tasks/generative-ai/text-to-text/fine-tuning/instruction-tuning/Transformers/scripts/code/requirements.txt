@@ -1,6 +1,6 @@
 peft==0.4.0
 accelerate==0.20.3
-transformers==4.36.0
+transformers==4.38.0
 deepspeed
 optimum
 tokenizers==0.13.3
