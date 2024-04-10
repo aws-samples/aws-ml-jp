@@ -1,7 +1,7 @@
 # TODO: Pin to release supporting 4-bit QLoRA
 git+https://github.com/huggingface/peft.git@207d2908650f3f4f3ba0e21d243c1b2aee66e72d
 accelerate==0.20.3
-transformers==4.36.0
+transformers==4.38.0
 deepspeed
 optimum
 tokenizers==0.13.3
