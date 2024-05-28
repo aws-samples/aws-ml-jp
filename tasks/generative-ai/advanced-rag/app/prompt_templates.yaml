@@ -1,0 +1,101 @@
+generate_queries: |
+  検索エンジンに入力するクエリを最適化し、様々な角度から検索を行うことで、より適切で幅広い検索結果が得られるようにします。 
+  具体的には、類義語や日本語と英語の表記揺れを考慮し、多角的な視点からクエリを生成します。
+
+  以下の<question>タグ内にはユーザーの入力した質問文が入ります。
+  この質問文に基づいて、{n_queries}個の検索用クエリを生成してください。
+  各クエリは30トークン以内とし、日本語と英語を適切に混ぜて使用することで、広範囲の文書が取得できるようにしてください。
+
+  生成されたクエリは、<format>タグ内のフォーマットに従って出力してください。
+
+  <example>
+  question: Knowledge Bases for Amazon Bedrock ではどのベクトルデータベースを使えますか？
+  query 1: Knowledge Bases for Amazon Bedrock vector databases engine DB store
+  query 2: Amazon Bedrock ナレッジベース ベクトル ベクター エンジン データベース ストア インデックス
+  query 3: Amazon Bedrock RAG 検索拡張生成 埋め込み embedding ベクトル データベース エンジン
+  </example>
+
+  <format>
+  {output_format}
+  </format> 
+
+  <question>
+  {question}
+  </question>
+
+#generate: |
+#  あなたは親切で知識豊富なチャットアシスタントです。
+#  <excerpts>タグには、ユーザーが知りたい情報に関連する複数のドキュメントの抜粋が含まれています。
+#
+#  <excerpts>{context}</excerpts>
+#
+#  これらの情報をもとに、<question>タグ内のユーザーの質問に対する回答を提供してください。
+#
+#  <question>{question}</question>
+#
+#  まず、質問に対して<excerpts>タグ内にある情報で答えられるかを考え、<related>true</related>、もしくは、<related>false</related>の形式で答えてください。
+#
+#  質問に答えるための情報がない場合は、「情報が不十分で回答できません」と答えてください。
+#  また、質問への回答は以下の点に留意してください:
+#
+#  - <excerpts>タグの内容を参考にするが、回答に<excerpts>タグを含めないこと。
+#  - 簡潔に3つ以内のセンテンスで回答すること。
+#  - 日本語で回答すること。
+#  - 質問への回答は<answer></answer>タグに含めること。
+
+generate: |
+  あなたは親切で知識豊富なチャットアシスタントです。
+  <excerpts>タグには、ユーザーが知りたい情報に関連する複数のドキュメントの抜粋が含まれています。
+
+  <excerpts>{context}</excerpts>
+
+  これらの情報をもとに、<question>タグ内のユーザーの質問に対する回答を提供してください。
+
+  <question>{question}</question>
+
+  ドキュメントの抜粋に質問に答えるための情報が含まれていない場合は、質問に対する正確な答えが見つからなかったことを述べてください。
+
+  回答内で検索結果からの情報を参照する場合は、情報が見つかったソースのドキュメントへの引用を含める必要があります。
+  各結果には、参照すべき対応するdocument_idとtitleを付与します。
+  回答に複数のドキュメントの抜粋からの情報が含まれている場合、<sources>には複数の<source>が含まれる可能性があることに注意してください。
+  <excerpts>を回答で直接引用しないでください。あなたの仕事は、ユーザーの質問に可能な限り簡潔に答えることです。
+  以下の形式で回答を出力する必要があります。フォーマットとスペースに注意して、正確に従ってください。
+  <answer>
+    <answer_part>
+      <text>
+        最初の回答テキスト
+      </text>
+      <sources>
+        <source>
+          <document_id>document_id</document_id>
+          <title>title</title>
+        </source>
+      </sources>
+    </answer_part>
+    <answer_part>
+      <text>
+        2番目の回答テキスト
+      </text>
+      <sources>
+        <source>
+          <document_id>document_id</document_id>
+          <title>title</title>
+        </source>
+      </sources>
+    </answer_part>
+  </answer>
+
+grade_documents: |
+  あなたは、ユーザーからの質問と検索で得られたドキュメントの関連性を評価する専門家です。
+  <excerpt>タグ内は、検索により取得したドキュメントの抜粋です。
+
+  <excerpt>{context}</excerpt>
+  
+  <question>タグ内は、ユーザーからの質問です。
+
+  <question>{question}</question>
+  
+  このドキュメントの抜粋は、ユーザーの質問に回答するための正確な情報を含んでいるかを慎重に判断してください。
+  正確な情報を含んでいる場合は 'yes'、含んでいない場合は 'no' のバイナリスコアを返してください。
+  
+  {format_instructions}
