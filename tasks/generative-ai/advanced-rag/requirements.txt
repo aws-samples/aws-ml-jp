@@ -1,0 +1,7 @@
+ipykernel==6.29.4
+streamlit==1.35.0
+boto3==1.34.113
+langchain==0.2.1
+langchain_aws==0.1.6
+langgraph==0.0.55
+httpx==0.27.0
