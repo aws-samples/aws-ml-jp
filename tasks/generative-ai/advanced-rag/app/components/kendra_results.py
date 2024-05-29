@@ -3,8 +3,8 @@ from utils.kendra_api import search_kendra
 from utils.s3_utils import generate_presigned_url
 
 
-def kendra_results(query, kendra_index_id):
-    kendra_response = search_kendra(query, kendra_index_id)
+def kendra_results(query, settings):
+    kendra_response = search_kendra(query, settings)
 
     st.write(f"{len(kendra_response)} 件の検索結果")
     

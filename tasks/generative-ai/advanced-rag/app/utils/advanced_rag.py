@@ -21,6 +21,7 @@ from langchain_core.pydantic_v1 import (
     BaseModel,
     Field,
 )
+from langgraph.graph import END, StateGraph
 
 #import settings
 
@@ -58,6 +59,35 @@ class GraphState(TypedDict):
     keys: Dict[str, any]
 
 
+def entry_point(state):
+    """Pass through"""
+    return state
+
+
+def decide_to_generate_queries(state):
+    """
+    Determines whether to generate queries, or use the original query.
+
+    Args:
+        state (dict): The current graph state
+
+    Returns:
+        str: Binary decision for next node to call
+    """
+
+    logger.debug("---DECIDE TO GENERATE QUERIES---")
+    n_queries = state["keys"]["n_queries"]
+
+    if n_queries > 0:
+        logger.debug(
+            "---DECISION: GENERATE QUERIES---"
+        )
+        return "generate_queries_enabled"
+    else:
+        logger.debug("---DECISION: NOT GENERATE QUERIES---")
+        return "generate_queries_not_enabled"
+
+
 def generate_queries(state):
     """Generate a variety of queries (RAG-Fusion).
 
@@ -75,10 +105,10 @@ def generate_queries(state):
 
     llm = ChatBedrock(
         model_id="anthropic.claude-3-haiku-20240307-v1:0",
-        region_name="us-east-1",
+        region_name=settings["aws_region"],
         model_kwargs={
             "temperature": 0,
-            "max_tokens": 1024,
+            "max_tokens": 512,
         }
     )
 
@@ -101,7 +131,9 @@ def generate_queries(state):
     logger.debug("queries:")
     logger.debug(queries)
 
-    return {"keys": {"queries": queries, "question": question, "n_queries": n_queries, "settings": settings}}
+    state_dict["queries"] = queries
+
+    return {"keys": state_dict}
 
 
 def retrieve(state):
@@ -120,8 +152,7 @@ def retrieve(state):
 
     retriever = AmazonKendraRetriever(
         index_id=settings["kendra_index_id"],
-        #region_name=settings["aws_region"],  # TODO
-        region_name="us-east-1",  # TODO
+        region_name=settings["aws_region"],
         attribute_filter={"EqualsTo": {"Key": "_language_code", "Value": {"StringValue": "ja"}}},
         top_k=10,
     )
@@ -153,7 +184,33 @@ def retrieve(state):
         documents = retriever.invoke(question)
 
     logger.debug(documents)
-    return {"keys": {"documents": documents, "question": question, "settings": settings}}
+
+    state_dict["documents"] = documents
+    return {"keys": state_dict}
+
+
+def decide_to_grade_documents(state):
+    """
+    Determines whether to grade documents or not.
+
+    Args:
+        state (dict): The current graph state
+
+    Returns:
+        str: Binary decision for next node to call
+    """
+
+    logger.debug("---DECIDE TO GRADE DOCUMENTS---")
+    grade_documents_enabled = state["keys"]["grade_documents_enabled"]
+
+    if grade_documents_enabled == "Yes":
+        logger.debug(
+            "---DECISION: GRADE DOCUMENTS---"
+        )
+        return "grade_documents_enabled"
+    else:
+        logger.debug("---DECISION: NOT GRADE DOCUMENTS---")
+        return "grade_documents_not_enabled"
 
 
 def generate(state):
@@ -194,12 +251,12 @@ def generate(state):
 
     rag_chain = prompt | llm | StrOutputParser()
 
-    generation = rag_chain.invoke({"context": documents, "question": question})
-    answer = re.search(r'<answer>(.*?)</answer>', generation, re.DOTALL).group(1)
+    output = rag_chain.invoke({"context": documents, "question": question})
+    generation = re.search(r'<answer>(.*?)</answer>', output, re.DOTALL).group(1)
 
-    return {
-        "keys": {"documents": documents, "question": question, "generation": answer, "settings": settings}
-    }
+    state_dict["generation"] = generation
+
+    return {"keys": state_dict}
 
 
 def grade_documents(state):
@@ -226,7 +283,7 @@ def grade_documents(state):
     # LLM
     llm = ChatBedrock(
         model_id="anthropic.claude-3-haiku-20240307-v1:0",
-        region_name="us-east-1",
+        region_name=settings["aws_region"],
         model_kwargs={
             "temperature": 0,
             "max_tokens": 128,
@@ -264,11 +321,44 @@ def grade_documents(state):
 
     search = "Yes" if len(filtered_docs) == 0 else "No"
 
-    return {
-        "keys": {
-            "documents": filtered_docs,
-            "question": question,
-            "run_web_search": search,
-            "settings": settings,
+    state_dict["documents"] = filtered_docs
+    state_dict["run_web_search"] = search
+
+    return {"keys": state_dict}
+
+
+def build_graph():
+    workflow = StateGraph(GraphState)
+
+    # ノードを追加
+    workflow.add_node("entry_point", entry_point)
+    workflow.add_node("generate_queries", generate_queries)
+    workflow.add_node("retrieve", retrieve)
+    workflow.add_node("grade_documents", grade_documents)
+    workflow.add_node("generate", generate)
+
+    # グラフのフローを定義
+    workflow.set_entry_point("entry_point")
+    workflow.add_conditional_edges(
+        "entry_point",
+        decide_to_generate_queries,
+        {
+            "generate_queries_enabled": "generate_queries",
+            "generate_queries_not_enabled": "retrieve",
+        },
+    )
+    workflow.add_edge("generate_queries", "retrieve")
+    workflow.add_conditional_edges(
+        "retrieve",
+        decide_to_grade_documents,
+        {
+            "grade_documents_enabled": "grade_documents",
+            "grade_documents_not_enabled": "generate",
         }
-    }
+    )
+    workflow.add_edge("grade_documents", "generate")
+    workflow.add_edge("generate", END)
+
+    # グラフのコンパイル
+    app = workflow.compile()
+    return app

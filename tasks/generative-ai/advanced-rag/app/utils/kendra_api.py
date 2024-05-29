@@ -1,11 +1,11 @@
 import boto3
 
-def search_kendra(query, kendra_index_id):
+def search_kendra(query, settings):
     # Amazon Kendraを使用して検索を実行する
-    kendra = boto3.client("kendra", region_name="us-east-1")
+    kendra = boto3.client("kendra", region_name=settings["aws_region"])
     response = kendra.query(
         QueryText=query,
-        IndexId=kendra_index_id,
+        IndexId=settings["kendra_index_id"],
         AttributeFilter={
             "EqualsTo": {
                 "Key": "_language_code",
