@@ -14,7 +14,6 @@ def main():
     
     # RAGを実行するかどうかのチェックボックス
     run_rag = settings["run_rag"]
-    kendra_index_id = settings["kendra_index_id"]
 
     # 検索バーの表示
     query = search_bar()
@@ -24,7 +23,7 @@ def main():
         rag_placeholder = st.container(border=True)
 
         # Amazon Kendraによる検索結果の表示
-        kendra_results(query, kendra_index_id)
+        kendra_results(query, settings)
         #kendra_response = kendra_results(query)
         #st.markdown("### Kendra Search Results")
         #st.write(kendra_response)

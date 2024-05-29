@@ -2,11 +2,7 @@ import re
 import streamlit as st
 from langgraph.graph import END, StateGraph
 from utils import advanced_rag
-from utils.advanced_rag import (
-    GraphState,
-    retrieve,
-    generate,
-)
+from utils.advanced_rag import build_graph
 from utils.s3_utils import generate_presigned_url_from_s3_uri
 
 ja2en = {"なし": None, "クエリ拡張": "generate_queries", "検索結果の関連度評価": "grade_documents"}
@@ -15,49 +11,18 @@ def generate_rag_answer(query, settings):
     preretrieval_method = ja2en[settings["preretrieval_method"]]
     postretrieval_method = ja2en[settings["postretrieval_method"]]
 
-    inputs = {"keys": {"question": query, "settings": settings}}
+    inputs = {"keys": {
+        "question": query,
+        "n_queries": -1,
+        "grade_documents_enabled": "No",
+        "settings": settings
+    }}
     if preretrieval_method == "generate_queries":
         inputs["keys"]["n_queries"] = 3
+    if postretrieval_method == "grade_documents":
+        inputs["keys"]["grade_documents_enabled"] = "Yes"
 
-    workflow = StateGraph(GraphState)
-    workflow.add_node("retrieve", retrieve)
-    workflow.add_node("generate", generate)
-    app = None
-    if preretrieval_method is None and postretrieval_method is None:
-        # Naive RAG
-        workflow.set_entry_point("retrieve")
-        workflow.add_edge("retrieve", "generate")
-        workflow.add_edge("generate", END)
-        app = workflow.compile()
-    elif preretrieval_method is not None and postretrieval_method is None:
-        # Pre-retrieval Only
-        workflow.add_node(preretrieval_method, getattr(advanced_rag, preretrieval_method))
-
-        workflow.set_entry_point(preretrieval_method)
-        workflow.add_edge(preretrieval_method, "retrieve")
-        workflow.add_edge("retrieve", "generate")
-        workflow.add_edge("generate", END)
-        app = workflow.compile()
-    elif preretrieval_method is None and postretrieval_method is not None:
-        # Post-retrieval Only
-        workflow.add_node(postretrieval_method, getattr(advanced_rag, postretrieval_method))
-
-        workflow.set_entry_point("retrieve")
-        workflow.add_edge("retrieve", postretrieval_method)
-        workflow.add_edge(postretrieval_method, "generate")
-        workflow.add_edge("generate", END)
-        app = workflow.compile()
-    elif preretrieval_method is not None and postretrieval_method is not None:
-        # Both Pre-retrieval and Post-retrieval
-        workflow.add_node(preretrieval_method, getattr(advanced_rag, preretrieval_method))
-        workflow.add_node(postretrieval_method, getattr(advanced_rag, postretrieval_method))
-
-        workflow.set_entry_point(preretrieval_method)
-        workflow.add_edge(preretrieval_method, "retrieve")
-        workflow.add_edge("retrieve", postretrieval_method)
-        workflow.add_edge(postretrieval_method, "generate")
-        workflow.add_edge("generate", END)
-        app = workflow.compile()
+    app = build_graph()
 
     with st.spinner("Generating answer..."):
         for output in app.stream(inputs):
